@@ -1,0 +1,609 @@
+.strong_title {
+    display: none;
+}
+.nswsfenlei_2019 {
+    margin-bottom: 30px;
+}
+.nswsfenlei_2019 ul {
+    font-size: 0;
+}
+.nswsfenlei_2019 li {
+    display: inline-block;
+    vertical-align: top;
+    width: 458px;
+    height: 52px;
+    border: 1px solid #e0e0e0;
+}
+.nswsfenlei_2019 li + li {
+    margin-left: 12px;
+}
+.nswsfenlei_2019 li:hover,
+.nswsfenlei_2019 li.curNewsType_2019 {
+    background: #fe0137 !important;
+    border-color: #fe0137 !important;
+}
+.nswsfenlei_2019 li a {
+    display: block;
+    line-height: 50px;
+    font-size: 17px;
+    font-weight: 100;
+}
+.nswsfenlei_2019 li:hover a,
+.nswsfenlei_2019 li.curNewsType_2019 a {
+    color: #fff;
+}
+
+/*内页新闻*/
+#center {
+    height: auto !important;
+    padding-bottom: 30px;
+}
+.new_news_list_box {
+    width: 100% !important;
+}
+.nynewsproject {
+    position: relative;
+    padding: 25px;
+    overflow: hidden;
+    margin: 50px auto !important;
+    transition: 0.6s;
+    z-index: 9;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.nynewsproject:hover {
+    background: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    transition: 0.6s;
+}
+.nynewsproject a {
+    height: auto;
+}
+.nynewsproject a:hover,
+.nynewsproject:hover .nynewstitil > a {
+    color: #fe0137;
+}
+
+.nynews {
+    width: 100% !important;
+    margin: 0 auto;
+    max-width: 1500px;
+}
+.nynewsproject {
+    width: 100% !important;
+    height: auto;
+    padding: 3.2% 3%;
+    margin: 50px auto;
+    box-shadow: 0 0 1px #aaa;
+    box-sizing: border-box;
+    position: relative;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+.nynewsproject + .clear {
+    display: none;
+}
+.new_list_item {
+    width: 100% !important;
+}
+.nynewsdate > div {
+    display: inline-block;
+    vertical-align: top;
+}
+.nynewsdate {
+    position: absolute;
+    left: 3%;
+    top: 36%;
+}
+.nynewsday {
+    font-size: 34px;
+    line-height: 40px;
+    display: block !important;
+}
+.nynewsyear,
+.nynewsmonth {
+    font-size: 16px;
+    font-weight: bold;
+    color: #999;
+}
+.nynewsmonth + .nynewsmonth_1 {
+    display: none;
+}
+.nynewsproject .nynewsimg {
+    float: left;
+    width: 20%;
+    height: auto !important;
+    overflow: hidden;
+}
+.nynewsproject .nynewsimg img {
+    width: 100%;
+    height: auto;
+    transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+}
+.nynewsproject .nynewscont {
+    float: left;
+    width: 59%;
+    padding-left: 2%;
+    text-align: left;
+}
+.nynewsproject .nynewscont {
+    padding-top: 0;
+}
+.nynewsproject .nynewstitil > a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    line-height: 40px;
+    padding-bottom: 0.6vw;
+    display: block;
+}
+.nynewsnote {
+    font-size: 15px;
+    line-height: 30px;
+    color: #666;
+}
+.nynewsproject .more {
+    float: right;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 4%;
+    font-size: 20px;
+    color: #fff;
+    font-family: serif;
+    font-weight: bold;
+    background: #e5e5e5;
+    border-radius: 100%;
+    text-align: center;
+    transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    position: absolute;
+    right: 60px;
+}
+.nynewsproject .more a {
+    display: block;
+    line-height: 60px;
+}
+.nynewsproject:hover {
+    box-shadow: 0 26px 50px -6px rgba(97, 105, 113, 0.3);
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+}
+.nynewsproject:hover .nynewsimg img {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+}
+.nynewsproject:hover .nynewscont > a {
+    color: #fe0137;
+}
+.nynewsproject:hover .more {
+    background: #fe0137;
+    transform: translateX(6px);
+    -webkit-transform: translateX(6px);
+}
+.nynewsproject:hover .more a {
+    color: #fff;
+}
+
+.xqnewstitle hr {
+    display: none;
+}
+
+/*面包屑*/
+#bodycon,
+#bodycon #center,
+#bodycontent {
+    max-width: 1500px;
+    width: 100% !important;
+    margin: 0 auto;
+}
+#bodycon {
+    margin-bottom: 40px !important;
+}
+#right,
+p.desc {
+    display: none;
+}
+.mbx_navigation {
+    max-width: 1500px;
+    width: 100% !important;
+    text-align: left !important;
+    padding-left: 40px;
+    color: #888;
+    background: url(uploadfile/image/20231017/20231017184059_1683315889.png)
+        no-repeat left center;
+    height: 62px !important;
+    line-height: 62px !important;
+    border-bottom: 1px dashed #ddd;
+    margin-bottom: 50px !important;
+    font-size: 17px;
+    margin: 0 auto;
+}
+.mbx_navigation a {
+    color: #888;
+    display: inline-block;
+    margin: 0px 5px;
+    font-size: 16px !important;
+}
+.mbx_navigation a:hover {
+    font-size: 16px !important;
+}
+.strong_title {
+    display: none;
+}
+
+.pages_info {
+    padding: 0 !important;
+}
+.pages_box {
+    font-size: 0;
+    margin-top: 25px;
+}
+.pages_box a {
+    vertical-align: top;
+    display: inline-block;
+    padding: 0 10px;
+    height: 26px;
+    line-height: 24px;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    margin: 0 2px;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+}
+.pages_box .page_curr {
+    border-color: #fe0137;
+    background: #fe0137;
+    color: #fff;
+}
+.pages_box .page_curr:hover {
+    color: #fff;
+}
+.pages_box a:hover {
+    color: #fe0137;
+}
+b.page_jump select {
+    padding: 3px 0 !important;
+}
+
+/*内页*/
+.nban {
+    height: 450px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: none;
+}
+.nban:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(22, 16, 7, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.nban:after {
+    font-size: 70px;
+    line-height: 450px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+}
+
+/*产品调整*/
+.nyproduct {
+    display: flex;
+    flex-wrap: wrap;
+}
+.nyproductdate {
+    display: none;
+}
+.nyproductimg {
+}
+.nyproductimg img {
+    width: 100%;
+    transition: all 0.5s ease;
+}
+.nyproducttitil {
+}
+.nyproducttitil a {
+    font-size: 16px !important;
+    line-height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #333;
+}
+
+.nyproductproject {
+    width: 31.3%;
+    margin: 0 1%;
+    float: left;
+    margin-bottom: 2%;
+    overflow: hidden;
+    border: 1px #eee solid;
+    padding: 0%;
+}
+.nyproductimg {
+    position: relative;
+    overflow: hidden;
+}
+.nyproductimg a {
+    display: block;
+}
+.nyproductimg a img {
+    width: 100%;
+}
+.nyproductimg a:before {
+    content: "";
+    width: 0%;
+    height: 0%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    display: block;
+    transition: all 0.3s;
+}
+.nyproductimg a:after {
+    content: "+";
+    width: 60px;
+    height: 60px;
+    display: none;
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    margin-left: -30px;
+    top: 39%;
+    border: solid 1px #fff;
+    border-radius: 60px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 60px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.nyproductproject:hover .nyproductimg a:before {
+    width: 100%;
+    height: 100%;
+}
+.nyproductproject:hover .ny_propic span {
+    display: block;
+}
+
+.nyproductcont {
+    width: 100%;
+    background: #f5f5f5;
+    margin-top: 0.8%;
+    position: relative;
+    overflow: hidden;
+}
+.nyproductcont a {
+    height: 45%;
+    padding: 3% 4% 4% 5%;
+    font-size: 16px;
+    position: relative;
+    z-index: 2;
+    display: block;
+    text-align: center;
+}
+.ny_protil span {
+    display: block;
+    width: 67px;
+    height: 12px;
+    background: url(../cdn.dg.114my.cn/img/2020/20200522095054_1768699360.html);
+    margin-top: 3%;
+}
+.nyproductproject:hover .nyproductimg a:after {
+    background-position: 0px -12px;
+    transition: all 0.3s;
+}
+.nyproductproject:hover .nyproductcont a {
+    color: #fff;
+}
+.nyproductcont:before {
+    width: 0;
+    height: 100%;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #fe0137;
+    transition: all 0.3s;
+}
+.nyproductproject:hover .nyproductcont:before {
+    width: 100%;
+}
+.nyproductnote {
+    display: none !important;
+}
+
+/*内页自定义列表*/
+#bodycontent {
+    width: 100% !important;
+    max-width: 1500px;
+}
+
+.dgweb_list_box .dgweb_list_item {
+    width: 31% !important;
+    margin: 0 1% 2% 1%;
+    overflow: hidden;
+}
+
+.dgweb_list_box .dgweb_list_item img,
+.dgweb_list_box .dgweb_list_item .dgweb_list_pic {
+    width: 100%;
+}
+.dgweb_list_box .dgweb_list_item .dgweb_list_pic {
+    display: block;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.dgweb_list_box .dgweb_list_item .dgweb_list_text:before {
+    width: 100%;
+    height: 0;
+    content: "";
+    background: #fe0137;
+    transition: 0.5s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.dgweb_list_box .dgweb_list_item .dgweb_list_text:after {
+    content: "+";
+    position: absolute;
+    right: 24px;
+    top: 20px;
+    transition: 0.5s;
+    display: block;
+    width: 25px;
+    height: 25px;
+    transform: rotate(0deg);
+    font-size: 40px;
+    font-weight: normal;
+    line-height: 20px;
+    font-family: SimSun;
+}
+
+.dgweb_list_box .dgweb_list_item .dgweb_list_text a {
+    font-size: 16px !important;
+    line-height: 60px;
+    color: #333;
+}
+
+.dgweb_list_box .dgweb_list_item .dgweb_list_text {
+    line-height: 60px;
+    background: #f5f5f5;
+    padding-left: 25px;
+    font-size: 16px;
+    position: relative;
+    text-align: left;
+    z-index: 5;
+    height: 60px;
+}
+
+.dgweb_list_box .dgweb_list_item:hover .dgweb_list_text {
+    color: #fff;
+}
+.dgweb_list_box .dgweb_list_item:hover .dgweb_list_text:before {
+    height: 100%;
+    transition: 0.5s;
+}
+.dgweb_list_box .dgweb_list_item:hover .dgweb_list_text:after {
+    transform: rotate(180deg);
+    top: 15px;
+    right: 23px;
+}
+
+.dgweb_list_box .dgweb_list_item .dgweb_list_text a {
+    display: block;
+    position: relative;
+    z-index: 3;
+}
+
+.dgweb_list_box .dgweb_list_item .dgweb_list_text a:first-letter {
+    text-transform: uppercase;
+}
+
+.dgweb_list_box .dgweb_list_item:hover .dgweb_list_text a {
+    color: #fff;
+}
+
+.nylist-title {
+    position: relative;
+    z-index: 5;
+}
+.nylist li:hover .nylist-title {
+    color: #ffffff !important;
+}
+
+body {
+    background-color: #f5f5f5;
+
+    background-position: top center;
+    margin-left: 0px;
+    color: #333;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-size: 14px;
+}
+
+A:link {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+A:visited {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+A:hover {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+/*daohanstar*/
+#webdh {
+    text-align: center;
+    vertical-align: middle;
+    width: 1500px;
+    height: px;
+    margin: 0 auto;
+    font-size: 14px;
+
+    font-weight: bold;
+    color: #333;
+
+    background-color: #f5f5f5;
+
+    overflow: hidden;
+}
+#webdh A:link {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+#webdh A:visited {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+#webdh A:hover {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    display: block;
+}
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+/*dhclose*/
+#copy {
+    text-align: center;
+    width: 1500px;
+    margin: 0 auto;
+    line-height: 150%;
+}
