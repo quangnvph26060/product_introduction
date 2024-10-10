@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Scroll TikTok Style</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      background-color: #090909;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .swiper-container {
+      height: 100vh;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Video styling to fit full screen */
+    .swiper-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Makes the video fill the screen */
+      cursor: pointer;
+    }
+
+    /* Icons and interaction buttons */
+    .interaction {
+      position: absolute;
+      right: 10px;
+      bottom: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .icon {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .icon img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    /* Like, comment, share counts */
+    .count {
+      color: white;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    /* Video caption section */
+    .caption {
+      position: absolute;
+      bottom: 20px;
+      left: 10px;
+      color: white;
+      font-size: 16px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <!-- Swiper Container -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Video 1 -->
+      <div class="swiper-slide">
+        <video src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" autoplay loop muted></video>
+        <div class="interaction">
+          <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="User"></div>
+          <div class="icon">❤️<div class="count">13.7K</div></div>
+          <div class="icon">💬<div class="count">207</div></div>
+          <div class="icon">➤<div class="count">393</div></div>
+        </div>
+        <div class="caption">
+          <strong>User</strong> Caption of the video<br>
+          🎵 nhạc nền - tên bài hát
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="swiper-slide">
+        <video src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" autoplay loop muted></video>
+        <div class="interaction">
+          <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="User"></div>
+          <div class="icon">❤️<div class="count">9.2K</div></div>
+          <div class="icon">💬<div class="count">150</div></div>
+          <div class="icon">➤<div class="count">275</div></div>
+        </div>
+        <div class="caption">
+          <strong>User 2</strong> Another caption<br>
+          🎵 nhạc nền - bài hát khác
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="swiper-slide">
+        <video src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" autoplay loop muted></video>
+        <div class="interaction">
+          <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="User"></div>
+          <div class="icon">❤️<div class="count">7.8K</div></div>
+          <div class="icon">💬<div class="count">100</div></div>
+          <div class="icon">➤<div class="count">150</div></div>
+        </div>
+        <div class="caption">
+          <strong>User 3</strong> Yet another caption<br>
+          🎵 nhạc nền - một bài hát nữa
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      direction: 'vertical', // Lướt theo chiều dọc
+      slidesPerView: 1,
+      spaceBetween: 0,
+      mousewheel: true, // Allow mousewheel control for scrolling
+      on: {
+        slideChangeTransitionStart: function () {
+          // Logic nếu cần khi chuyển đổi slide
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

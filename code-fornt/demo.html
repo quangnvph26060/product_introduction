@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product List</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css">
+<style>
+    .pagination {
+        justify-content: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Product List</h1>
+
+    <input type="text" id="searchInput" class="form-control my-3" placeholder="Search products...">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+        </tbody>
+    </table>
+
+    <ul id="pagination" class="pagination"></ul>
+</div>
+
+<script>
+const itemsPerPage = 5;
+let currentPage = 1;
+let filteredData = [];
+
+function displayProducts(products) {
+    const tableBody = document.getElementById('productTableBody');
+    tableBody.innerHTML = '';
+
+    products.forEach(product => {
+        const row = tableBody.insertRow();
+        row.insertCell().textContent = product.id;
+        row.insertCell().textContent = product.title;
+        row.insertCell().textContent = product.completed ? 'Yes' : 'No';
+    });
+}
+
+function paginate(data, page) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return data.slice(startIndex, endIndex);
+}
+
+function updatePagination(currentPage, totalItems) {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement('li');
+        li.classList.add('page-item');
+        if (i === currentPage) {
+            li.classList.add('active');
+        }
+        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        li.addEventListener('click', function() {
+            currentPage = i;
+            updatePagination(currentPage, totalItems);
+            displayProducts(paginate(filteredData, currentPage));
+        });
+        pagination.appendChild(li);
+    }
+}
+
+function fetchProducts() {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
+        .then(data => {
+            filteredData = data;
+            updatePagination(currentPage, data.length);
+            displayProducts(paginate(data, currentPage));
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchTerm = this.value.trim().toLowerCase();
+    const filtered = filteredData.filter(item => item.title.toLowerCase().includes(searchTerm));
+    updatePagination(currentPage, filtered.length);
+    displayProducts(paginate(filtered, currentPage));
+});
+
+fetchProducts();
+</script>
+
+</body>
+</html>

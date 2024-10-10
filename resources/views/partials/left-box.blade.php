@@ -1,7 +1,7 @@
 <div class="left_box">
     <div class="ldh">
         <div class="ldh_z">
-            <span>Product Categories</span>
+            <span>Danh mục sản phẩm </span>
         </div>
     </div>
     <div class="left-products">

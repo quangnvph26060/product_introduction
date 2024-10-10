@@ -1,9 +1,8 @@
 <div class="gc_bc">
     <div class="gy gc_c">
         <div class="pro_tit">
-            <b>Lipin Flooring · <span>Engineering Cases</span></b>
-            <p>Our products penetrate into various industries and strive to create high-quality products for
-                customers</p>
+            <b>Sàn Lipin  · <span>Các trường hợp kỹ thuật</span></b>
+            <p>Sản phẩm của chúng tôi thâm nhập vào nhiều ngành công nghiệp khác nhau và phấn đấu tạo ra những sản phẩm chất lượng cao cho khách hàng</p>
         </div>
         @include('partials.box.box-1')
         <div class="gc_ic">
