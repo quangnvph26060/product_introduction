@@ -33,6 +33,8 @@
     <!-- custom Css-->
     <link href="{{asset('assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr/build/toastr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastr/build/toastr.min.js"></script>
 </head>
 
 <body>
@@ -43,7 +45,8 @@
         @yield('content')
     </div>
     @include('admin/partials/footer')
-
+    
+    @include('toastr')
  <!--start back-to-top-->
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>

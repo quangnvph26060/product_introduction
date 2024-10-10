@@ -61,15 +61,15 @@
 
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Website giới thiệu sản phẩm</h5>
+                                    <h5 class="text-primary">{{$h1}}</h5>
                                     {{-- <p class="text-muted">.</p> --}}
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="index.html">
-
+                                    <form action="{{route('login')}}" method="POST">
+                                        @csrf
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Tài khoản</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Tài khoản">
+                                            <input type="email" name="email" class="form-control" id="username" placeholder="Tài khoản">
                                         </div>
 
                                         <div class="mb-3">
@@ -78,7 +78,7 @@
                                             </div> --}}
                                             <label class="form-label" for="password-input">Mật khẩu</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5 password-input" placeholder="Mật khẩu" id="password-input">
+                                                <input type="password" class="form-control pe-5 password-input"   name="password" placeholder="Mật khẩu" id="password-input">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
