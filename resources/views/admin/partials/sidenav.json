@@ -1,0 +1,38 @@
+[
+    {
+        "menu":"Menu",
+        "text": "Dashboasd",
+        "class": "nav-item",
+        "children": [
+            {
+                "text": "Sweet Alerts"
+            },
+            {
+                "text": "Nestable List"
+            }
+           
+        ]
+    },
+    {
+        "text": "Advance UI",
+        "class": "nav-item",
+        "icon": "ri-stack-line",
+        "aria-controls":"sidebarLayouts",
+        "children": [
+            {
+                "text": "Sweet Alerts"
+            },
+            {
+                "text": "Nestable List"
+            }
+           
+        ]
+    },
+    {
+        "text": "Widgets",
+        "class": "nav-item",
+        "icon": "ri-honour-line",
+        "children": []
+    }
+   
+]
