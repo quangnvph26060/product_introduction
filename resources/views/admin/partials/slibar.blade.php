@@ -38,7 +38,7 @@
                         role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                          <span data-key="t-dashboards">Dashboards</span>
                     </a>
-                   
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
@@ -66,7 +66,7 @@
                             </li>
                         </ul>
                     </div>
-                </li> 
+                </li>
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
 
@@ -382,19 +382,19 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarUI" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarUI">
-                        <i class="ri-pencil-ruler-2-line"></i> <span data-key="t-base-ui">Base UI</span>
+                        <i class="ri-pencil-ruler-2-line"></i> <span data-key="t-base-ui">Bài viết</span>
                     </a>
                     <div class="collapse menu-dropdown mega-dropdown-menu" id="sidebarUI">
                         <div class="row">
                             <div class="col-lg-4">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="ui-alerts.html" class="nav-link" data-key="t-alerts">Alerts</a>
+                                        <a href="{{ route('post.index') }}" class="nav-link" data-key="t-alerts">Danh sách bài viết</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="ui-badges.html" class="nav-link" data-key="t-badges">Badges</a>
+                                        <a href="{{ route('post.create') }}" class="nav-link" data-key="t-badges">Thêm bài viết </a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a href="ui-buttons.html" class="nav-link"
                                             data-key="t-buttons">Buttons</a>
                                     </li>
@@ -414,10 +414,10 @@
                                     </li>
                                     <li class="nav-item">
                                         <a href="ui-grid.html" class="nav-link" data-key="t-grid">Grid</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
-                            <div class="col-lg-4">
+                            {{-- <div class="col-lg-4">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="ui-images.html" class="nav-link" data-key="t-images">Images</a>
@@ -487,7 +487,7 @@
                                             data-key="t-utilities">Utilities</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </li>
