@@ -14,7 +14,6 @@ use App\Http\Controllers\GeneralSettingController;
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [AuthLoginController::class, 'index'])->name('login');
     Route::post('/login', [AuthLoginController::class, 'login']);
-   
 });
 Route::post('/logout', [AuthLoginController::class, 'logout'])->name('logout');
 
@@ -25,9 +24,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [AdminCategoryController::class, 'index'])->name('admin.categories.index');
         Route::get('/categories/create', [AdminCategoryController::class, 'create'])->name('admin.categories.create');
         Route::post('/categories', [AdminCategoryController::class, 'store'])->name('admin.categories.store');
-        Route::get('/categories/{id}/edit', [AdminCategoryController::class, 'edit'])->name('admin.categories.edit');
-        Route::put('/categories/{id}', [AdminCategoryController::class, 'update'])->name('admin.categories.update');
-        Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy'])->name('admin.categories.destroy');
+        Route::get('/categories/{category}/edit', [AdminCategoryController::class, 'edit'])->name('admin.categories.edit');
+        Route::put('/categories/{category}', [AdminCategoryController::class, 'update'])->name('admin.categories.update');
+        Route::delete('/categories/{category}', [AdminCategoryController::class, 'destroy'])->name('admin.categories.destroy');
     });
 
     Route::group(['prefix' => 'product'], function () {

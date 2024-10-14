@@ -10,17 +10,26 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.categories.index', ['categories' => $categories]);
+        $categories = Category::paginate(20);
+        return view('admin.categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('admin.categories.create');
+        $categories = Category::whereNull('parent_id')->get();
+        return view('admin.categories.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required',
+            'parent_id' => 'nullable|exists:categories,id'
+        ], [
+            'name.required' => 'Tên danh mục không được để trống',
+        ]);
+
         $category = new Category;
         $category->name = $request->input('name');
         $category->parent_id = $request->input('parent_id');
@@ -30,28 +39,27 @@ class AdminCategoryController extends Controller
         return redirect()->route('admin.categories.index')->with('notification', $notification);
     }
 
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::find($id);
-        return view('admin.categories.edit', ['category' => $category]);
+        $categories = Category::whereNull('parent_id')->get();
+        return view('admin.categories.edit', compact('category', 'categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        $category = Category::find($id);
-        $category->name = $request->input('name');
-        $category->parent_id = $request->input('parent_id');
-        $category->save();
+        $request->validate([
+            'name' => 'required',
+            'parent_id' => 'nullable|exists:categories,id'
+        ]);
+        $category->update($request->all());
 
         $notification = ['type' => 'success', 'message' => 'Danh mục đã được cập nhật thành công'];
         return redirect()->route('admin.categories.index')->with('notification', $notification);
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::find($id);
         $category->delete();
-
         $notification = ['type' => 'success', 'message' => 'Danh mục đã được xóa thành công'];
         return redirect()->route('admin.categories.index')->with('notification', $notification);
     }
