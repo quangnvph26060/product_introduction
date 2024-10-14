@@ -4,26 +4,33 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class AdminPostController extends Controller
 {
+    protected $postService;
+    public function __construct(PostService $postService){
+        $this->postService = $postService;
+    }
     public function index()
     {
         $categories = Post::all();
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.partials.post.post', compact('categories'));
     }
 
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.partials.post.add-post');
     }
 
     public function store(Request $request)
     {
+        $data = $request->all();
+        $this->postService->createpost($data);
         // Logic to store the category
         $notification = ['type' => 'success', 'message' => 'Danh mục đã được tạo thành công'];
-        return redirect()->route('admin.categories.index')->with('notification', $notification);
+        return redirect()->route('post.index')->with('notification', $notification);
     }
 
     public function edit($id)

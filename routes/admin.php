@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\admin\AdminPostController;
 use App\Http\Controllers\admin\AdminProcessController;
 use App\Http\Controllers\admin\AdminSlidersController;
 use App\Http\Controllers\admin\AmdminWebsiteFeatureController;
@@ -14,7 +15,7 @@ use App\Http\Controllers\GeneralSettingController;
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [AuthLoginController::class, 'index'])->name('login');
     Route::post('/login', [AuthLoginController::class, 'login']);
-   
+
 });
 Route::post('/logout', [AuthLoginController::class, 'logout'])->name('logout');
 
@@ -72,5 +73,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{setting}/edit', [GeneralSettingController::class, 'edit'])->name('settings.edit');
         Route::put('/{setting}', [GeneralSettingController::class, 'update'])->name('settings.update');
         Route::delete('/{setting}', [GeneralSettingController::class, 'destroy'])->name('settings.destroy');
+    });
+
+    Route::prefix('post')->group(function () {
+        Route::get('/', [AdminPostController::class, 'index'])->name('post.index');
+        Route::get('/create', [AdminPostController::class, 'create'])->name('post.create');
+        Route::post('/', [AdminPostController::class, 'store'])->name('post.store');
+        Route::get('/{id}/edit', [AdminPostController::class, 'edit'])->name('post.edit');
+        Route::put('/{id}', [AdminPostController::class, 'update'])->name('post.update');
+        Route::delete('/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
     });
 });
