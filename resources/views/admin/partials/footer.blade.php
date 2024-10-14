@@ -1,14 +1,33 @@
 <footer class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6">
-                <script>document.write(new Date().getFullYear())</script> Trang webiste giới thiệu sản phẩm
-            </div>
-            <div class="col-sm-6">
-                <div class="text-sm-end d-none d-sm-block">
-                    {{-- Design & Develop by Themesbrand --}}
-                </div>
-            </div>
+    <div class="container-fluid d-flex justify-content-between">
+        <nav class="pull-left">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="http://www.themekita.com"
+                    >
+                        ThemeKita
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Help </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Licenses </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            2024, made with
+            <i class="fa fa-heart heart text-danger"></i> by
+            <a href="http://www.themekita.com">ThemeKita</a>
+        </div>
+        <div>
+            Distributed by
+            <a target="_blank" href="https://themewagon.com/"
+                >ThemeWagon</a
+            >.
         </div>
     </div>
 </footer>

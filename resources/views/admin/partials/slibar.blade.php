@@ -1,4 +1,4 @@
-<div class="app-menu navbar-menu">
+{{-- <div class="app-menu navbar-menu">
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
@@ -70,216 +70,6 @@
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
 
-                {{-- <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarAuth">
-                        <i class="ri-account-circle-line"></i> <span
-                            data-key="t-authentication">Authentication</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarAuth">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="#sidebarSignIn" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarSignIn"
-                                    data-key="t-signin"> Sign In
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarSignIn">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-signin-basic.html" class="nav-link"
-                                                data-key="t-basic"> Basic
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-signin-cover.html" class="nav-link"
-                                                data-key="t-cover"> Cover
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#sidebarSignUp" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarSignUp"
-                                    data-key="t-signup"> Sign Up
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarSignUp">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-signup-basic.html" class="nav-link"
-                                                data-key="t-basic"> Basic
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-signup-cover.html" class="nav-link"
-                                                data-key="t-cover"> Cover
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#sidebarResetPass" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarResetPass"
-                                    data-key="t-password-reset">
-                                    Password Reset
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarResetPass">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-pass-reset-basic.html" class="nav-link"
-                                                data-key="t-basic">
-                                                Basic </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-pass-reset-cover.html" class="nav-link"
-                                                data-key="t-cover">
-                                                Cover </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#sidebarchangePass" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarchangePass"
-                                    data-key="t-password-create">
-                                    Password Create
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarchangePass">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-pass-change-basic.html" class="nav-link"
-                                                data-key="t-basic">
-                                                Basic </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-pass-change-cover.html" class="nav-link"
-                                                data-key="t-cover">
-                                                Cover </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#sidebarLockScreen" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarLockScreen"
-                                    data-key="t-lock-screen">
-                                    Lock Screen
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarLockScreen">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-lockscreen-basic.html" class="nav-link"
-                                                data-key="t-basic">
-                                                Basic </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-lockscreen-cover.html" class="nav-link"
-                                                data-key="t-cover">
-                                                Cover </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#sidebarLogout" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarLogout"
-                                    data-key="t-logout"> Logout
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarLogout">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-logout-basic.html" class="nav-link"
-                                                data-key="t-basic"> Basic
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-logout-cover.html" class="nav-link"
-                                                data-key="t-cover"> Cover
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#sidebarSuccessMsg" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarSuccessMsg"
-                                    data-key="t-success-message"> Success Message
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarSuccessMsg">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-success-msg-basic.html" class="nav-link"
-                                                data-key="t-basic">
-                                                Basic </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-success-msg-cover.html" class="nav-link"
-                                                data-key="t-cover">
-                                                Cover </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#sidebarTwoStep" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarTwoStep"
-                                    data-key="t-two-step-verification"> Two Step Verification
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarTwoStep">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-twostep-basic.html" class="nav-link"
-                                                data-key="t-basic"> Basic
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-twostep-cover.html" class="nav-link"
-                                                data-key="t-cover"> Cover
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#sidebarErrors" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebarErrors"
-                                    data-key="t-errors"> Errors
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarErrors">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="auth-404-basic.html" class="nav-link"
-                                                data-key="t-404-basic"> 404
-                                                Basic </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-404-cover.html" class="nav-link"
-                                                data-key="t-404-cover"> 404
-                                                Cover </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-404-alt.html" class="nav-link" data-key="t-404-alt">
-                                                404 Alt
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-500.html" class="nav-link" data-key="t-500"> 500 </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="auth-offline.html" class="nav-link"
-                                                data-key="t-offline-page"> Offline Page </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button"
@@ -337,100 +127,10 @@
                                     <li class="nav-item">
                                         <a href="{{ route('post.create') }}" class="nav-link" data-key="t-badges">Thêm bài viết </a>
                                     </li>
-                                    {{-- <li class="nav-item">
-                                        <a href="ui-buttons.html" class="nav-link"
-                                            data-key="t-buttons">Buttons</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-colors.html" class="nav-link" data-key="t-colors">Colors</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-cards.html" class="nav-link" data-key="t-cards">Cards</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-carousel.html" class="nav-link"
-                                            data-key="t-carousel">Carousel</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-dropdowns.html" class="nav-link"
-                                            data-key="t-dropdowns">Dropdowns</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-grid.html" class="nav-link" data-key="t-grid">Grid</a>
-                                    </li> --}}
+                                   
                                 </ul>
                             </div>
-                            {{-- <div class="col-lg-4">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="ui-images.html" class="nav-link" data-key="t-images">Images</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-tabs.html" class="nav-link" data-key="t-tabs">Tabs</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-accordions.html" class="nav-link"
-                                            data-key="t-accordion-collapse">Accordion & Collapse</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-modals.html" class="nav-link" data-key="t-modals">Modals</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-offcanvas.html" class="nav-link"
-                                            data-key="t-offcanvas">Offcanvas</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-placeholders.html" class="nav-link"
-                                            data-key="t-placeholders">Placeholders</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-progress.html" class="nav-link"
-                                            data-key="t-progress">Progress</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-notifications.html" class="nav-link"
-                                            data-key="t-notifications">Notifications</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-4">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="ui-media.html" class="nav-link" data-key="t-media-object">Media
-                                            object</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-embed-video.html" class="nav-link"
-                                            data-key="t-embed-video">Embed
-                                            Video</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-typography.html" class="nav-link"
-                                            data-key="t-typography">Typography</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-lists.html" class="nav-link" data-key="t-lists">Lists</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-links.html" class="nav-link"><span
-                                                data-key="t-links">Links</span> <span
-                                                class="badge badge-pill bg-success"
-                                                data-key="t-new">New</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-general.html" class="nav-link"
-                                            data-key="t-general">General</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-ribbons.html" class="nav-link"
-                                            data-key="t-ribbons">Ribbons</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="ui-utilities.html" class="nav-link"
-                                            data-key="t-utilities">Utilities</a>
-                                    </li>
-                                </ul>
-                            </div> --}}
+                       
                         </div>
                     </div>
                 </li>
@@ -814,4 +514,295 @@
 
     <div class="sidebar-background"></div>
 </div>
-<div class="vertical-overlay"></div>
+<div class="vertical-overlay"></div> --}}
+<div class="sidebar" data-background-color="dark">
+    <div class="sidebar-logo">
+        <!-- Logo Header -->
+        <div class="logo-header" data-background-color="dark">
+            <a href="" class="logo">
+                <img
+                    src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}"
+                    alt="navbar brand"
+                    class="navbar-brand"
+                    height="20"
+                />
+            </a>
+            <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                    <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                    <i class="gg-menu-left"></i>
+                </button>
+            </div>
+            <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+            </button>
+        </div>
+        <!-- End Logo Header -->
+    </div>
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+                <li class="nav-item active">
+                    <a
+                        data-bs-toggle="collapse"
+                        href="#dashboard"
+                        class="collapsed"
+                        aria-expanded="false"
+                    >
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="dashboard">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="../demo1/index.html">
+                                    <span class="sub-item"
+                                        >Dashboard 1</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Components</h4>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#base">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Danh mục</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="base">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('admin.categories.index') }}">
+                                    <span class="sub-item"
+                                        >Danh mục</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.categories.create') }}">
+                                    <span class="sub-item"
+                                        >Thêm danh mục</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a
+                        data-bs-toggle="collapse"
+                        href="#sidebarLayouts"
+                    >
+                        <i class="fas fa-th-list"></i>
+                        <p>Sidebar Layouts</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLayouts">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="sidebar-style-2.html">
+                                    <span class="sub-item"
+                                        >Sidebar Style 2</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="icon-menu.html">
+                                    <span class="sub-item"
+                                        >Icon Menu</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#forms">
+                        <i class="fas fa-pen-square"></i>
+                        <p>Forms</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="forms">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="forms/forms.html">
+                                    <span class="sub-item"
+                                        >Basic Form</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#tables">
+                        <i class="fas fa-table"></i>
+                        <p>Tables</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="tables">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="tables/tables.html">
+                                    <span class="sub-item"
+                                        >Basic Table</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tables/datatables.html">
+                                    <span class="sub-item"
+                                        >Datatables</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#maps">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Maps</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="maps">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="maps/googlemaps.html">
+                                    <span class="sub-item"
+                                        >Google Maps</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="maps/jsvectormap.html">
+                                    <span class="sub-item"
+                                        >Jsvectormap</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#charts">
+                        <i class="far fa-chart-bar"></i>
+                        <p>Charts</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="charts">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="charts/charts.html">
+                                    <span class="sub-item"
+                                        >Chart Js</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="charts/sparkline.html">
+                                    <span class="sub-item"
+                                        >Sparkline</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="widgets.html">
+                        <i class="fas fa-desktop"></i>
+                        <p>Widgets</p>
+                        <span class="badge badge-success">4</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#submenu">
+                        <i class="fas fa-bars"></i>
+                        <p>Menu Levels</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="submenu">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a
+                                    data-bs-toggle="collapse"
+                                    href="#subnav1"
+                                >
+                                    <span class="sub-item"
+                                        >Level 1</span
+                                    >
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="subnav1">
+                                    <ul
+                                        class="nav nav-collapse subnav"
+                                    >
+                                        <li>
+                                            <a href="#">
+                                                <span
+                                                    class="sub-item"
+                                                    >Level 2</span
+                                                >
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span
+                                                    class="sub-item"
+                                                    >Level 2</span
+                                                >
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a
+                                    data-bs-toggle="collapse"
+                                    href="#subnav2"
+                                >
+                                    <span class="sub-item"
+                                        >Level 1</span
+                                    >
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="subnav2">
+                                    <ul
+                                        class="nav nav-collapse subnav"
+                                    >
+                                        <li>
+                                            <a href="#">
+                                                <span
+                                                    class="sub-item"
+                                                    >Level 2</span
+                                                >
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="sub-item"
+                                        >Level 1</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
