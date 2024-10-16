@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Menu;
 class AppServiceProvider extends ServiceProvider
@@ -35,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('menu', $menu);
         });
+        Paginator::useBootstrap();
     }
 }
