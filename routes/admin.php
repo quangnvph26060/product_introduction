@@ -32,8 +32,16 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::group(['prefix' => 'product'], function () {
-        Route::get('/', [AdminAdminProductController::class, 'index'])->name('product');
-        Route::get('/add-product', [AdminAdminProductController::class, 'showFormProduct'])->name('add.product');
+        Route::get('/', [AdminAdminProductController::class, 'index'])->name('admin.product');
+        Route::get('/create', [AdminAdminProductController::class, 'showFormProduct'])->name('admin.add.product');
+        Route::post('/' , [AdminAdminProductController::class , 'addProduct'])->name('admin.store.product');
+        Route::get('/edit/{id}' , [AdminAdminProductController::class , 'editProduct'])->name('admin.edit.product');
+        Route::post('/{id}' , [AdminAdminProductController::class , 'updateProduct'])->name('admin.update.product');
+        Route::get('/{id}' , [AdminAdminProductController::class , 'deleteProduct'])->name('admin.delete.product');
+        Route::get('/{id}/image-gallery' , [AdminAdminProductController::class , 'listImageGalley'])->name('list.image-gallery.product');
+        Route::post('/image-gallery/store' , [AdminAdminProductController::class , 'storeImageGalley'])->name('store.image-gallery.product');
+        Route::get('/image-gallery/delete/{id}' , [AdminAdminProductController::class , 'deleteImageProduct'])->name('delete.image-gallery.product');
+        Route::post('/change-status' , [AdminAdminProductController::class , 'changeStatus'])->name('product.change-status');
     });
 
     Route::prefix('businesses')->group(function () {

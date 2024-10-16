@@ -11,13 +11,13 @@ class AdminCategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(20);
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.partials.categories.index', compact('categories'));
     }
 
     public function create()
     {
         $categories = Category::whereNull('parent_id')->get();
-        return view('admin.categories.create', compact('categories'));
+        return view('admin.partials.categories.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class AdminCategoryController extends Controller
     public function edit(Category $category)
     {
         $categories = Category::whereNull('parent_id')->get();
-        return view('admin.categories.edit', compact('category', 'categories'));
+        return view('admin.partials.categories.edit', compact('category', 'categories'));
     }
 
     public function update(Request $request, Category $category)
@@ -59,6 +59,7 @@ class AdminCategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        $category->product->delete();
         $category->delete();
         $notification = ['type' => 'success', 'message' => 'Danh mục đã được xóa thành công'];
         return redirect()->route('admin.categories.index')->with('notification', $notification);
