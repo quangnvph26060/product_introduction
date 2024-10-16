@@ -10,15 +10,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Update Category</h4>
-
-                        {{-- <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                <li class="breadcrumb-item active">Create Product</li>
-                            </ol>
-                        </div> --}}
-
+                        <h4 class="mb-sm-0">Cập nhật danh mục</h4>
                     </div>
                 </div>
             </div>
@@ -33,15 +25,15 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
-                                    <label class="form-label">Category Name</label>
+                                    <label class="form-label">Tên danh mục</label>
                                     <input type="text" name="name" class="form-control" id="category-name-input"
-                                        value="{{ $category->name }}" placeholder="Enter category name">
+                                        value="{{ $category->name }}" placeholder="Nhập tên danh mục">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="choices-publish-status-input" class="form-label">Parent</label>
+                                    <label for="choices-publish-status-input" class="form-label">Danh mục cha</label>
 
                                     <select class="form-select" name="parent_id" id="choices-publish-status-input">
                                        
@@ -53,7 +45,7 @@
                                                     {{ $cat->name }}</option>
                                             @endforeach
                                         @else
-                                           <option value="">None</option>
+                                           <option value="">Không (Vì danh mục này đang là danh mục cha)</option>
                                         @endif
 
 
@@ -61,7 +53,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </form>
 

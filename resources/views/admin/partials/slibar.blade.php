@@ -4,10 +4,10 @@
         <div class="logo-header" data-background-color="dark">
             <a href="" class="logo">
                 <img
-                    src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}"
+                    src="{{ asset('assets/img/kaiadmin/logo-sgo.png') }}"
                     alt="navbar brand"
                     class="navbar-brand"
-                    height="20"
+                    height="80" width="100" style="margin-top: 10px"
                 />
             </a>
             <div class="nav-toggle">
@@ -29,20 +29,12 @@
             <ul class="nav nav-secondary">
                 <li class="nav-item active">
                     <a
-                        data-bs-toggle="collapse"
-                        href="#dashboard"
+                        href="{{ route('dashboard') }}"
                         class="collapsed"
-                        aria-expanded="false"
                     >
                         <i class="fas fa-home"></i>
-                        <p>Dashboard</p>
+                        <p>Trang chủ</p>
                     </a>
-                </li>
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                    <h4 class="text-section">Components</h4>
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#base">
@@ -55,7 +47,7 @@
                             <li>
                                 <a href="{{ route('admin.categories.index') }}">
                                     <span class="sub-item"
-                                        >Danh mục</span
+                                        >Danh sách danh mục</span
                                     >
                                 </a>
                             </li>
@@ -83,7 +75,7 @@
                             <li>
                                 <a href="{{ route('admin.product') }}">
                                     <span class="sub-item"
-                                        >Danh sách</span
+                                        >Danh sách sản phẩm</span
                                     >
                                 </a>
                             </li>

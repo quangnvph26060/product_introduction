@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="">Tên sản phẩm</label>
                                     <input type="text" name="name" class="form-control" id=""
-                                        placeholder="Enter name" />
+                                        placeholder="Nhập tên sản phẩm" />
                                     @error('name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -49,7 +49,7 @@
                                     <label for="">Ảnh</label>
                                     <input type="file" name="main_image" class="form-control-file"
                                         onchange="loadFile(event)" />
-                                    <img id="output" width="150" height="150" />
+                                    <img id="output" width="150" src="https://www.nfctogo.com/images/empty-img.png" height="150" />
                                     @error('main_image')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Mô tả chi tiết</label>
-                                    <textarea name="long_description" class="form-control" id="" rows="5">
+                                    <textarea name="long_description" id="content" class="form-control" id="" rows="5">
                                 </textarea>
                                     @error('long_description')
                                         <span class="text-danger">{{ $message }}</span>
@@ -75,10 +75,10 @@
                                     <select name="status" class="form-select" id="">
                                         <option value="published"
                                             {{ old('status', $category->status ?? '') == 'published' ? 'selected' : '' }}>
-                                            Published</option>
+                                            Công khai</option>
                                         <option value="unpublished"
                                             {{ old('status', $category->status ?? '') == 'unpublished' ? 'selected' : '' }}>
-                                            Unpublished</option>
+                                            Ẩn</option>
                                     </select>
                                 </div>
 
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Thêm</button>
                     </div>
                 </div>
             </form>

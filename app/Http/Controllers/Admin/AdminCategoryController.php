@@ -59,7 +59,7 @@ class AdminCategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->product->delete();
+        $category->product()->delete();
         $category->delete();
         $notification = ['type' => 'success', 'message' => 'Danh mục đã được xóa thành công'];
         return redirect()->route('admin.categories.index')->with('notification', $notification);

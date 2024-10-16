@@ -8,13 +8,14 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AdminProductController extends Controller
 {
     use ImageUploadTrait;
     public function index()
     {
-        $products = Product::paginate(20);
+        $products = Product::all();
         return view('admin.partials.product.index', compact('products'));
     }
     public function showFormProduct()

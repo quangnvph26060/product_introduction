@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{id}/image-gallery' , [AdminAdminProductController::class , 'listImageGalley'])->name('list.image-gallery.product');
         Route::post('/image-gallery/store' , [AdminAdminProductController::class , 'storeImageGalley'])->name('store.image-gallery.product');
         Route::get('/image-gallery/delete/{id}' , [AdminAdminProductController::class , 'deleteImageProduct'])->name('delete.image-gallery.product');
-        Route::post('/change-status' , [AdminAdminProductController::class , 'changeStatus'])->name('product.change-status');
+        Route::post('/change-status' , [AdminAdminProductController::class , 'changeStatus'])->name('admin.product.change-status');
     });
 
     Route::prefix('businesses')->group(function () {

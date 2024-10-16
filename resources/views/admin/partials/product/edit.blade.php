@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="">Tên sản phẩm</label>
                                     <input type="text" name="name" class="form-control" value="{{ $product->name }}"
-                                        placeholder="Enter name" />
+                                        placeholder="Nhập tên sản phẩm" />
                                     @error('name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Cập nhật</button>
                     </div>
                 </div>
             </form>
