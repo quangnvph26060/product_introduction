@@ -97,6 +97,34 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a
+                        data-bs-toggle="collapse"
+                        href="#sidebarLayouts"
+                    >
+                        <i class="fas fa-th-list"></i>
+                        <p>Bài viết</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLayouts">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('post.index') }}">
+                                    <span class="sub-item"
+                                        >Danh sách</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.add.product') }}">
+                                    <span class="sub-item"
+                                        >Thêm sản phẩm</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
