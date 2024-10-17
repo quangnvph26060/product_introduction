@@ -9,7 +9,7 @@
     <link rel="icon" href="{{ asset('assets/img/kaiadmin/logo-sgo.png') }}" type="image/x-icon" />
 
     <!-- Fonts and icons -->
-    <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
     <script>
         WebFont.load({
             google: {
