@@ -10,12 +10,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Category</h4>
+                        <h4 class="mb-sm-0">Danh mục</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                <li class="breadcrumb-item active">Category</li>
+                                <li class="breadcrumb-item active">Danh mục</li>
                             </ol>
                         </div>
 
@@ -35,17 +35,7 @@
                                     <div class="col-sm-auto">
                                         <div>
                                             <a href="{{ route('admin.categories.create') }}" class="btn btn-success"
-                                                id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add
-                                                Category</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm">
-                                        <div class="d-flex justify-content-sm-end">
-                                            <div class="search-box ms-2">
-                                                <input type="text" class="form-control" id="searchProductList"
-                                                    placeholder="Search Categories...">
-                                                <i class="ri-search-line search-icon"></i>
-                                            </div>
+                                                id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i>Thêm danh mục</a>
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +46,7 @@
                             <div class="card-body">
 
                                 <div class="table-responsive table-card">
-                                    <table class="table table-hover table-centered align-middle table-nowrap mb-0">
+                                    <table class="table table-hover table-centered align-middle table-nowrap mb-0" id="category-table">
                                         <thead>
                                             <tr>
                                                 <td>Name</td>
@@ -89,12 +79,6 @@
 
                                         </tbody>
                                     </table>
-
-                                    <div style="margin:15px;">
-
-                                        {{ $categories->links() }}
-                                    </div>
-
                                 </div>
 
                                 <!-- end tab content -->
@@ -112,4 +96,10 @@
         </div>
         <!-- container-fluid -->
     </div>
+
+    @push('scripts')
+        <script>
+            let table = new DataTable('#category-table');
+        </script>
+    @endpush
 @endsection

@@ -4,21 +4,26 @@
 
 @section('content')
     <div class="page-inner">
+
         <div class="page-header">
             <h3 class="fw-bold mb-3">Danh sách sản phẩm</h3>
         </div>
         <div class="row">
             <div class="">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="card-sub">
-                            Create responsive tables by wrapping any table with
-                            <code class="highlighter-rouge">.table-responsive</code>
-                            <code class="highlighter-rouge">DIV</code> to make them
-                            scroll horizontally on small devices
+                    <div class="card-header border-0">
+                        <div class="row g-4">
+                            <div class="col-sm-auto">
+                                <div>
+                                    <a href="{{ route('admin.add.product') }}" class="btn btn-success" id="addproduct-btn"><i
+                                            class="ri-add-line align-bottom me-1"></i>Thêm sản phẩm</a>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="product-table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -27,8 +32,8 @@
                                         <th>Danh mục</th>
                                         <th>Mô tả ngắn</th>
                                         <th>Mô tả chi tiết</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,12 +59,12 @@
                                                         unpublished</option>
                                                 </select>
                                             </td>
-                                            <td style="display: flex">
-                                                <div> <a href="{{ route('admin.edit.product', $product->id) }}"
-                                                        class="btn btn-primary">Edit</a></div>
+                                            <td>
+                                                <div><a href="{{ route('admin.edit.product', $product->id) }}"
+                                                        class="btn btn-primary">Sửa</a></div>
                                                 <div><a href="{{ route('admin.delete.product', $product->id) }}"
                                                         class="btn btn-danger"
-                                                        onclick="return confirm('Bạn có muốn xóa sản phẩm này ?')">Delete</a>
+                                                        onclick="return confirm('Bạn có muốn xóa sản phẩm này ?')">Xóa</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -79,15 +84,18 @@
 
 @push('scripts')
     <script>
+        let table = new DataTable('#product-table', {
+            responsive: true
+        });
         $(document).on('change', '.change-status-product', function() {
-            var id = $(this).data('id');
+            var product_id = $(this).data('id');
             var status = $(this).find(":selected").val();
             $.ajax({
-                url: "{{ route('product.change-status') }}",
+                url: '{{ route('admin.product.change-status') }}',
                 type: "POST",
                 data: {
                     _token: '{{ csrf_token() }}',
-                    id,
+                    product_id,
                     status
                 },
                 success: function(response) {

@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Create Category</h4>
+                        <h4 class="mb-sm-0">Thêm danh mục</h4>
                     </div>
                 </div>
             </div>
@@ -23,25 +23,25 @@
                             <form action="{{ route('admin.categories.store') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <label class="form-label">Category Name</label>
+                                    <label class="form-label">Tên danh mục</label>
                                     <input type="text" name="name" class="form-control" id="category-name-input"
-                                        placeholder="Enter category name">
+                                        placeholder="Nhập tên danh mục">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="choices-publish-status-input" class="form-label">Parent</label>
+                                    <label for="choices-publish-status-input" class="form-label">Danh mục cha</label>
 
                                     <select class="form-select" name="parent_id" id="choices-publish-status-input">
-                                        <option value="">None</option>
+                                        <option value="">Không</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </form>
 

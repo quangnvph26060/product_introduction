@@ -6,8 +6,8 @@
     <title>@yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
-    <link rel="icon" href="assets/img/kaiadmin/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="{{ asset('assets/img/kaiadmin/logo-sgo.png') }}" type="image/x-icon" />
+
     <!-- Fonts and icons -->
     <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
     <script>
@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}" />
-
+    <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 </head>
@@ -54,69 +54,6 @@
 
             @include('admin.partials.footer')
         </div>
-
-        <!-- Custom template | don't include it in your project! -->
-        <div class="custom-template">
-            <div class="title">Settings</div>
-            <div class="custom-content">
-                <div class="switcher">
-                    <div class="switch-block">
-                        <h4>Logo Header</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="selected changeLogoHeaderColor" data-color="dark"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="blue"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="green"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="red"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-                            <br />
-                            <button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
-                        </div>
-                    </div>
-                    <div class="switch-block">
-                        <h4>Navbar Header</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="changeTopBarColor" data-color="dark"></button>
-                            <button type="button" class="changeTopBarColor" data-color="blue"></button>
-                            <button type="button" class="changeTopBarColor" data-color="purple"></button>
-                            <button type="button" class="changeTopBarColor" data-color="light-blue"></button>
-                            <button type="button" class="changeTopBarColor" data-color="green"></button>
-                            <button type="button" class="changeTopBarColor" data-color="orange"></button>
-                            <button type="button" class="changeTopBarColor" data-color="red"></button>
-                            <button type="button" class="selected changeTopBarColor" data-color="white"></button>
-                            <br />
-                            <button type="button" class="changeTopBarColor" data-color="dark2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="blue2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="purple2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="green2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="orange2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="red2"></button>
-                        </div>
-                    </div>
-                    <div class="switch-block">
-                        <h4>Sidebar</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="changeSideBarColor" data-color="white"></button>
-                            <button type="button" class="selected changeSideBarColor" data-color="dark"></button>
-                            <button type="button" class="changeSideBarColor" data-color="dark2"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-toggle">
-                <i class="icon-settings"></i>
-            </div>
-        </div>
-        <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
     @include('toastr')
@@ -155,6 +92,7 @@
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="{{ asset('assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo.js') }}"></script>
+    <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
     <script>
         $.ajaxSetup({
             headers: {
@@ -189,6 +127,29 @@
             fillColor: "rgba(255, 165, 52, .14)",
         });
     </script>
+     <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
+     <script>
+         CKEDITOR.replace('content', {
+       toolbar: [
+           { name: 'document', items: [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
+           { name: 'clipboard', items: [ 'Undo', 'Redo' ] },
+           { name: 'editing', items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt' ] },
+           { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
+           '/',
+           { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'Strike', 'RemoveFormat' ] },
+           { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+           { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+           { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+           '/',
+           { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+           { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+           { name: 'tools', items: [ 'Maximize', 'ShowBlocks', '-' ] },
+           { name: 'about', items: [ 'About' ] }
+       ],
+       extraPlugins: 'font,colorbutton,justify',
+       fontSize_sizes: '11px;12px;13px;14px;15px;16px;18px;20px;22px;24px;26px;28px;30px;32px;34px;36px',
+     });
+     </script>
 
     @stack('scripts')
 </body>
