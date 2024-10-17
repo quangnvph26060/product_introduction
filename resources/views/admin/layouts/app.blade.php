@@ -7,9 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="assets/img/kaiadmin/favicon.ico" type="image/x-icon" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Fonts and icons -->
-    <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
     <script>
         WebFont.load({
             google: {
