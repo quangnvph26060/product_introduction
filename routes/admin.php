@@ -36,9 +36,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/create', [AdminAdminProductController::class, 'showFormProduct'])->name('admin.add.product');
         Route::post('/' , [AdminAdminProductController::class , 'addProduct'])->name('admin.store.product');
         Route::get('/edit/{id}' , [AdminAdminProductController::class , 'editProduct'])->name('admin.edit.product');
-        Route::post('/{id}' , [AdminAdminProductController::class , 'updateProduct'])->name('admin.update.product');
-        Route::get('/{id}' , [AdminAdminProductController::class , 'deleteProduct'])->name('admin.delete.product');
-        Route::get('/{id}/image-gallery' , [AdminAdminProductController::class , 'listImageGalley'])->name('list.image-gallery.product');
+        Route::post('/update/{id}' , [AdminAdminProductController::class , 'updateProduct'])->name('admin.update.product');
+        Route::get('/delete/{id}' , [AdminAdminProductController::class , 'deleteProduct'])->name('admin.delete.product');
+        Route::get('/upload/{id}/image-gallery' , [AdminAdminProductController::class , 'listImageGalley'])->name('list.image-gallery.product');
         Route::post('/image-gallery/store' , [AdminAdminProductController::class , 'storeImageGalley'])->name('store.image-gallery.product');
         Route::get('/image-gallery/delete/{id}' , [AdminAdminProductController::class , 'deleteImageProduct'])->name('delete.image-gallery.product');
         Route::post('/change-status' , [AdminAdminProductController::class , 'changeStatus'])->name('admin.product.change-status');

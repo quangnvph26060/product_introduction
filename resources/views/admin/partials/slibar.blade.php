@@ -92,13 +92,13 @@
                 <li class="nav-item">
                     <a
                         data-bs-toggle="collapse"
-                        href="#sidebarLayouts"
+                        href="#sidebarLayoutsPost"
                     >
                         <i class="fas fa-th-list"></i>
                         <p>Bài viết</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="sidebarLayouts">
+                    <div class="collapse" id="sidebarLayoutsPost">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{ route('post.index') }}">
