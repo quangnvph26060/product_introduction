@@ -41,8 +41,8 @@ class AdminProductController extends Controller
         $product->status = $request->status;
         $product->category_id = $request->category_id;
         $product->save();
-        $notification = ['type' => 'success', 'message' => 'Sản phẩm đã được thêm thành công'];
-        return redirect()->route('admin.product')->with('notification', $notification);
+        toastr()->success('Thêm sản phẩm thành công !');
+        return redirect()->route('admin.product');
     }
     public function editProduct($id)
     {
@@ -70,19 +70,21 @@ class AdminProductController extends Controller
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
         $product->save();
+        toastr()->success('Cập nhật sản phẩm thành công !');
         return redirect()->route('admin.product');
     }
-    public function deleteProduct($id) {
+    public function deleteProduct($id)
+    {
         $product = Product::findOrFail($id);
         $this->deleteImage($product->main_image);
-        $galleryImages = ProductImage::where('product_id' , $id)->get();
-        foreach($galleryImages as $image){
+        $galleryImages = ProductImage::where('product_id', $id)->get();
+        foreach ($galleryImages as $image) {
             $this->deleteImage($image->image_path);
             $image->delete();
-        } 
+        }
         $product->delete();
+        toastr()->success('Xóa sản phẩm thành công !');
         return \redirect()->back();
-
     }
 
 
@@ -108,6 +110,7 @@ class AdminProductController extends Controller
             $productImageGallery->product_id = $request->product_id;
             $productImageGallery->save();
         }
+        toastr()->success('Thêm ảnh thành công !');
         return redirect()->back();
     }
 
@@ -116,14 +119,18 @@ class AdminProductController extends Controller
         $productImage = ProductImage::findOrFail($id);
         $this->deleteImage($productImage->image_path);
         $productImage->delete();
+        toastr()->success('Xóa thành công !');
         return redirect()->back();
     }
 
     public function changeStatus(Request $request)
     {
-        $product = Product::findOrFail($request->id);
+        $product = Product::find($request->product_id);
+        if (!$product) {
+            return response()->json(['error' => 'Không tìm thấy sản phẩm!']);
+        }
         $product->status = $request->status;
         $product->save();
-        return response()->json(['success' => 'Status changed successfully.']);
+        return response()->json(['success' => 'Cập nhật trạng thái thành công!']);
     }
 }

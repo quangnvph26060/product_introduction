@@ -128,7 +128,36 @@
             });
         })
     </script>
-
+ @stack('scripts')
+ <script>
+    $(document).ready(function() {
+        $('.category-item').on('click', function(e) {
+            e.preventDefault();
+            var categoryId = $(this).data('id')
+            $.ajax({
+                url: '/products/' + categoryId,
+                method: 'GET',
+                success: function(response) {
+                    $('#product-list').empty();
+                    $.each(response, function(index, product) {
+                        $('#product-list').append(
+                            ` <td align=center style=padding-left:5px;>
+    <a href=wproducts_content-262678.html>
+        <img src='${product.main_image}' width="300" height="300" border=0
+            alt="Wood-based anti-static floor 88 passed">
+    </a><br>
+    <div style=padding-top:5px;>
+        <a href=wproducts_content-262678.html title="Wood-based anti-static floor 88 passed">
+            ${product.name}</a>
+    </div>
+</td>`
+                        )
+                    })
+                }
+            })
+        })
+    })
+</script>
 </body>
 
 </html>

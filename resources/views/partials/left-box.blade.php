@@ -6,21 +6,27 @@
     </div>
     <div class="left-products">
         <ul class="one_class_box">
-            <li class="has_two_class"><a class="one_a nLi" href="wproducts-32237-0.html#center"
-                    title="Classification by use">Classification by use</a>
-                <ul class="two_class_box">
-                    <li><a class="two_a nLi" href="wproducts-32239-32237.html#center"
-                            title="Machine room anti-static floor">Machine room anti-static floor</a>
+            @if (isset($categories))
+                @foreach ($categories as $parent)
+                    <li class="has_two_class"><a class="one_a nLi"
+                            title="Classification by use">{{ $parent->name }}</a>
+                        @if ($parent->children->count() > 0)
+                            <ul class="two_class_box">
+                                @foreach ($parent->children as $item)
+                                    <li><a class="two_a nLi category-item" data-id="{{ $item->id }}"
+                                            title="{{ $item->name }}">{{ $item->name }}</a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        @endif
+
                     </li>
-                    <li><a class="two_a nLi" href="wproducts-32240-32237.html#center"
-                            title="Raised floor of office building">Raised floor of office building</a>
-                    </li>
-                    <li><a class="two_a nLi" href="wproducts-32241-32237.html#center"
-                            title="Purification workshop anti-static floor">Purification workshop
-                            anti-static floor</a></li>
-                </ul>
-            </li>
-            <li class="has_two_class"><a class="one_a nLi" href="wproducts-32238-0.html#center"
+                @endforeach
+            @endif
+
+
+            {{-- <li class="has_two_class"><a class="one_a nLi" href="wproducts-32238-0.html#center"
                     title="Classification by material">Classification by material</a>
                 <ul class="two_class_box">
                     <li><a class="two_a nLi" href="wproducts-32242-32238.html#center"
@@ -53,7 +59,13 @@
                             title="Computer room color steel wall panel">Computer room color steel wall
                             panel</a></li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>
+
+<style>
+        .category-item{
+           cursor: pointer;
+        }
+</style>

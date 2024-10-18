@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="">Tên sản phẩm</label>
                                     <input type="text" name="name" class="form-control" id=""
-                                        placeholder="Nhập tên sản phẩm" />
+                                        placeholder="Nhập tên sản phẩm" value="{{ old('name') }}" />
                                     @error('name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Mô tả ngắn</label>
-                                    <textarea name="short_description" class="form-control" id="" rows="3">
+                                    <textarea name="short_description" class="form-control" id="" rows="3">{{ old('short_description') }}
                                 </textarea>
                                     @error('short_description')
                                         <span class="text-danger">{{ $message }}</span>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Mô tả chi tiết</label>
-                                    <textarea name="long_description" id="content" class="form-control" id="" rows="5">
+                                    <textarea name="long_description" id="content" class="form-control" id="" rows="5">{{ old('long_description') }}
                                 </textarea>
                                     @error('long_description')
                                         <span class="text-danger">{{ $message }}</span>

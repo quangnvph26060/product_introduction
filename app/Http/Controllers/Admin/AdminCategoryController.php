@@ -35,8 +35,8 @@ class AdminCategoryController extends Controller
         $category->parent_id = $request->input('parent_id');
         $category->save();
 
-        $notification = ['type' => 'success', 'message' => 'Danh mục đã được thêm thành công'];
-        return redirect()->route('admin.categories.index')->with('notification', $notification);
+        toastr()->success('Danh mục đã thêm thành công !');
+        return redirect()->route('admin.categories.index');
     }
 
     public function edit(Category $category)
@@ -53,15 +53,22 @@ class AdminCategoryController extends Controller
         ]);
         $category->update($request->all());
 
-        $notification = ['type' => 'success', 'message' => 'Danh mục đã được cập nhật thành công'];
-        return redirect()->route('admin.categories.index')->with('notification', $notification);
+        toastr()->success('Danh mục cập nhật thành công !');
+        return redirect()->route('admin.categories.index');
     }
 
     public function destroy(Category $category)
     {
-        $category->product()->delete();
+        $category->product->each(function ($item) {
+            $item->images->each(function ($image) {
+                $this->deleteImage($image->image_path);
+                $image->delete();
+            });
+            $this->deleteImage($item->main_image);
+            $item->delete();
+        });
         $category->delete();
-        $notification = ['type' => 'success', 'message' => 'Danh mục đã được xóa thành công'];
-        return redirect()->route('admin.categories.index')->with('notification', $notification);
+        toastr()->success('Danh mục xóa thành công !');
+        return redirect()->route('admin.categories.index');
     }
 }
