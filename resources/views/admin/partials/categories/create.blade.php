@@ -25,7 +25,7 @@
                                 <div class="mb-3">
                                     <label class="form-label">Tên danh mục</label>
                                     <input type="text" name="name" class="form-control" id="category-name-input"
-                                        placeholder="Nhập tên danh mục">
+                                        placeholder="Nhập tên danh mục" value="{{ old('name') }}">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
