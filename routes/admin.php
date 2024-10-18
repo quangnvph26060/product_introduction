@@ -87,8 +87,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [AdminPostController::class, 'index'])->name('post.index');
         Route::get('/create', [AdminPostController::class, 'create'])->name('post.create');
         Route::post('/', [AdminPostController::class, 'store'])->name('post.store');
-        Route::get('/{id}/edit', [AdminPostController::class, 'edit'])->name('post.edit');
-        Route::put('/{id}', [AdminPostController::class, 'update'])->name('post.update');
-        Route::delete('/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
+        Route::get('/edit/{id}', [AdminPostController::class, 'edit'])->name('post.edit');
+        Route::post('/update/{id}', [AdminPostController::class, 'update'])->name('post.update');
+        Route::delete('delete/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
+        Route::post('change-status/', [AdminPostController::class , 'changeStatus'])->name('post.change-status');
     });
 });

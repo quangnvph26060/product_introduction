@@ -103,14 +103,14 @@
                             <li>
                                 <a href="{{ route('post.index') }}">
                                     <span class="sub-item"
-                                        >Danh sách</span
+                                        >Danh sách bài viết</span
                                     >
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.add.product') }}">
+                                <a href="{{ route('post.create') }}">
                                     <span class="sub-item"
-                                        >Thêm sản phẩm</span
+                                        >Thêm bài viết</span
                                     >
                                 </a>
                             </li>
