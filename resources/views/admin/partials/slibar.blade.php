@@ -117,6 +117,12 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('slider.index') }}">
+                        <i class="fas fa-th-list"></i>
+                        <p>Ảnh trang chủ</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
