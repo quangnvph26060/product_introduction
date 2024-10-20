@@ -51,10 +51,10 @@ Route::middleware(['auth'])->group(function () {
         // Thêm các route khác tùy theo nhu cầu
     });
 
-    Route::prefix('sliders')->group(function () {
-        Route::get('/sliders', [AdminSlidersController::class, 'index']);
-        Route::get('/sliders/create', [AdminSlidersController::class, 'create']);
-        Route::post('/sliders', [AdminSlidersController::class, 'store']);
+    Route::prefix('slider')->group(function () {
+        Route::get('/slider', [AdminSlidersController::class, 'index'])->name('slider.index');
+        Route::post('/slider/store', [AdminSlidersController::class, 'store'])->name('slider.store');
+        Route::delete('/delete/{id}' , [AdminSlidersController::class , 'destroy'])->name('slider.destroy');
         // Thêm các route khác tùy theo nhu cầu
     });
 
