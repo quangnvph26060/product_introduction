@@ -37,6 +37,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a  href="{{ route('config.index') }}">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Cấu hình</p>
+
+                    </a>
+
+                </li>
+                <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
                         <p>Danh mục</p>

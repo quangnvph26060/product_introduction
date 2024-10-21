@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\AdminProcessController;
 use App\Http\Controllers\admin\AdminServiceController;
 use App\Http\Controllers\admin\AdminSlidersController;
 use App\Http\Controllers\admin\AmdminWebsiteFeatureController;
+use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\GeneralSettingController;
 
 Route::group(['middleware' => ['guest']], function () {
@@ -99,4 +100,11 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('delete/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
         Route::post('change-status/', [AdminPostController::class, 'changeStatus'])->name('post.change-status');
     });
+
+    Route::prefix('config')->group(function () {
+        Route::get('/', [ConfigController::class, 'index'])->name('config.index');
+        Route::post('/update', [ConfigController::class, 'update'])->name('config.update');
+
+    });
+
 });
