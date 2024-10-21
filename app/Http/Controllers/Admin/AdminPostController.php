@@ -69,6 +69,7 @@ class AdminPostController extends Controller
     public function destroy($id)
     {
        $post = Post::findOrFail($id);
+       $this->deleteImage($post->image);
        $post->delete();
        return response(['status' => 'success' , 'message' => 'Xóa bài viết thành công !']);
     }
