@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\AdminPostController;
 use App\Http\Controllers\admin\AdminProcessController;
 use App\Http\Controllers\admin\AdminServiceController;
 use App\Http\Controllers\admin\AdminSlidersController;
+use App\Http\Controllers\admin\AdminWebsiteController;
 use App\Http\Controllers\admin\AmdminWebsiteFeatureController;
 use App\Http\Controllers\GeneralSettingController;
 
@@ -72,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/change-status', [AdminServiceController::class, 'changeStatusService'])->name('service.change-status');
 
     });
-    //Route::resource('service', AdminServiceController::class);
+    Route::resource('website', AdminWebsiteController::class);
    
 
     Route::prefix('process')->group(function () {

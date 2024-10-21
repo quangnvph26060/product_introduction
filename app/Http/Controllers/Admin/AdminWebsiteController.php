@@ -3,63 +3,61 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\WebsiteCreateRequest;
+use App\Http\Requests\WebsiteUpdateRequest;
 use App\Models\Website;
+use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 
 class AdminWebsiteController extends Controller
 {
+    use ImageUploadTrait;
     public function index()
     {
-        $websites = Website::all();
-        return view('websites.index', compact('websites'));
+        $websites = Website::orderBy('id' , 'desc')->get();
+        return view('admin.partials.website.index', compact('websites'));
     }
 
     public function create()
     {
-        return view('websites.create');
+        return view('admin.partials.website.create');
     }
 
-    public function store(Request $request)
+    public function store(WebsiteCreateRequest $request)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
-        ]);
-
-        $data['image'] = $request->file('image')->store('images', 'public');
-
-        Website::create($data);
-
-        return redirect()->route('websites.index')->with('success', 'Website created successfully');
+        $imagePath = $this->uploadImage($request , 'image' , 'uploads/website');
+        $website = new Website();
+        $website->title = $request->title;
+        $website->description = $request->description;
+        $website->image = $imagePath;
+        $website->save();
+        toastr()->success('Thêm trang web thành công !');
+        return redirect()->route('website.index');
     }
 
-    public function edit(Website $website)
+    public function edit($id)
     {
-        return view('websites.edit', compact('website'));
+        $website = Website::findOrFail($id);
+        return view('admin.partials.website.edit', compact('website'));
     }
 
-    public function update(Request $request, Website $website)
+    public function update(WebsiteUpdateRequest $request, $id)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images', 'public');
-        }
-
-        $website->update($data);
-
-        return redirect()->route('websites.index')->with('success', 'Website updated successfully');
+        $website = Website::findOrFail($id);
+        $imagePath = $this->updateImage($request, 'image', 'uploads/website', $website->image);
+        $website->title = $request->title;
+        $website->description = $request->description;
+        $website->image = empty(!$imagePath) ? $imagePath : $website->image;
+        $website->save();
+        toastr()->success('Cập nhật website thành công !');
+        return redirect()->route('website.index');
     }
 
-    public function destroy(Website $website)
+    public function destroy(string $id)
     {
+        $website = Website::findOrFail($id);
+        $this->deleteImage($website->image);
         $website->delete();
-
-        return redirect()->route('websites.index')->with('success', 'Website deleted successfully');
+        return response(['status' => 'success', 'message' => 'Xóa website thành công !']);
     }  
 }
