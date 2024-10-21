@@ -41,7 +41,7 @@
                                             <td>{{ $post->title }}</td>
                                             <td><img src="{{ asset($post->image) }}" width="150" height="150"
                                                     alt="{{ $post->title }}"></td>
-                                            <td>{{ \Str::limit($post->description, 100) }}</td>
+                                            <td>{{ \Str::limit(strip_tags(html_entity_decode($post->description)), 100) }}
                                             <td>
                                                 <select class="form-group change-status-post" name="status"
                                                     data-id="{{ $post->id }}">

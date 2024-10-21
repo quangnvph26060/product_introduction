@@ -61,9 +61,19 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/delete/{id}', [AdminSlidersController::class, 'destroy'])->name('slider.destroy');
         // Thêm các route khác tùy theo nhu cầu
     });
+    
+    Route::prefix('service')->group(function(){
+        Route::get('/', [AdminServiceController::class, 'index'])->name('service.index');
+        Route::get('/create', [AdminServiceController::class, 'create'])->name('service.create');
+        Route::post('/store', [AdminServiceController::class, 'store'])->name('service.store');
+        Route::get('/edit/{id}', [AdminServiceController::class, 'edit'])->name('service.edit');
+        Route::post('/update/{id}', [AdminServiceController::class, 'update'])->name('service.update');
+        Route::delete('/delete/{id}', [AdminServiceController::class, 'destroy'])->name('service.destroy');
+        Route::post('/change-status', [AdminServiceController::class, 'changeStatusService'])->name('service.change-status');
 
-    Route::resource('service', AdminServiceController::class);
-    Route::post('/change-status', [AdminServiceController::class, 'changeStatus'])->name('service.change-status');
+    });
+    //Route::resource('service', AdminServiceController::class);
+   
 
     Route::prefix('process')->group(function () {
         Route::get('/', [AdminProcessController::class, 'index']);
