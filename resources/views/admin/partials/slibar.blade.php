@@ -203,6 +203,27 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#website_feature">
+                        <i class="fas fa-th-list"></i>
+                        <p>Tính năng trang web</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="website_feature">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('website_feature.index') }}">
+                                    <span class="sub-item">Danh sách tính năng trang web</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('website_feature.create') }}">
+                                    <span class="sub-item">Thêm tính năng trang web</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

@@ -13,7 +13,7 @@ use App\Http\Controllers\admin\AdminProcessController;
 use App\Http\Controllers\admin\AdminServiceController;
 use App\Http\Controllers\admin\AdminSlidersController;
 use App\Http\Controllers\admin\AdminWebsiteController;
-use App\Http\Controllers\admin\AmdminWebsiteFeatureController;
+use App\Http\Controllers\admin\AdminWebsiteFeatureController;
 use App\Http\Controllers\GeneralSettingController;
 
 Route::group(['middleware' => ['guest']], function () {
@@ -78,7 +78,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('introduction_categories', AdminIntroductionCategoryController::class);
     Route::resource('introduction_posts', AdminIntroductionPostController::class);
     Route::post('/introduction_posts/change-status', [AdminIntroductionPostController::class, 'changeStatus'])->name('introduction_posts.change-status');
-
+    
 
     Route::prefix('process')->group(function () {
         Route::get('/', [AdminProcessController::class, 'index']);
@@ -87,15 +87,8 @@ Route::middleware(['auth'])->group(function () {
         // Thêm các route khác tùy theo nhu cầu
     });
 
-    Route::prefix('websiteFeature')->group(function () {
-        Route::get('/', [AmdminWebsiteFeatureController::class, 'index'])->name('website_features.index');
-        Route::get('/create', [AmdminWebsiteFeatureController::class, 'create'])->name('website_features.create');
-        Route::post('/', [AmdminWebsiteFeatureController::class, 'store'])->name('website_features.store');
-        Route::get('/{id}/edit', [AmdminWebsiteFeatureController::class, 'edit'])->name('website_features.edit');
-        Route::put('/{id}', [AmdminWebsiteFeatureController::class, 'update'])->name('website_features.update');
-        Route::delete('/{id}', [AmdminWebsiteFeatureController::class, 'destroy'])->name('website_features.destroy');
-    });
-
+    Route::resource('website_feature' , AdminWebsiteFeatureController::class);
+    Route::post('/website_feature/change-status', [AdminWebsiteFeatureController::class, 'changeStatus'])->name('website_feature.change-status');
     Route::prefix('settings')->group(function () {
         Route::get('/', [GeneralSettingController::class, 'index'])->name('settings.index');
         Route::get('/create', [GeneralSettingController::class, 'create'])->name('settings.create');
