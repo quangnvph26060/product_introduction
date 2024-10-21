@@ -864,6 +864,29 @@
                         </p>
                     </div>
                 </li>
+                <li style="background:url({{ asset('assets/client-assets/image/20231011/20231011102628_218876833.jpg') }}) center center no-repeat;"
+                    class="">
+                    <div class="shu2">
+                        <h3><img alt="Standard construction"
+                                src="{{ asset('assets/client-assets/image/20231011/20231011101134_133062279.png') }}">
+                        </h3>
+                        <em>
+                            <i><span class="iconftb">&#xe756;</span></i>
+                            <b>Standard<br>construction</b>
+                        </em>
+                    </div>
+                    <div class="bock">
+                        <h3>Standard<br>construction</h3>
+                        <p>
+                            <i>A professional team with pre-sales, in sales, after-sales, dedicated personnel tracking,
+                                and 7 * 24 hour service for you;</i>
+                            <i>One on one specialist docking enables timely and efficient provision of products and
+                                services to customers;</i>
+                            <i>Professional technology and rich solutions make you more worry free. We sincerely work
+                                together with you to achieve a win-win cooperation!</i>
+                        </p>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
