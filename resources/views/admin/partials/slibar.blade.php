@@ -123,6 +123,34 @@
                         <p>Ảnh trang chủ</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a
+                        data-bs-toggle="collapse"
+                        href="#sidebarLayoutsBusinesses"
+                    >
+                        <i class="fas fa-th-list"></i>
+                        <p>Doanh nghiệp</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLayoutsBusinesses">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('businesses.index') }}">
+                                    <span class="sub-item"
+                                        >Danh sách doanh nghiệp</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('businesses.create') }}">
+                                    <span class="sub-item"
+                                        >Thêm doanh nghiệp</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

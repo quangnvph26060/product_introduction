@@ -15,7 +15,6 @@ use App\Http\Controllers\GeneralSettingController;
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [AuthLoginController::class, 'index'])->name('login');
     Route::post('/login', [AuthLoginController::class, 'login']);
-
 });
 Route::post('/logout', [AuthLoginController::class, 'logout'])->name('logout');
 
@@ -34,27 +33,31 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'product'], function () {
         Route::get('/', [AdminAdminProductController::class, 'index'])->name('admin.product');
         Route::get('/create', [AdminAdminProductController::class, 'showFormProduct'])->name('admin.add.product');
-        Route::post('/' , [AdminAdminProductController::class , 'addProduct'])->name('admin.store.product');
-        Route::get('/edit/{id}' , [AdminAdminProductController::class , 'editProduct'])->name('admin.edit.product');
-        Route::post('/update/{id}' , [AdminAdminProductController::class , 'updateProduct'])->name('admin.update.product');
-        Route::get('/delete/{id}' , [AdminAdminProductController::class , 'deleteProduct'])->name('admin.delete.product');
-        Route::get('/upload/{id}/image-gallery' , [AdminAdminProductController::class , 'listImageGalley'])->name('list.image-gallery.product');
-        Route::post('/image-gallery/store' , [AdminAdminProductController::class , 'storeImageGalley'])->name('store.image-gallery.product');
-        Route::get('/image-gallery/delete/{id}' , [AdminAdminProductController::class , 'deleteImageProduct'])->name('delete.image-gallery.product');
-        Route::post('/change-status' , [AdminAdminProductController::class , 'changeStatus'])->name('admin.product.change-status');
+        Route::post('/', [AdminAdminProductController::class, 'addProduct'])->name('admin.store.product');
+        Route::get('/edit/{id}', [AdminAdminProductController::class, 'editProduct'])->name('admin.edit.product');
+        Route::post('/update/{id}', [AdminAdminProductController::class, 'updateProduct'])->name('admin.update.product');
+        Route::get('/delete/{id}', [AdminAdminProductController::class, 'deleteProduct'])->name('admin.delete.product');
+        Route::get('/upload/{id}/image-gallery', [AdminAdminProductController::class, 'listImageGalley'])->name('list.image-gallery.product');
+        Route::post('/image-gallery/store', [AdminAdminProductController::class, 'storeImageGalley'])->name('store.image-gallery.product');
+        Route::get('/image-gallery/delete/{id}', [AdminAdminProductController::class, 'deleteImageProduct'])->name('delete.image-gallery.product');
+        Route::post('/change-status', [AdminAdminProductController::class, 'changeStatus'])->name('admin.product.change-status');
     });
 
     Route::prefix('businesses')->group(function () {
-        Route::get('/', [AdminBusinessesController::class, 'index']);
-        Route::get('/businesses/create', [AdminBusinessesController::class, 'create']);
-        Route::post('/businesses', [AdminBusinessesController::class, 'store']);
-        // Thêm các route khác tùy theo nhu cầu
+        Route::get('/', [AdminBusinessesController::class, 'index'])->name('businesses.index');
+        Route::get('/create', [AdminBusinessesController::class, 'create'])->name('businesses.create');
+        Route::post('/store', [AdminBusinessesController::class, 'store'])->name('businesses.store');
+        Route::get('/edit/{id}', [AdminBusinessesController::class, 'edit'])->name('businesses.edit');
+        Route::post('/update/{id}', [AdminBusinessesController::class, 'update'])->name('businesses.update');
+        Route::delete('delete/{id}', [AdminBusinessesController::class, 'destroy'])->name('businesses.destroy');
+        Route::post('/change-status', [AdminBusinessesController::class, 'changeStatus'])->name('businesses.change-status');
     });
+    //Route::resource('businesses' , AdminBusinessesController::class);
 
     Route::prefix('slider')->group(function () {
         Route::get('/slider', [AdminSlidersController::class, 'index'])->name('slider.index');
         Route::post('/slider/store', [AdminSlidersController::class, 'store'])->name('slider.store');
-        Route::delete('/delete/{id}' , [AdminSlidersController::class , 'destroy'])->name('slider.destroy');
+        Route::delete('/delete/{id}', [AdminSlidersController::class, 'destroy'])->name('slider.destroy');
         // Thêm các route khác tùy theo nhu cầu
     });
 
@@ -90,6 +93,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', [AdminPostController::class, 'edit'])->name('post.edit');
         Route::post('/update/{id}', [AdminPostController::class, 'update'])->name('post.update');
         Route::delete('delete/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
-        Route::post('change-status/', [AdminPostController::class , 'changeStatus'])->name('post.change-status');
+        Route::post('change-status/', [AdminPostController::class, 'changeStatus'])->name('post.change-status');
     });
 });
