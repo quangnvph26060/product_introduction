@@ -45,7 +45,7 @@
                                                     alt="{{ $business->title }}"></td>
                                             <td>{{ $business->email }}</td>
                                             <td>{{ $business->phone_number }}</td>
-                                            <td>{{ \Str::limit($business->description, 100) }}</td>
+                                            <td>{{ \Str::limit(strip_tags(html_entity_decode($business->description)), 100) }}
                                             <td>
                                                 <select class="form-group change-status-businesses" name="status"
                                                     data-id="{{ $business->id }}">

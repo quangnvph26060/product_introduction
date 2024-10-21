@@ -47,7 +47,7 @@
                                                     alt="{{ $product->name }}"></td>
                                             <td>{{ $product->category->name }}</td>
                                             <td>{{ \Str::limit($product->short_description, 50) }}</td>
-                                            <td>{{ \Str::limit($product->long_description, 100) }}</td>
+                                            <td>{{ \Str::limit(strip_tags(html_entity_decode($product->long_description)), 100) }}
                                             <td>
                                                 <select class="form-group change-status-product" name="status"
                                                     data-id="{{ $product->id }}">

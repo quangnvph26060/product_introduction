@@ -90,7 +90,7 @@
             var status = $(this).find(":selected").val();
             $.ajax({
                 url: '{{ route('service.change-status') }}',
-                type: "service",
+                type: "POST",
                 data: {
                     _token: '{{ csrf_token() }}',
                     service_id,
