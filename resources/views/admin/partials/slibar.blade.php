@@ -151,6 +151,34 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a
+                        data-bs-toggle="collapse"
+                        href="#sidebarLayoutsSerivce"
+                    >
+                        <i class="fas fa-th-list"></i>
+                        <p>Dịch vụ</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLayoutsSerivce">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('service.index') }}">
+                                    <span class="sub-item"
+                                        >Danh sách dịch vụ</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('service.create') }}">
+                                    <span class="sub-item"
+                                        >Thêm dịch vụ</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
