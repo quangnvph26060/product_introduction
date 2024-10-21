@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\admin\AdminIntroductionCategoryController;
 use App\Http\Controllers\admin\AdminPostController;
 use App\Http\Controllers\admin\AdminProcessController;
 use App\Http\Controllers\admin\AdminServiceController;
@@ -74,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
 
     });
     Route::resource('website', AdminWebsiteController::class);
-   
+    Route::resource('introduction_categories' , AdminIntroductionCategoryController::class);
 
     Route::prefix('process')->group(function () {
         Route::get('/', [AdminProcessController::class, 'index']);
