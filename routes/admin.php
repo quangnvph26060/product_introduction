@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\admin\AdminIntroductionCategoryController;
+use App\Http\Controllers\admin\AdminIntroductionPostController;
 use App\Http\Controllers\admin\AdminPostController;
 use App\Http\Controllers\admin\AdminProcessController;
 use App\Http\Controllers\admin\AdminServiceController;
@@ -63,8 +64,8 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/delete/{id}', [AdminSlidersController::class, 'destroy'])->name('slider.destroy');
         // Thêm các route khác tùy theo nhu cầu
     });
-    
-    Route::prefix('service')->group(function(){
+
+    Route::prefix('service')->group(function () {
         Route::get('/', [AdminServiceController::class, 'index'])->name('service.index');
         Route::get('/create', [AdminServiceController::class, 'create'])->name('service.create');
         Route::post('/store', [AdminServiceController::class, 'store'])->name('service.store');
@@ -72,10 +73,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [AdminServiceController::class, 'update'])->name('service.update');
         Route::delete('/delete/{id}', [AdminServiceController::class, 'destroy'])->name('service.destroy');
         Route::post('/change-status', [AdminServiceController::class, 'changeStatusService'])->name('service.change-status');
-
     });
     Route::resource('website', AdminWebsiteController::class);
-    Route::resource('introduction_categories' , AdminIntroductionCategoryController::class);
+    Route::resource('introduction_categories', AdminIntroductionCategoryController::class);
+    Route::resource('introduction_posts', AdminIntroductionPostController::class);
+    Route::post('/introduction_posts/change-status', [AdminIntroductionPostController::class, 'changeStatus'])->name('introduction_posts.change-status');
+
 
     Route::prefix('process')->group(function () {
         Route::get('/', [AdminProcessController::class, 'index']);
