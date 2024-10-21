@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class IntroductionPost extends Model
 {
     use HasFactory;
-    protected $fillable = ['category_id', 'title', 'content'];
+    protected $fillable = ['category_id', 'title', 'content', 'image', 'status'];
 
     public function introductionCategory()
     {
-        return $this->belongsTo(IntroductionCategory::class);
+        return $this->belongsTo(IntroductionCategory::class,'category_id');
     }
 }

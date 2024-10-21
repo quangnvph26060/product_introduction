@@ -56,6 +56,13 @@ class AdminWebsiteController extends Controller
     public function destroy(string $id)
     {
         $website = Website::findOrFail($id);
+        $website->introductionCategories->each(function($category){
+              $category->introductionPosts->each(function($item){
+                    $this->deleteImage($item->image);
+                    $item->delete();   
+              });
+              $category->delete();
+        });
         $this->deleteImage($website->image);
         $website->delete();
         return response(['status' => 'success', 'message' => 'Xóa website thành công !']);
