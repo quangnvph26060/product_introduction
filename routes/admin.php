@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\admin\AdminPostController;
 use App\Http\Controllers\admin\AdminProcessController;
+use App\Http\Controllers\admin\AdminServiceController;
 use App\Http\Controllers\admin\AdminSlidersController;
 use App\Http\Controllers\admin\AmdminWebsiteFeatureController;
 use App\Http\Controllers\GeneralSettingController;
@@ -60,6 +61,9 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/delete/{id}', [AdminSlidersController::class, 'destroy'])->name('slider.destroy');
         // Thêm các route khác tùy theo nhu cầu
     });
+
+    Route::resource('service', AdminServiceController::class);
+    Route::post('/change-status', [AdminServiceController::class, 'changeStatus'])->name('service.change-status');
 
     Route::prefix('process')->group(function () {
         Route::get('/', [AdminProcessController::class, 'index']);
