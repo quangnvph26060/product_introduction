@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper">    
         <!-- Sidebar -->
         @include('admin.partials.slibar')
         <!-- End Sidebar -->
