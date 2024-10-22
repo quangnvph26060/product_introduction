@@ -232,6 +232,27 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#process">
+                        <i class="fas fa-th-list"></i>
+                        <p>Quá trình</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="process">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('process.index') }}">
+                                    <span class="sub-item">Danh sách quá trình</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('process.create') }}">
+                                    <span class="sub-item">Thêm quá trình</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

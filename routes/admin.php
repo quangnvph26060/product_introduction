@@ -83,14 +83,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('introduction_categories', AdminIntroductionCategoryController::class);
     Route::resource('introduction_posts', AdminIntroductionPostController::class);
     Route::post('/introduction_posts/change-status', [AdminIntroductionPostController::class, 'changeStatus'])->name('introduction_posts.change-status');
-    
-
-    Route::prefix('process')->group(function () {
-        Route::get('/', [AdminProcessController::class, 'index']);
-        Route::get('/process/create', [AdminProcessController::class, 'create']);
-        Route::post('/process', [AdminProcessController::class, 'store']);
-        // Thêm các route khác tùy theo nhu cầu
-    });
+    Route::resource('process' , AdminProcessController::class);
+    Route::post('/process/change-status', [AdminProcessController::class, 'changeStatus'])->name('process.change-status');
 
     Route::resource('website_feature' , AdminWebsiteFeatureController::class);
     Route::post('/website_feature/change-status', [AdminWebsiteFeatureController::class, 'changeStatus'])->name('website_feature.change-status');

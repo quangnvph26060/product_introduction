@@ -185,6 +185,13 @@
                 URL.revokeObjectURL(output.src)
             }
         };
+        var loadFileIcon = function(event) {
+            var output = document.getElementById('outputIcon');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src)
+            }
+        };
     </script>
     <script>
         $(document).ready(function() {

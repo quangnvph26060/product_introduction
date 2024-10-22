@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Process;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\Slider;
@@ -55,14 +56,17 @@ class AppServiceProvider extends ServiceProvider
                     ->get();
         // Slider banner
         $banners = Slider::where('status', 'published')->orderBy('id','desc')->get();
-        View::composer('*', function ($view) use ($categories, $products, $serviceHome, $firstPost, $listPostHome,$banners) {
+        // Process
+        $processHome = Process::where('status' , 'published')->orderBy('id' ,'desc')->take(4)->get();
+        View::composer('*', function ($view) use ($categories, $products, $serviceHome, $firstPost, $listPostHome,$banners , $processHome) {
             $view->with([
                 'categories' => $categories,
                 'products' => $products,
                 'serviceHome' => $serviceHome,
                 'firstPost' => $firstPost,
                 'listPostHome' => $listPostHome,
-                'banners' => $banners
+                'banners' => $banners,
+                'processHome' => $processHome
             ]);
         });
     }
