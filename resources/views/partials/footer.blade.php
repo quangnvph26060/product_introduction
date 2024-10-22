@@ -5,28 +5,28 @@
                 <span class="iconftb">&#xe676;</span>
                 <div>
                     <b>Address:</b>
-                    <p>Building 1, No. 412 Wenzhou Road, Wentang, Dongcheng District, Dongguan City</p>
+                    <p>{{ $configWebsite->address }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe857;</span>
                 <div>
                     <b>Tel:</b>
-                    <p>+86 0769-83068114</p>
+                    <p>{{ $configWebsite->sale_phone_number }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe68c;</span>
                 <div>
-                    <b>Contacts:Miss Yang</b>
-                    <p>+86 136-5008-1408</p>
+                    <b>Contacts:{{ $configWebsite->name }}</b>
+                    <p>{{ $configWebsite->zalo_phonenumber }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe777;</span>
                 <div>
-                    <b>QQ：</b>
-                    <p>812077610</p>
+                    <b>Constant Hotline:</b>
+                    <p>{{ $configWebsite->constant_hotline }}</p>
                 </div>
             </li>
         </ul>
@@ -91,7 +91,7 @@
 <div class="copy_bg">
     <div class="gy copy_b">
 
-        <div>Copyright @ 2021 Guangdong Lipin Flooring Technology Co., Ltd</div>
+        <div>{{ $configWebsite->footer }}</div>
 
         <div>
             Technical Support: <a href="www.114my.html" target="_blank" rel="nofollow">[Dongguan website

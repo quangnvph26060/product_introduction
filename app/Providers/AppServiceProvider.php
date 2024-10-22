@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Business;
 use App\Models\Category;
+use App\Models\Config;
 use App\Models\Post;
 use App\Models\Process;
 use App\Models\Product;
@@ -52,13 +54,17 @@ class AppServiceProvider extends ServiceProvider
         // Post 
         $firstPost = Post::where('status', 'published')->first();
         $listPostHome = Post::where('status', 'published')
-                    ->where('id', '!=', optional($firstPost)->id)
-                    ->get();
+            ->where('id', '!=', optional($firstPost)->id)
+            ->get();
         // Slider banner
-        $banners = Slider::where('status', 'published')->orderBy('id','desc')->get();
+        $banners = Slider::where('status', 'published')->orderBy('id', 'desc')->get();
         // Process
-        $processHome = Process::where('status' , 'published')->orderBy('id' ,'desc')->take(4)->get();
-        View::composer('*', function ($view) use ($categories, $products, $serviceHome, $firstPost, $listPostHome,$banners , $processHome) {
+        $processHome = Process::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
+        // Businesses
+        $businessesHome = Business::where('status', 'published')->get();
+        //Config
+        $configWebsite = Config::first();
+        View::composer('*', function ($view) use ($categories, $products, $serviceHome, $firstPost, $listPostHome, $banners, $processHome, $businessesHome , $configWebsite) {
             $view->with([
                 'categories' => $categories,
                 'products' => $products,
@@ -66,7 +72,9 @@ class AppServiceProvider extends ServiceProvider
                 'firstPost' => $firstPost,
                 'listPostHome' => $listPostHome,
                 'banners' => $banners,
-                'processHome' => $processHome
+                'processHome' => $processHome,
+                'businessesHome' => $businessesHome,
+                'configWebsite' => $configWebsite
             ]);
         });
     }
