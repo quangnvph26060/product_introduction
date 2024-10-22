@@ -57,8 +57,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($categories->isNotEmpty())
-                                                @foreach ($categories as $category)
+                                            @if ($listCategories->isNotEmpty())
+                                                @foreach ($listCategories as $category)
                                                     <tr>
                                                         <td>
                                                             <div> {{ $category->name }} <code>(Danh mục cha)</code></div>

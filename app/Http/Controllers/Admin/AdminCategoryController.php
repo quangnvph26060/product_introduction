@@ -10,8 +10,8 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::with('children')->whereNull('parent_id')->get();
-        return view('admin.partials.categories.index', compact('categories'));
+        $listCategories = Category::all();
+        return view('admin.partials.categories.index', compact('listCategories'));
     }
 
     public function create()
@@ -71,10 +71,10 @@ class AdminCategoryController extends Controller
         // toastr()->success('Danh mục xóa thành công !');
         // return redirect()->route('admin.categories.index');
         $category = Category::findOrFail($id);
-        if($category->children->count() > 0){
+        if ($category->children->count() > 0) {
             return response(['status' => 'error', 'message' => 'Mục này chứa các mục con, nếu muốn xóa bạn phải xóa mục con trước']);
         }
-        if($category->product->count() > 0){
+        if ($category->product->count() > 0) {
             return response(['status' => 'error', 'message' => 'Mục này chứa các sản phẩm , bạn cần xóa các sản phẩm thuộc danh mục này trước']);
         }
         $category->delete();

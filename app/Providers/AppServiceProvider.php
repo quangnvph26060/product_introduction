@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Service;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -42,11 +43,13 @@ class AppServiceProvider extends ServiceProvider
         });
         Paginator::useBootstrap();
         $categories = Category::whereNull('parent_id')->get();
-        $products = Product::all();
-        View::composer('*', function ($view) use ($categories , $products) {
+        $products = Product::where('status' , 'published')->orderBy('id' , 'desc')->get();
+        $serviceHome = Service::where('status' , 'published')->orderBy('id' ,'desc')->take(6)->get();
+        View::composer('*', function ($view) use ($categories , $products , $serviceHome) {
             $view->with([
                 'categories' => $categories,
-                'products' => $products
+                'products' => $products,
+                'serviceHome' => $serviceHome
             ]);
         });
     }

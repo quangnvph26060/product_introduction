@@ -37,7 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($products as $product)
+                                    @foreach ($listProducts as $product)
                                         <tr>
                                             <td scope="row">{{ $loop->iteration }}</td>
                                             <td><a
