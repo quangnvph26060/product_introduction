@@ -27,7 +27,7 @@
                                     <input type="text" name="name" class="form-control" id="category-name-input"
                                         placeholder="Nhập tên danh mục" value="{{ old('name') }}">
                                     @error('name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
@@ -35,10 +35,13 @@
 
                                     <select class="form-select" name="parent_id" id="choices-publish-status-input">
                                         <option value="">Không</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @foreach ($categories as $parent)
+                                            <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('parent_id')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">Thêm</button>

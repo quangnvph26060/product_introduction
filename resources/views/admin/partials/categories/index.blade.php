@@ -35,7 +35,8 @@
                                     <div class="col-sm-auto">
                                         <div>
                                             <a href="{{ route('admin.categories.create') }}" class="btn btn-success"
-                                                id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i>Thêm danh mục</a>
+                                                id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i>Thêm danh
+                                                mục</a>
                                         </div>
                                     </div>
                                 </div>
@@ -46,36 +47,50 @@
                             <div class="card-body">
 
                                 <div class="table-responsive table-card">
-                                    <table class="table table-hover table-centered align-middle table-nowrap mb-0" id="category-table">
+                                    <table class="table table-hover table-centered align-middle table-nowrap mb-0"
+                                        id="category-table">
                                         <thead>
                                             <tr>
-                                                <td>Name</td>
-                                                <td>Parent</td>
-                                                <td>Action</td>
+                                                <td>Tên</td>
+                                                <td>Cha</td>
+                                                <td>Hành động</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($categories as $category)
-                                                <tr>
-                                                    <td>
-                                                        {{ $category->name }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $category->parent_id ? $category->parent->name : 'None' }}
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{ route('admin.categories.edit', $category->id) }}"
-                                                            class="btn btn-primary">Edit</a>
-                                                        <form
-                                                            action="{{ route('admin.categories.destroy', $category->id) }}"
-                                                            method="POST" style="display:inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                            @if ($categories->isNotEmpty())
+                                                @foreach ($categories as $category)
+                                                    <tr>
+                                                        <td>
+                                                            <div> {{ $category->name }} <code>(Danh mục cha)</code></div>
+                                                            @if ($category->children->count() > 0)
+                                                                <div class="children" style="margin-left: 100px">
+                                                                    @foreach ($category->children as $item)
+                                                                        <div style="margin: 5px 0px">-- {{ $item->name }}
+                                                                            <a href="{{ route('admin.categories.edit', $item->id) }}"
+                                                                                class="btn btn-success"><i
+                                                                                    class="fa-regular fa-pen-to-square"></i></a>
+                                                                            <a href="{{ route('admin.categories.destroy', $item->id) }}"
+                                                                                class="btn btn-danger delete-item"><i
+                                                                                    class="fa-solid fa-trash"></i></a>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            @else
+                                                                <div><code>(Không có danh mục con)</code></div>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            {{ $category->parent_id ? $category->parent->name : 'Không' }}
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('admin.categories.edit', $category->id) }}"
+                                                                class="btn btn-primary">Sửa</a>
+                                                            <a href="{{ route('admin.categories.destroy', $category->id) }}"
+                                                                class="btn btn-danger delete-item">Xóa</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
 
                                         </tbody>
                                     </table>
@@ -97,9 +112,10 @@
         <!-- container-fluid -->
     </div>
 
-    @push('scripts')
-        <script>
-            let table = new DataTable('#category-table');
-        </script>
-    @endpush
+
 @endsection
+@push('scripts')
+    <script>
+        let table = new DataTable('#category-table');
+    </script>
+@endpush

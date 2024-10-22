@@ -10,7 +10,7 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::paginate(20);
+        $categories = Category::with('children')->whereNull('parent_id')->get();
         return view('admin.partials.categories.index', compact('categories'));
     }
 
@@ -57,18 +57,27 @@ class AdminCategoryController extends Controller
         return redirect()->route('admin.categories.index');
     }
 
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->product->each(function ($item) {
-            $item->images->each(function ($image) {
-                $this->deleteImage($image->image_path);
-                $image->delete();
-            });
-            $this->deleteImage($item->main_image);
-            $item->delete();
-        });
+        // $category->product->each(function ($item) {
+        //     $item->images->each(function ($image) {
+        //         $this->deleteImage($image->image_path);
+        //         $image->delete();
+        //     });
+        //     $this->deleteImage($item->main_image);
+        //     $item->delete();
+        // });
+        // $category->delete();
+        // toastr()->success('Danh mục xóa thành công !');
+        // return redirect()->route('admin.categories.index');
+        $category = Category::findOrFail($id);
+        if($category->children->count() > 0){
+            return response(['status' => 'error', 'message' => 'Mục này chứa các mục con, nếu muốn xóa bạn phải xóa mục con trước']);
+        }
+        if($category->product->count() > 0){
+            return response(['status' => 'error', 'message' => 'Mục này chứa các sản phẩm , bạn cần xóa các sản phẩm thuộc danh mục này trước']);
+        }
         $category->delete();
-        toastr()->success('Danh mục xóa thành công !');
-        return redirect()->route('admin.categories.index');
+        return response(['status' => 'success', 'Xóa thành công']);
     }
 }
