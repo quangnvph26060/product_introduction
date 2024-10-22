@@ -75,10 +75,10 @@
                                     <select name="status" class="form-select" id="">
                                         <option value="published"
                                             {{ $product->status === 'published' ? 'selected' : '' }}>
-                                            Published</option>
+                                            Công khai</option>
                                         <option value="unpublished"
                                         {{ $product->status === 'unpublished' ? 'selected' : '' }}>
-                                            Unpublished</option>
+                                            Không công khai</option>
                                     </select>
                                 </div>
 

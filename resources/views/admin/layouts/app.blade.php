@@ -9,7 +9,7 @@
     <link rel="icon" href="{{ asset('assets/img/kaiadmin/logo-sgo.png') }}" type="image/x-icon" />
 
     <!-- Fonts and icons -->
-    <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
+    <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
@@ -109,31 +109,75 @@
             fillColor: "rgba(255, 165, 52, .14)",
         });
     </script>
-     <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
-     <script>
-         CKEDITOR.replace('content', {
-       toolbar: [
-           { name: 'document', items: [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
-           { name: 'clipboard', items: [ 'Undo', 'Redo' ] },
-           { name: 'editing', items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt' ] },
-           { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-           '/',
-           { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'Strike', 'RemoveFormat' ] },
-           { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
-           { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-           { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
-           '/',
-           { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
-           { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
-           { name: 'tools', items: [ 'Maximize', 'ShowBlocks', '-' ] },
-           { name: 'about', items: [ 'About' ] }
-       ],
-       extraPlugins: 'font,colorbutton,justify',
-       fontSize_sizes: '11px;12px;13px;14px;15px;16px;18px;20px;22px;24px;26px;28px;30px;32px;34px;36px',
-     });
-     </script>
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-     <script>
+    <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('content', {
+            toolbar: [{
+                    name: 'document',
+                    items: ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']
+                },
+                {
+                    name: 'clipboard',
+                    items: ['Undo', 'Redo']
+                },
+                {
+                    name: 'editing',
+                    items: ['Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt']
+                },
+                {
+                    name: 'forms',
+                    items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button',
+                        'ImageButton', 'HiddenField'
+                    ]
+                },
+                '/',
+                {
+                    name: 'basicstyles',
+                    items: ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'Strike',
+                        'RemoveFormat'
+                    ]
+                },
+                {
+                    name: 'paragraph',
+                    items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote',
+                        'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+                        '-', 'BidiLtr', 'BidiRtl', 'Language'
+                    ]
+                },
+                {
+                    name: 'links',
+                    items: ['Link', 'Unlink', 'Anchor']
+                },
+                {
+                    name: 'insert',
+                    items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak',
+                        'Iframe'
+                    ]
+                },
+                '/',
+                {
+                    name: 'styles',
+                    items: ['Styles', 'Format', 'Font', 'FontSize']
+                },
+                {
+                    name: 'colors',
+                    items: ['TextColor', 'BGColor']
+                },
+                {
+                    name: 'tools',
+                    items: ['Maximize', 'ShowBlocks', '-']
+                },
+                {
+                    name: 'about',
+                    items: ['About']
+                }
+            ],
+            extraPlugins: 'font,colorbutton,justify',
+            fontSize_sizes: '11px;12px;13px;14px;15px;16px;18px;20px;22px;24px;26px;28px;30px;32px;34px;36px',
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
         var loadFile = function(event) {
             var output = document.getElementById('output');
             output.src = URL.createObjectURL(event.target.files[0]);
@@ -150,13 +194,14 @@
                     event.preventDefault();
                     let deleteUrl = $(this).attr('href');
                     Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
+                        title: 'Bạn chắc chứ ?',
+                        text: "Bạn sẽ không thể hoàn tác điều này!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
+                        confirmButtonText: 'Đúng rồi, xóa nó đi!',
+                        cancelButtonText : 'Hủy'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
@@ -165,14 +210,14 @@
                                 success: function(data) {
                                     if (data.status == 'success') {
                                         Swal.fire(
-                                            'Deleted!',
+                                            'Đã xóa',
                                             data.message,
                                             'success'
                                         )
                                         window.location.reload();
                                     } else if (data.status == 'error') {
                                         Swal.fire(
-                                            'Cant Delete',
+                                            'Không thể xóa',
                                             data.message,
                                             'error'
                                         )

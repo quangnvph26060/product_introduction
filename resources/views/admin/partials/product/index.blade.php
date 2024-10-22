@@ -53,18 +53,20 @@
                                                     data-id="{{ $product->id }}">
                                                     <option value="published"
                                                         {{ $product->status === 'published' ? 'selected' : '' }}>
-                                                        published</option>
+                                                        Công khai</option>
                                                     <option value="unpublished"
                                                         {{ $product->status === 'unpublished' ? 'selected' : '' }}>
-                                                        unpublished</option>
+                                                        Không công khai</option>
                                                 </select>
                                             </td>
                                             <td>
                                                 <div><a href="{{ route('admin.edit.product', $product->id) }}"
-                                                        class="btn btn-primary">Sửa</a></div>
+                                                        class="btn btn-primary"><i
+                                                        class="fa-regular fa-pen-to-square"></i></a></div>
                                                 <div><a href="{{ route('admin.delete.product', $product->id) }}"
                                                         class="btn btn-danger"
-                                                        onclick="return confirm('Bạn có muốn xóa sản phẩm này ?')">Xóa</a>
+                                                        onclick="return confirm('Bạn có muốn xóa sản phẩm này ?')"><i
+                                                        class="fa-solid fa-trash"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

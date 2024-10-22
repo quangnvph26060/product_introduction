@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductCreateRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -23,7 +24,7 @@ class AdminProductController extends Controller
         $subcategories = Category::whereNotNull('parent_id')->get();
         return view('admin.partials.product.create', compact('subcategories'));
     }
-    public function addProduct(Request $request)
+    public function addProduct(ProductCreateRequest $request)
     {
         $request->validate([
             'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
