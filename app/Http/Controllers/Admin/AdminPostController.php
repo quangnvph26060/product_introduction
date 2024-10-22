@@ -51,7 +51,7 @@ class AdminPostController extends Controller
         $request->validate([
             'title' => 'required|min:10',
             'description' => 'required|min:100',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $post = Post::findOrFail($id);

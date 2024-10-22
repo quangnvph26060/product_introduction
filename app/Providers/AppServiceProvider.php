@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\Service;
+use App\Models\Slider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -43,13 +45,24 @@ class AppServiceProvider extends ServiceProvider
         });
         Paginator::useBootstrap();
         $categories = Category::whereNull('parent_id')->get();
-        $products = Product::where('status' , 'published')->orderBy('id' , 'desc')->get();
-        $serviceHome = Service::where('status' , 'published')->orderBy('id' ,'desc')->take(6)->get();
-        View::composer('*', function ($view) use ($categories , $products , $serviceHome) {
+        $products = Product::where('status', 'published')->orderBy('id', 'desc')->get();
+        $serviceHome = Service::where('status', 'published')->orderBy('id', 'desc')->take(6)->get();
+
+        // Post 
+        $firstPost = Post::where('status', 'published')->first();
+        $listPostHome = Post::where('status', 'published')
+                    ->where('id', '!=', optional($firstPost)->id)
+                    ->get();
+        // Slider banner
+        $banners = Slider::where('status', 'published')->orderBy('id','desc')->get();
+        View::composer('*', function ($view) use ($categories, $products, $serviceHome, $firstPost, $listPostHome,$banners) {
             $view->with([
                 'categories' => $categories,
                 'products' => $products,
-                'serviceHome' => $serviceHome
+                'serviceHome' => $serviceHome,
+                'firstPost' => $firstPost,
+                'listPostHome' => $listPostHome,
+                'banners' => $banners
             ]);
         });
     }

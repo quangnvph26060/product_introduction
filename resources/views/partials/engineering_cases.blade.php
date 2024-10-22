@@ -1,21 +1,60 @@
 <div class="gc_bc">
     <div class="gy gc_c">
         <div class="pro_tit">
-            <b>Sàn Lipin  · <span>Các trường hợp kỹ thuật</span></b>
-            <p>Sản phẩm của chúng tôi thâm nhập vào nhiều ngành công nghiệp khác nhau và phấn đấu tạo ra những sản phẩm chất lượng cao cho khách hàng</p>
+            <b>Sàn Lipin · <span>Các trường hợp kỹ thuật</span></b>
+            <p>Sản phẩm của chúng tôi thâm nhập vào nhiều ngành công nghiệp khác nhau và phấn đấu tạo ra những sản phẩm
+                chất lượng cao cho khách hàng</p>
         </div>
         @include('partials.box.box-1')
         <div class="gc_ic">
             <div class="gc_lc">
                 <div class="news_div">
-                    @include('partials.box.box_cases')
+                    {{-- @include('partials.box.box_cases') --}}
+                    <div class="news_div_item">
+                        <div class="news_div_item_content">
+                            <div class="news_div_item_title">
+                                <a class="news_div_item_a" href="wdgweb_content-103004.html">
+                                    {{ $firstPost->title }}
+                                </a>
+                            </div>
+                            <div class="news_div_item_body">
+                                {{ \Str::limit(strip_tags(html_entity_decode($firstPost->description)), 100) }} </div>
+                        </div>
+                        <div class="news_div_item_pic">
+                            <a href="wdgweb_content-103004.html">
+                                <img src="{{ asset($firstPost->image) }}" class="news_div_item_image"
+                                    alt="Shenzhen Liqiao">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="gc_rc">
 
                 <div class="news_div">
 
-                  @include('partials.box.box_cases')
+                    {{-- @include('partials.box.box_cases') --}}
+                    @foreach ($listPostHome as $item)
+                        <div class="news_div_item">
+                            <div class="news_div_item_content">
+                                <div class="news_div_item_title">
+                                    <a class="news_div_item_a" href="wdgweb_content-103004.html">
+                                        {{ $item->title }}
+                                    </a>
+                                </div>
+                                <div class="news_div_item_body">
+                                    {{ \Str::limit(strip_tags(html_entity_decode($item->description)), 100) }} </div>
+                            </div>
+                            <div class="news_div_item_pic">
+                                <a href="wdgweb_content-103004.html">
+                                    <img src="{{ asset($item->image) }}" class="news_div_item_image"
+                                        alt="{{ $item->title }}">
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+
+
                 </div>
 
                 <div class="gc_num">
