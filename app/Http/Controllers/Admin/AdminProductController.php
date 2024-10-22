@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -16,8 +17,8 @@ class AdminProductController extends Controller
     use ImageUploadTrait;
     public function index()
     {
-        $products = Product::all();
-        return view('admin.partials.product.index', compact('products'));
+        $listProducts = Product::all();
+        return view('admin.partials.product.index', compact('listProducts'));
     }
     public function showFormProduct()
     {
@@ -26,13 +27,6 @@ class AdminProductController extends Controller
     }
     public function addProduct(ProductCreateRequest $request)
     {
-        $request->validate([
-            'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'name' => 'required|min:10|max:200',
-            'long_description' => 'required',
-            'short_description' => 'required',
-            'category_id' => 'required'
-        ]);
         $imagePath = $this->uploadImage($request, 'main_image', 'uploads/product');
         $product = new Product();
         $product->name = $request->name;
@@ -51,17 +45,8 @@ class AdminProductController extends Controller
         $subcategories = Category::whereNotNull('parent_id')->get();
         return view('admin.partials.product.edit', compact('product', 'subcategories'));
     }
-    public function updateProduct(Request $request, $id)
+    public function updateProduct(ProductUpdateRequest $request, $id)
     {
-        $request->validate([
-            'image' => ['nullable', 'image', 'max:3000'],
-            'name' => ['required', 'max:200'],
-            'category_id' => ['required'],
-            'short_description' => ['required', 'max: 600'],
-            'long_description' => ['required'],
-            'status' => ['required']
-        ]);
-
         $product = Product::findOrFail($id);
         $imagePath = $this->updateImage($request, 'main_image', 'uploads/product', $product->main_image);
         $product->main_image = empty(!$imagePath) ? $imagePath : $product->main_image;
