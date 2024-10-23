@@ -8,6 +8,7 @@ use App\Models\Config;
 use App\Models\Post;
 use App\Models\Process;
 use App\Models\Product;
+use App\Models\ProductAdvantages;
 use App\Models\Service;
 use App\Models\Slider;
 use Illuminate\Pagination\Paginator;
@@ -64,7 +65,9 @@ class AppServiceProvider extends ServiceProvider
         $businessesHome = Business::where('status', 'published')->get();
         //Config
         $configWebsite = Config::first();
-        View::composer('*', function ($view) use ($categories, $products, $serviceHome, $firstPost, $listPostHome, $banners, $processHome, $businessesHome , $configWebsite) {
+        //Product advantages
+        $productAdvantagesHome = ProductAdvantages::where('status', 'published')->take(5)->get();
+        View::composer('*', function ($view) use ($categories, $products, $serviceHome, $firstPost, $listPostHome, $banners, $processHome, $businessesHome, $configWebsite, $productAdvantagesHome) {
             $view->with([
                 'categories' => $categories,
                 'products' => $products,
@@ -74,7 +77,8 @@ class AppServiceProvider extends ServiceProvider
                 'banners' => $banners,
                 'processHome' => $processHome,
                 'businessesHome' => $businessesHome,
-                'configWebsite' => $configWebsite
+                'configWebsite' => $configWebsite,
+                'productAdvantagesHome' => $productAdvantagesHome
             ]);
         });
     }

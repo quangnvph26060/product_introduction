@@ -18,7 +18,7 @@ use App\Http\Controllers\admin\AdminWebsiteFeatureController;
 
 use App\Http\Controllers\admin\AmdminWebsiteFeatureController;
 use App\Http\Controllers\Admin\ConfigController;
-
+use App\Http\Controllers\Admin\ProductAdvantagesController;
 use App\Http\Controllers\GeneralSettingController;
 
 Route::group(['middleware' => ['guest']], function () {
@@ -85,7 +85,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/introduction_posts/change-status', [AdminIntroductionPostController::class, 'changeStatus'])->name('introduction_posts.change-status');
     Route::resource('process' , AdminProcessController::class);
     Route::post('/process/change-status', [AdminProcessController::class, 'changeStatus'])->name('process.change-status');
-
+    Route::resource('product_advantages' , ProductAdvantagesController::class);
+    Route::post('/product_advantages/change-status', [ProductAdvantagesController::class, 'changeStatus'])->name('product_advantages.change-status');
     Route::resource('website_feature' , AdminWebsiteFeatureController::class);
     Route::post('/website_feature/change-status', [AdminWebsiteFeatureController::class, 'changeStatus'])->name('website_feature.change-status');
     Route::prefix('settings')->group(function () {

@@ -70,7 +70,7 @@ class AdminProcessController extends Controller
         $process->description = $request->description;
         $process->status = $request->status;
         $process->image = empty(!$imagePath) ? $imagePath : $process->image;
-        $process->icon =  empty(!$imagePath) ? $imagePath : $process->icon;
+        $process->icon =  empty(!$iconPath) ? $iconPath : $process->icon;
         $process->save();
         toastr()->success('Cập nhật quá trình thành công !');
         return redirect()->route('process.index');
