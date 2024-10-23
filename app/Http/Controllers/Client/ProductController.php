@@ -10,11 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('product');
-    }
-    public function getProductsByCategory($categoryId)
-    {
-        $products = Product::where('category_id', $categoryId)->get();
-        return response()->json($products);
+        $products = Product::where('status', 'published')->orderBy('id', 'desc')->paginate(9);
+        return view('product', compact('products'));
     }
 }
