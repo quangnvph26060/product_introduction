@@ -22,8 +22,9 @@ class AdminProductController extends Controller
     }
     public function showFormProduct()
     {
-        $subcategories = Category::whereNotNull('parent_id')->get();
-        return view('admin.partials.product.create', compact('subcategories'));
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+
+        return view('admin.partials.product.create', compact('categories'));
     }
     public function addProduct(ProductCreateRequest $request)
     {

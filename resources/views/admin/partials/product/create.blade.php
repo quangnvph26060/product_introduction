@@ -35,9 +35,14 @@
                                 <div class="form-group">
                                     <label for="">Danh mục</label>
                                     <select name="category_id" class="form-select">
-                                        <option value="">--Chọn--</option>
-                                        @foreach ($subcategories as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option value="">-- Chọn --</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @if ($category->children->count())
+                                                @foreach ($category->children as $child)
+                                                    <option value="{{ $child->id }}">-- {{ $child->name }}</option>
+                                                @endforeach
+                                            @endif
                                         @endforeach
                                     </select>
                                     @error('category_id')
@@ -49,7 +54,8 @@
                                     <label for="">Ảnh</label>
                                     <input type="file" name="main_image" class="form-control-file"
                                         onchange="loadFile(event)" />
-                                    <img id="output" width="150" src="https://www.nfctogo.com/images/empty-img.png" height="150" />
+                                    <img id="output" width="150" src="https://www.nfctogo.com/images/empty-img.png"
+                                        height="150" />
                                     @error('main_image')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
