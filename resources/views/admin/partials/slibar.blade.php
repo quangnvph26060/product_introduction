@@ -274,6 +274,48 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#news_categories">
+                        <i class="fas fa-th-list"></i>
+                        <p>Danh mục tin tức</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="news_categories">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('news_categories.index') }}">
+                                    <span class="sub-item">Danh sách danh mục tin tức</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('news_categories.create') }}">
+                                    <span class="sub-item">Thêm danh mục tin tức</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#news">
+                        <i class="fas fa-th-list"></i>
+                        <p>Danh sách tin tức</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="news">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('news.index') }}">
+                                    <span class="sub-item">Danh sách tin tức</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('news.create') }}">
+                                    <span class="sub-item">Thêm tin tức</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

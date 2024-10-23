@@ -5,22 +5,24 @@
                 <b>News</b>
                 <p></p>
             </div>
-            <div class="news_nav">
-                <ul>
-                    <li class="on">
-                        <a href="wdgweb-19806.html"><span class="iconftb">&#xe682;</span><b>Company News</b></a>
-                    </li>
-                    <li>
-                        <a href="wdgweb-19807.html"><span class="iconftb">&#xe621;</span><b>Industry News</b></a>
-                    </li>
-                    <li>
-                        <a href="wdgweb-19808.html"><span class="iconftb">&#xe67b;</span><b>FAQ</b></a>
-                    </li>
-                </ul>
-            </div>
+            @if ($newsCategoryHome->count() > 0)
+                <div class="news_nav">
+                    <ul>
+                        @foreach ($newsCategoryHome as $item)
+                        <li class="on">
+                            <a href="wdgweb-19806.html"><span class="iconftb">&#xe682;</span><b>{{ $item->name }}</b></a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @else
+                <div style="font-size: 30px;">
+                    Không có tin tức nào hết !
+                </div>
+            @endif
         </div>
         <div class="news_cc">
-                @include('partials/box/box_news');
+            @include('partials/box/box_news');
         </div>
     </div>
 </div>
