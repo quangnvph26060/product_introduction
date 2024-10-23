@@ -30,7 +30,7 @@ class AdminIntroductionPostController extends Controller
         $introductionPost->title = $request->title;
         $introductionPost->content = $request->content;
         $introductionPost->status = $request->status;
-        $introductionPost->category_id = $request->category_id;
+        $introductionPost->introduction_category_id	 = $request->introduction_category_id	;
         $introductionPost->image = $imagePath;
         $introductionPost->save();
         toastr()->success('Thêm bài viết giới thiệu thành công !');
@@ -51,7 +51,7 @@ class AdminIntroductionPostController extends Controller
         $introductionPost->title = $request->title;
         $introductionPost->content = $request->content;
         $introductionPost->status = $request->status;
-        $introductionPost->category_id = $request->category_id;
+        $introductionPost->introduction_category_id	 = $request->introduction_category_id	;
         $introductionPost->save();
         toastr()->success('Cập nhật bài viết giới thiệu thành công !');
         return redirect()->route('introduction_posts.index');

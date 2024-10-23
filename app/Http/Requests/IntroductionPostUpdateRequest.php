@@ -23,7 +23,7 @@ class IntroductionPostUpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|min:10|max:100',
-            'category_id' => 'required',
+            'introduction_category_id' => 'required',
             'content' => 'required|min:20',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
@@ -39,7 +39,7 @@ class IntroductionPostUpdateRequest extends FormRequest
             'image.image' => 'Hình ảnh phải là một file hình ảnh.',
             'image.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg, gif, svg.',
             'image.max' => 'Kích thước hình ảnh không được vượt quá 2MB.',
-            'category_id.required' => 'Danh mục bài viết giới thiệu không được trống'
+            'introduction_category_id.required' => 'Danh mục bài viết giới thiệu không được trống'
         ];
     }
 }

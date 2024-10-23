@@ -42,13 +42,13 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Danh mục giới thiệu</label>
-                                    <select class="form-select" name="category_id">
+                                    <select class="form-select" name="introduction_category_id">
                                         <option value="">Không</option>
                                         @foreach ($introductionCategories as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('category_id')
+                                    @error('introduction_category_id')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>

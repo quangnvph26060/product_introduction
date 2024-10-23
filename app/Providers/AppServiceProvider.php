@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Business;
 use App\Models\Category;
 use App\Models\Config;
+use App\Models\IntroductionCategory;
+use App\Models\IntroductionPost;
 use App\Models\Post;
 use App\Models\Process;
 use App\Models\Product;
@@ -67,7 +69,24 @@ class AppServiceProvider extends ServiceProvider
         $configWebsite = Config::first();
         //Product advantages
         $productAdvantagesHome = ProductAdvantages::where('status', 'published')->take(5)->get();
-        View::composer('*', function ($view) use ($categories, $products, $serviceHome, $firstPost, $listPostHome, $banners, $processHome, $businessesHome, $configWebsite, $productAdvantagesHome) {
+        //Introduction category
+        $introductionCategoriesHome = IntroductionCategory::take(3)->get();
+        //Introduction posts 
+        $introductionPostHome = IntroductionPost::take(12)->get();
+        View::composer('*', function ($view) use (
+            $categories,
+            $products,
+            $serviceHome,
+            $firstPost,
+            $listPostHome,
+            $banners,
+            $processHome,
+            $businessesHome,
+            $configWebsite,
+            $productAdvantagesHome,
+            $introductionCategoriesHome,
+            $introductionPostHome
+        ) {
             $view->with([
                 'categories' => $categories,
                 'products' => $products,
@@ -78,7 +97,9 @@ class AppServiceProvider extends ServiceProvider
                 'processHome' => $processHome,
                 'businessesHome' => $businessesHome,
                 'configWebsite' => $configWebsite,
-                'productAdvantagesHome' => $productAdvantagesHome
+                'productAdvantagesHome' => $productAdvantagesHome,
+                'introductionCategoriesHome' => $introductionCategoriesHome,
+                'introductionPostHome' => $introductionPostHome
             ]);
         });
     }
