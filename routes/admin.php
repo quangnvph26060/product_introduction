@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\admin\AdminIntroductionCategoryController;
 use App\Http\Controllers\admin\AdminIntroductionPostController;
+use App\Http\Controllers\Admin\AdminNewCategoryController;
+use App\Http\Controllers\Admin\AdminNewController;
 use App\Http\Controllers\admin\AdminPostController;
 use App\Http\Controllers\admin\AdminProcessController;
 use App\Http\Controllers\admin\AdminServiceController;
@@ -89,6 +91,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/product_advantages/change-status', [ProductAdvantagesController::class, 'changeStatus'])->name('product_advantages.change-status');
     Route::resource('website_feature' , AdminWebsiteFeatureController::class);
     Route::post('/website_feature/change-status', [AdminWebsiteFeatureController::class, 'changeStatus'])->name('website_feature.change-status');
+    Route::resource('news_categories' , AdminNewCategoryController::class);
+    Route::resource('news' , AdminNewController::class);
+    Route::post('/news/change-status', [AdminNewController::class, 'changeStatus'])->name('news.change-status');
     Route::prefix('settings')->group(function () {
         Route::get('/', [GeneralSettingController::class, 'index'])->name('settings.index');
         Route::get('/create', [GeneralSettingController::class, 'create'])->name('settings.create');

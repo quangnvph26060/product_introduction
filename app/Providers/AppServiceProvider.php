@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Config;
 use App\Models\IntroductionCategory;
 use App\Models\IntroductionPost;
+use App\Models\NewsCategory;
 use App\Models\Post;
 use App\Models\Process;
 use App\Models\Product;
@@ -73,6 +74,8 @@ class AppServiceProvider extends ServiceProvider
         $introductionCategoriesHome = IntroductionCategory::take(3)->get();
         //Introduction posts 
         $introductionPostHome = IntroductionPost::take(12)->get();
+        //New category
+        $newsCategoryHome = NewsCategory::take(3)->get();
         View::composer('*', function ($view) use (
             $categories,
             $products,
@@ -85,7 +88,8 @@ class AppServiceProvider extends ServiceProvider
             $configWebsite,
             $productAdvantagesHome,
             $introductionCategoriesHome,
-            $introductionPostHome
+            $introductionPostHome,
+            $newsCategoryHome
         ) {
             $view->with([
                 'categories' => $categories,
@@ -99,7 +103,8 @@ class AppServiceProvider extends ServiceProvider
                 'configWebsite' => $configWebsite,
                 'productAdvantagesHome' => $productAdvantagesHome,
                 'introductionCategoriesHome' => $introductionCategoriesHome,
-                'introductionPostHome' => $introductionPostHome
+                'introductionPostHome' => $introductionPostHome,
+                'newsCategoryHome' => $newsCategoryHome
             ]);
         });
     }
