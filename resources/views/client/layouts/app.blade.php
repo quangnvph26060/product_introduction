@@ -9,7 +9,6 @@
     <title>@yield('title')</title>
     <meta name="keywords" content="Guangdong Lipin Flooring Technology Co., Ltd">
     <meta name="description" content="Guangdong Lipin Flooring Technology Co., Ltd">
-    <link rel="icon" href="{{ asset('assets/img/kaiadmin/logo-sgo.png') }}" type="image/x-icon" />
 </head>
 
 <body>
