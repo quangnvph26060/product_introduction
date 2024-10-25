@@ -14,12 +14,13 @@
                         @if ($introductionCategory->introductionPosts->count() > 0)
                             @foreach ($introductionCategory->introductionPosts as $item)
                                 <td align=center style=padding-left:5px;>
-                                    <a href=wdgweb_content-102964.html>
+                                    <a href="{{ route('introduction_post.detail', $item->title) }}">
                                         <img src='{{ asset($item->image) }}' width=1 height=1 border=0
                                             alt={{ $item->title }}>
                                     </a><br>
                                     <div style=padding-top:5px;>
-                                        <a href=wdgweb_content-102964.html title={{ $item->title }}>
+                                        <a href="{{ route('introduction_post.detail', $item->title) }}"
+                                            title={{ $item->title }}>
                                             {{ $item->title }}</a>
                                     </div>
                                 </td>
