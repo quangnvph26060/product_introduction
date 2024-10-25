@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{{ asset('assets/client-assets/css/at.alicdn.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/client-assets/css/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/client-assets/css/lipin.css') }}">
-
     <script src="{{ asset('assets/client-assets/js/jquery-1.8.3.min.js') }}"></script>
     <script src="{{ asset('assets/client-assets/js/at.alicdn.js') }}"></script>
     <script src="{{ asset('assets/client-assets/js/SuperSlide.2.1.1.js') }}"></script>
@@ -31,6 +30,7 @@
     </div>
 
     @include('partials.footer')
+
 
     <script src="{{ asset('assets/client-assets/js/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/client-assets/js/jquery.countup.min.js') }}"></script>
@@ -129,35 +129,6 @@
         })
     </script>
  @stack('scripts')
- <script>
-    $(document).ready(function() {
-        $('.category-item').on('click', function(e) {
-            e.preventDefault();
-            var categoryId = $(this).data('id')
-            $.ajax({
-                url: '/products/' + categoryId,
-                method: 'GET',
-                success: function(response) {
-                    $('#product-list').empty();
-                    $.each(response, function(index, product) {
-                        $('#product-list').append(
-                            ` <td align=center style=padding-left:5px;>
-    <a href=wproducts_content-262678.html>
-        <img src='${product.main_image}' width="300" height="300" border=0
-            alt="Wood-based anti-static floor 88 passed">
-    </a><br>
-    <div style=padding-top:5px;>
-        <a href=wproducts_content-262678.html title="Wood-based anti-static floor 88 passed">
-            ${product.name}</a>
-    </div>
-</td>`
-                        )
-                    })
-                }
-            })
-        })
-    })
-</script>
 </body>
 
 </html>

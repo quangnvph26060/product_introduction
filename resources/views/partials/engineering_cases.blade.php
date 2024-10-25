@@ -13,7 +13,7 @@
                     <div class="news_div_item">
                         <div class="news_div_item_content">
                             <div class="news_div_item_title">
-                                <a class="news_div_item_a" href="wdgweb_content-103004.html">
+                                <a class="news_div_item_a" href="{{ route('post.detail' , $firstPost->title) }}">
                                     {{ $firstPost->title }}
                                 </a>
                             </div>
@@ -21,7 +21,7 @@
                                 {{ \Str::limit(strip_tags(html_entity_decode($firstPost->description)), 100) }} </div>
                         </div>
                         <div class="news_div_item_pic">
-                            <a href="wdgweb_content-103004.html">
+                            <a href="{{ route('post.detail' , $firstPost->title) }}">
                                 <img src="{{ asset($firstPost->image) }}" class="news_div_item_image"
                                     alt="Shenzhen Liqiao">
                             </a>
@@ -38,7 +38,7 @@
                         <div class="news_div_item">
                             <div class="news_div_item_content">
                                 <div class="news_div_item_title">
-                                    <a class="news_div_item_a" href="wdgweb_content-103004.html">
+                                    <a class="news_div_item_a" href="{{ route('post.detail' , $item->title) }}">
                                         {{ $item->title }}
                                     </a>
                                 </div>
@@ -46,7 +46,7 @@
                                     {{ \Str::limit(strip_tags(html_entity_decode($item->description)), 100) }} </div>
                             </div>
                             <div class="news_div_item_pic">
-                                <a href="wdgweb_content-103004.html">
+                                <a href="{{ route('post.detail' , $item->title) }}">
                                     <img src="{{ asset($item->image) }}" class="news_div_item_image"
                                         alt="{{ $item->title }}">
                                 </a>

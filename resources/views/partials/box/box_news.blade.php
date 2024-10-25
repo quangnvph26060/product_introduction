@@ -11,7 +11,7 @@
                         </div>
                         <div class="news_div_item_content">
                             <div class="news_div_item_title">
-                                <a class="news_div_item_a" href="wdgweb_content-103114.html">
+                                <a class="news_div_item_a" href="{{ route('new.detail' , $new->title) }}">
                                     {{ $new->title }}
                                 </a>
                             </div>
@@ -19,7 +19,7 @@
                                 {{ \Str::limit(strip_tags(html_entity_decode($new->description)), 100) }}</div>
                         </div>
                         <div class="news_div_item_pic">
-                            <a href="wdgweb_content-103114.html">
+                            <a href="{{ route('new.detail' , $new->title) }}">
                                 <img src="{{ asset($new->image) }}" class="news_div_item_image"
                                     alt="Anti-static floor is not expensive">
                             </a>
