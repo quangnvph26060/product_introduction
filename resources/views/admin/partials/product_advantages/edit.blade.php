@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Thêm lợi ích sản phẩm')
+@section('title', 'Cập nhật lợi ích sản phẩm')
 
 @section('content')
     <style>
@@ -13,13 +13,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Tạo lợi ích </h4>
+                        <h4 class="mb-sm-0">Cập nhật lợi ích </h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{ route('product_advantages.index') }}">Lợi ích sản
                                         phẩm</a></li>
-                                <li class="breadcrumb-item active">Tạo lợi ích</li>
+                                <li class="breadcrumb-item active">Cập nhật lợi ích</li>
                             </ol>
                         </div>
 
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label>Mô tả lợi ích</label>
-                                    <textarea name="description" class="form-control" id="content" rows="10" cols="80">{{ old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" id="content" rows="10" cols="80">{{ $productAdvantages->description }}</textarea>
                                     @error('description')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -93,7 +93,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success">Thêm</button>
+                                <button type="submit" class="btn btn-success">Cập nhật</button>
                             </div>
 
                         </div>

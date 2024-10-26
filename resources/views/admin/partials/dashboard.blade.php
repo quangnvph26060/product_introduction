@@ -8,20 +8,7 @@
         class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
     >
         <div>
-            <h3 class="fw-bold mb-3">Dashboard</h3>
-            <h6 class="op-7 mb-2">
-                Free Bootstrap 5 Admin Dashboard
-            </h6>
-        </div>
-        <div class="ms-md-auto py-2 py-md-0">
-            <a
-                href="#"
-                class="btn btn-label-info btn-round me-2"
-                >Manage</a
-            >
-            <a href="#" class="btn btn-primary btn-round"
-                >Add Customer</a
-            >
+            <h3 class="fw-bold mb-3">Trang chủ</h3>
         </div>
     </div>
     <div class="row">
@@ -33,7 +20,7 @@
                             <div
                                 class="icon-big text-center icon-primary bubble-shadow-small"
                             >
-                                <i class="fas fa-users"></i>
+                            <i class="far fa-clipboard"></i>
                             </div>
                         </div>
                         <div
@@ -41,10 +28,10 @@
                         >
                             <div class="numbers">
                                 <p class="card-category">
-                                    Visitors
+                                     Bài viết
                                 </p>
                                 <h4 class="card-title">
-                                    1,294
+                                    {{ $countPost }}
                                 </h4>
                             </div>
                         </div>
@@ -60,9 +47,7 @@
                             <div
                                 class="icon-big text-center icon-info bubble-shadow-small"
                             >
-                                <i
-                                    class="fas fa-user-check"
-                                ></i>
+                            <i class="fab fa-product-hunt"></i>
                             </div>
                         </div>
                         <div
@@ -70,10 +55,10 @@
                         >
                             <div class="numbers">
                                 <p class="card-category">
-                                    Subscribers
+                                    Sản phẩm
                                 </p>
                                 <h4 class="card-title">
-                                    1303
+                                    {{ $countProduct }}
                                 </h4>
                             </div>
                         </div>
@@ -89,9 +74,7 @@
                             <div
                                 class="icon-big text-center icon-success bubble-shadow-small"
                             >
-                                <i
-                                    class="fas fa-luggage-cart"
-                                ></i>
+                            <i class="fas fa-newspaper"></i>
                             </div>
                         </div>
                         <div
@@ -99,10 +82,10 @@
                         >
                             <div class="numbers">
                                 <p class="card-category">
-                                    Sales
+                                    Tin tức
                                 </p>
                                 <h4 class="card-title">
-                                    $ 1,345
+                                    {{ $countNew }}
                                 </h4>
                             </div>
                         </div>
@@ -128,10 +111,10 @@
                         >
                             <div class="numbers">
                                 <p class="card-category">
-                                    Order
+                                    Admin
                                 </p>
                                 <h4 class="card-title">
-                                    576
+                                    {{ $countUser }}
                                 </h4>
                             </div>
                         </div>
@@ -140,7 +123,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-8">
             <div class="card card-round">
                 <div class="card-header">
@@ -946,6 +929,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection

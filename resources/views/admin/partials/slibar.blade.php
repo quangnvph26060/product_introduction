@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a  href="{{ route('config.index') }}">
+                    <a href="{{ route('config.index') }}">
                         <i class="fas fa-layer-group"></i>
                         <p>Cấu hình</p>
 
@@ -39,7 +39,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#base">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-water"></i>
                         <p>Danh mục</p>
                         <span class="caret"></span>
                     </a>
@@ -60,7 +60,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fab fa-product-hunt"></i>
                         <p>Sản phẩm</p>
                         <span class="caret"></span>
                     </a>
@@ -81,7 +81,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayoutsPost">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-mail-bulk"></i>
                         <p>Bài viết</p>
                         <span class="caret"></span>
                     </a>
@@ -102,13 +102,13 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('slider.index') }}">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-map"></i>
                         <p>Ảnh trang chủ</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayoutsBusinesses">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-briefcase"></i>
                         <p>Doanh nghiệp</p>
                         <span class="caret"></span>
                     </a>
@@ -129,7 +129,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayoutsSerivce">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fab fa-servicestack"></i>
                         <p>Dịch vụ</p>
                         <span class="caret"></span>
                     </a>
@@ -150,7 +150,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayoutsWebsite">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fab fa-internet-explorer"></i>
                         <p>Website</p>
                         <span class="caret"></span>
                     </a>
@@ -171,7 +171,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#introduction_categories">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-window-maximize"></i>
                         <p>Chuyên mục giới thiệu</p>
                         <span class="caret"></span>
                     </a>
@@ -192,7 +192,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#introduction_posts">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-table"></i>
                         <p>Bài viết giới thiệu</p>
                         <span class="caret"></span>
                     </a>
@@ -213,7 +213,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#website_feature">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-receipt"></i>
                         <p>Tính năng trang web</p>
                         <span class="caret"></span>
                     </a>
@@ -234,7 +234,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#process">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
                         <p>Quá trình</p>
                         <span class="caret"></span>
                     </a>
@@ -255,7 +255,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#product_advantages">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-vote-yea"></i>
                         <p>Lợi ích sản phẩm</p>
                         <span class="caret"></span>
                     </a>
@@ -276,7 +276,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#news_categories">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-newspaper"></i>
                         <p>Danh mục tin tức</p>
                         <span class="caret"></span>
                     </a>
@@ -297,7 +297,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#news">
-                        <i class="fas fa-th-list"></i>
+                        <i class="far fa-newspaper"></i>
                         <p>Danh sách tin tức</p>
                         <span class="caret"></span>
                     </a>
