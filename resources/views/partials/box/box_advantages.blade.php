@@ -11,7 +11,7 @@
 
 
                 <p>
-                    {!! $item->description !!}
+                    {{ \Str::limit(strip_tags(html_entity_decode($item->description)), 100) }}
                 </p>
                 <em>+</em>
             </dd>

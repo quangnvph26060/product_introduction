@@ -1,8 +1,8 @@
 <div class="tdbj">
     <div class="gy td">
         <div class="pro_tit">
-            <b>Lipin Flooring · <span>Service process</span></b>
-            <p>Layer by layer process control to ensure qualified product production</p>
+            <b>Sàn Lipin · <span>Quy trình dịch vụ</span></b>
+            <p>Kiểm soát quy trình từng lớp để đảm bảo sản xuất sản phẩm đủ tiêu chuẩn</p>
         </div>
         <ul class="clearfix">
           

@@ -1,6 +1,6 @@
 @foreach ($newsCategoryHome as $newCategory)
     <div class="news_wz">
-        <div class="news_div">
+        <div class="news_div" id="#news_div">
             @if ($newCategory->news->count() > 0)
                 @foreach ($newCategory->news()->orderBy('created_at', 'desc')->take(3)->get() as $new)
                     <div class="news_div_item">

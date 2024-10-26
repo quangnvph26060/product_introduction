@@ -15,8 +15,9 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href="{{ route('product_advantages.create') }}" class="btn btn-success" id="addproduct-btn"><i
-                                            class="ri-add-line align-bottom me-1"></i>Thêm lợi ích sản phẩm</a>
+                                    <a href="{{ route('product_advantages.create') }}" class="btn btn-success"
+                                        id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i>Thêm lợi ích sản
+                                        phẩm</a>
                                 </div>
                             </div>
                         </div>
@@ -30,6 +31,7 @@
                                         <th>Lợi ích</th>
                                         <th>Ảnh</th>
                                         <th>Icon</th>
+                                        <th>Mô tả</th>
                                         <th>Trạng thái</th>
                                         <th>Hành động</th>
                                     </tr>
@@ -43,6 +45,8 @@
                                                     alt="{{ $item->name }}"></td>
                                             <td><img src="{{ asset($item->icon) }}" width="150" height="150"
                                                     alt="{{ $item->name }}"></td>
+                                            <td>{{ \Str::limit(strip_tags(html_entity_decode($item->description)), 100) }}
+                                            </td>
                                             <td>
                                                 <select class="form-group change-status-product_advantages" name="status"
                                                     data-id="{{ $item->id }}">

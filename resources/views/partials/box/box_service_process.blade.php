@@ -12,8 +12,13 @@
         </p>
     </span>
     <div class="td-desc">
-        A professional team that serves you 24/7
+        {{ \Str::limit(strip_tags(html_entity_decode($service->description)), 100) }}
     </div>
 </li>
+<style>
+    .td-desc p {
+        color: white;
+    }
+</style>
 @endforeach
 

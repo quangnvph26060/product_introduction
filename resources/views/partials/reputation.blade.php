@@ -1,7 +1,7 @@
 <div class="ys">
         <div class="pro_tit">
-            <b>Strong manufacturer · <span>Good reputation</span></b>
-            <p>Provide fast, thoughtful, reliable, and satisfactory services</p>
+            <b>Nhà sản xuất mạnh · <span>Danh tiếng tốt</span></b>
+            <p>Cung cấp dịch vụ nhanh chóng, chu đáo, đáng tin cậy và hài lòng</p>
         </div>
         <div class="ys_con">
 

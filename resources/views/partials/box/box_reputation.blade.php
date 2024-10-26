@@ -14,9 +14,9 @@
         </div>
         <div class="bock">
             <h3>{{ $item->title }}</h3>
-            <p class="process-text">
+            <div class="process-text">
                 {!! $item->description !!}
-            </p>
+            </div>
         </div>
     </li>
     <style>
@@ -24,6 +24,13 @@
             color: white;
             text-align: center;
             font-size: 50px;
+        }
+        .process-text p {
+            color: white !important;
+            line-height: 1.5
+        }
+        .process-text p strong{
+            color: white !important;
         }
     </style>
 @endforeach

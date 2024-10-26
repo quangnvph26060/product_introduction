@@ -37,15 +37,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('partials.header', function ($view) {
             $menu = Menu::make('MyNav', function ($m) {
                 // Menu chính
-                $m->add('Home', ['route' => 'home'])->id('home');
-                $m->add('Product', ['route' => 'product'])->id('product');
-                $m->add('Project Case')->id('project-case');
-                // Menu "News" với dropdown
-                $m->add('News', '#')->id('news');
-                // Menu "About Lipin" với dropdown
-                $m->add('About Lipin', '#')->id('about');
-                // Menu cuối cùng
-                $m->add('Contact Us');
+                $m->add('Trang chủ', ['route' => 'home'])->id('home');
+                $m->add('Sản phẩm', ['route' => 'product'])->id('product');
+                $m->add('Bài viết' , '#')->id('project-case');
+                $m->add('Tin tức', '#')->id('news');
             });
 
             $view->with('menu', $menu);
@@ -53,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         $categories = Category::whereNull('parent_id')->get();
         $products = Product::where('status', 'published')->orderBy('id', 'desc')->get();
+        $productsFooter = Product::where('status', 'published')->orderBy('id', 'desc')->take(3)->get();
         $serviceHome = Service::where('status', 'published')->orderBy('id', 'desc')->take(6)->get();
 
         // Post 
@@ -60,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
         $listPostHome = Post::where('status', 'published')
             ->where('id', '!=', optional($firstPost)->id)
             ->get();
+        $listPostFooter = Post::where('status', 'published')->take(4)->get();
         // Slider banner
         $banners = Slider::where('status', 'published')->orderBy('id', 'desc')->get();
         // Process
@@ -89,7 +86,9 @@ class AppServiceProvider extends ServiceProvider
             $productAdvantagesHome,
             $introductionCategoriesHome,
             $introductionPostHome,
-            $newsCategoryHome
+            $newsCategoryHome,
+            $productsFooter,
+            $listPostFooter
         ) {
             $view->with([
                 'categories' => $categories,
@@ -104,7 +103,9 @@ class AppServiceProvider extends ServiceProvider
                 'productAdvantagesHome' => $productAdvantagesHome,
                 'introductionCategoriesHome' => $introductionCategoriesHome,
                 'introductionPostHome' => $introductionPostHome,
-                'newsCategoryHome' => $newsCategoryHome
+                'newsCategoryHome' => $newsCategoryHome,
+                'productsFooter' => $productsFooter,
+                'listPostFooter' => $listPostFooter
             ]);
         });
     }

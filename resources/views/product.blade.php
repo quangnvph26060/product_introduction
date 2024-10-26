@@ -7,8 +7,8 @@
     <div class="pro_bc">
         <div class="gy pro_c">
             <div class="pro_tit">
-                <b>Lipin Flooring · <span>Product Center</span></b>
-                <p>Complete variety to meet the various needs of engineering companies</p>
+                <b>Sàn Lipin · <span>Trung tâm sản phẩm</span></b>
+                <p>Hoàn thiện đa dạng để đáp ứng nhu cầu khác nhau của các công ty kỹ thuật</p>
             </div>
             <div class="pro_ic">
                 @include('partials.left-box')

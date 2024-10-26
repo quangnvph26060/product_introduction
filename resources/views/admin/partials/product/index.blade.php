@@ -30,7 +30,6 @@
                                         <th>Tên</th>
                                         <th>Ảnh</th>
                                         <th>Danh mục</th>
-                                        <th>Mô tả ngắn</th>
                                         <th>Mô tả chi tiết</th>
                                         <th>Trạng thái</th>
                                         <th>Hành động</th>
@@ -41,12 +40,12 @@
                                         <tr>
                                             <td scope="row">{{ $loop->iteration }}</td>
                                             <td><a
-                                                    href="{{ route('list.image-gallery.product', $product->id) }}">{{ $product->name }}</a>
+                                                    href="{{ route('list.image-gallery.product', $product->id) }}">{{ $product->name }} <code>(Thêm ảnh sản phẩm ở đây)</code></a>
                                             </td>
                                             <td><img src="{{ asset($product->main_image) }}" width="150" height="150"
                                                     alt="{{ $product->name }}"></td>
                                             <td>{{ $product->category->name }}</td>
-                                            <td>{{ \Str::limit($product->short_description, 50) }}</td>
+                               
                                             <td>{{ \Str::limit(strip_tags(html_entity_decode($product->long_description)), 100) }}
                                             <td>
                                                 <select class="form-group change-status-product" name="status"

@@ -7,8 +7,8 @@
                     alt="Guangdong Lipin Flooring Technology Co., Ltd">
             </a>
             <p>
-                <b>Years of focus on anti-static flooring and elevated flooring</b>
-                <span>Professional one-stop service provider for anti-static flooring solutions</span>
+                <b>Nhiều năm tập trung vào sàn chống tĩnh điện và sàn nâng</b>
+                <span>Nhà cung cấp dịch vụ một cửa chuyên nghiệp cho các giải pháp sàn chống tĩnh điện</span>
             </p>
         </div>
         <div class="nav dfs">
@@ -17,23 +17,23 @@
             </ul>
             <div class="icon_box dfs fr">
 
-                <div class="language">
+                {{-- <div class="language">
                     <i><img src="{{ asset('assets/client-assets/image/20231129/20231129091853_225640801.png') }}"
                             alt=""><img
                             src="{{ asset('assets/client-assets/image/20231129/20231129091853_2015085027.png') }}"
                             alt=""></i>
                     <a href="http://www.zglpdb.com/" class="en">中文</a>
-                </div>
+                </div> --}}
 
                 <div class="icon_tel">
                     <i class="iconftb">&#xe600;</i>
                     <div class="itel_box">
-                        <p>Service hotline: </p>
-                        <em>+86 0769-83068114</em>
-                        <em>+86 136-5008-1408</em>
+                        <p>Đường dây nóng dịch vụ: </p>
+                        <em>{{ $configWebsite->constant_hotline }}</em>
+                        <em>{{ $configWebsite->sale_phone_number	 }}</em>
                     </div>
                 </div>
-                <div class="icon_search">
+                {{-- <div class="icon_search">
                     <i class="iconftb">&#xe603;</i>
                     <div class="iser_box">
                         <h1 class="search_l">
@@ -61,7 +61,7 @@
                             </ul>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

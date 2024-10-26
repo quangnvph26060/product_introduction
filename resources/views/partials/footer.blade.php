@@ -4,28 +4,28 @@
             <li>
                 <span class="iconftb">&#xe676;</span>
                 <div>
-                    <b>Address:</b>
+                    <b>Dịa chỉ:</b>
                     <p>{{ $configWebsite->address }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe857;</span>
                 <div>
-                    <b>Tel:</b>
+                    <b>Số điện thoại:</b>
                     <p>{{ $configWebsite->sale_phone_number }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe68c;</span>
                 <div>
-                    <b>Contacts:{{ $configWebsite->name }}</b>
+                    <b>Liên hệ:{{ $configWebsite->name }}</b>
                     <p>{{ $configWebsite->zalo_phonenumber }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe777;</span>
                 <div>
-                    <b>Constant Hotline:</b>
+                    <b>Liên hệ đường dây nóng:</b>
                     <p>{{ $configWebsite->constant_hotline }}</p>
                 </div>
             </li>
@@ -33,55 +33,39 @@
         <div class="banq">
             <ul class="bq_item">
                 <li>
-                    <a href="wproducts.html" class="footer_t">Product</a>
+                    <a href="{{ route('product') }}" class="footer_t">Sản phẩm</a>
                     <div class="clear"></div>
-                    <a href="wproducts-32237-32239.html">Machine room anti-static floor</a>
-                    <a href="wproducts-32237-32240.html">Raised floor of office building</a>
-                    <a href="wproducts-32237-32241.html">Purification workshop anti-static floor</a>
-                    <a href="wproducts.html">See more+</a>
+                    @foreach ($productsFooter as $item)
+                        <a href="{{ route('product.detail', $item->id) }}">{{ $item->name }}</a>
+                    @endforeach
+                    <a href="{{ route('product') }}">Xem thêm+</a>
                 </li>
                 <li>
-                    <a href="wcompany.html" class="footer_t">About Lipin</a>
+                    <a href="#" class="footer_t">Tin tức</a>
                     <div class="clear"></div>
-                    <a href="wcompany.html">Company Profile</a>
-                    <a href="wdgweb-19797.html">Environment</a>
-                    <a href="wdgweb-19802.html">Company Activity</a>
-                    <a href="wdgweb-19803.html">Honor</a>
-                    <a href="wdgweb-19795.html">Partner</a>
+                    @foreach ($newsCategoryHome as $item)
+                        <a href="">{{ $item->name }}</a>
+                    @endforeach
+
                 </li>
                 <li>
-                    <a href="wdgweb-19805.html" class="footer_t">News</a>
+                    <a href="#" class="footer_t">Project Case</a>
                     <div class="clear"></div>
-                    <a href="wdgweb-19806.html">Company News</a>
-                    <a href="wdgweb-19807.html">Industry News</a>
-                    <a href="wdgweb-19808.html">FAQ</a>
-                </li>
-                <li>
-                    <a href="wdgweb-19800.html" class="footer_t">Project Case</a>
-                    <div class="clear"></div>
-                    <a href="wdgweb-19800.html">Computer rooms</a>
-                    <a href="wdgweb-19800.html">Clean room</a>
-                    <a href="wdgweb-19800.html">Purification plant</a>
-                    <a href="wdgweb-19800.html">Switch room</a>
-                </li>
-                <li>
-                    <a href="wcontact.html" class="footer_t">Contact us</a>
-                    <div class="clear"></div>
-                    <div class="footer_w">
-                        <a href="wcontact.html">Contact</a>
-                    </div>
+                    @foreach ($listPostFooter as $item)
+                        <a href="{{ route('post.detail', $item->title) }}">{{ $item->title }}</a>
+                    @endforeach
                 </li>
             </ul>
             <ul class="bq_gzh">
                 <li>
                     <img src="{{ asset('assets/client-assets/image/20231011/20231011103308_498786663.png') }}"
                         alt="Mobile station QR code">
-                    <p>Mobile station QR code</p>
+                    <p>Mã QR trạm di động</p>
                 </li>
                 <li>
                     <img src="{{ asset('assets/client-assets/image/20231011/20231011103308_111776885.png') }}"
                         alt="WeChat QR code">
-                    <p>WeChat QR code</p>
+                    <p>Mã QR WeChat</p>
                 </li>
             </ul>
         </div>
@@ -94,7 +78,7 @@
         <div>{{ $configWebsite->footer }}</div>
 
         <div>
-            Technical Support: <a href="www.114my.html" target="_blank" rel="nofollow">[Dongguan website
+            Hỗ trợ kỹ thuật: <a href="www.114my.html" target="_blank" rel="nofollow">[Dongguan website
                 construction]</a>　<a href="guanli.html" target="_blank" rel="nofollow">[Admin]</a>
         </div>
 

@@ -2,7 +2,7 @@
     <div class="gy news_c">
         <div class="new_tit">
             <div class="ser_tit">
-                <b>News</b>
+                <b>Tin tức</b>
                 <p></p>
             </div>
             @if ($newsCategoryHome->count() > 0)
