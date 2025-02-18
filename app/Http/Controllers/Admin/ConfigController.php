@@ -4,15 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Config;
+use App\Models\Slider;
+use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ConfigController extends Controller
 {
-    public function index(){
+    use ImageUploadTrait;
+    public function index()
+    {
         $title = 'Thông tin cửa hàng';
         $config = Config::first();
         return view('admin.partials.config.index', compact('config', 'title'));
+    }
+
+    public function slider()
+    {
+        $title = 'Thông tin cửa hàng';
+        $image = Slider::get();
+        return view('admin.partials.config.slider', compact('image', 'title'));
     }
 
     public function update(Request $request)
@@ -81,14 +92,56 @@ class ConfigController extends Controller
         }
 
         // dd($request->all());
-        if($config){
+        if ($config) {
             $config->update($data);
-        }else{
+        } else {
             Config::create($data);
         }
 
 
-         return redirect()->route('config.index')->with('success', 'Cập nhật thông tin thành công');
+        return redirect()->route('config.index')->with('success', 'Cập nhật thông tin thành công');
+    }
 
+
+    public function updateSlider(Request $request)
+    {
+        // Đảm bảo oldImages luôn là một mảng
+        $oldImages = $request->input('old') ?? [];
+
+        // Lấy danh sách id của tất cả ảnh trong Slider
+        $productImages = Slider::pluck('id')->toArray();
+
+        // Xác định ảnh cần giữ lại và ảnh cần xóa
+        $imagesToKeep = array_intersect($oldImages, $productImages);
+        $imagesToDelete = array_diff($productImages, $imagesToKeep);
+
+        // Xóa các ảnh không cần thiết
+        foreach ($imagesToDelete as $imageId) {
+            $image = Slider::find($imageId);
+            if ($image) {
+                // Xóa file ảnh trong thư mục lưu trữ
+                Storage::delete($image->image_path);
+                // Xóa ảnh khỏi cơ sở dữ liệu
+                $image->delete();
+            }
+        }
+
+        // Kiểm tra nếu có ảnh mới
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePath = $this->uploadFileImage($image, 'uploads/slider');
+
+                // dd($imagePath);
+                if ($imagePath) {
+                    // Lưu ảnh mới vào cơ sở dữ liệu
+                    Slider::create([
+                        'image' => str_replace('storage/', '', $imagePath),
+                    ]);
+                }
+            }
+        }
+
+        // toastr()->success('Thêm sản phẩm thành công !');
+        return redirect()->back();
     }
 }

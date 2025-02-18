@@ -87,6 +87,6 @@ trait ImageUploadTrait
         $imageName = 'media_' . uniqid() . '.' . $ext;
         $imagePath = $image->storeAs($path, $imageName, 'public');
 
-        return Storage::url($imagePath);
+        return 'storage/' . str_replace('public/', '', $imagePath);
     }
 }

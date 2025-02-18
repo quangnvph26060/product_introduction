@@ -21,6 +21,7 @@ class AdminSlidersController extends Controller
             'image' => 'required',
             'image.*' => 'image|mimes:jpeg,jpg,png|max:2048'
         ]);
+
         $imagePaths = $this->uploadMultiImage($request, 'image', 'uploads/slider');
         foreach ($imagePaths as $path) {
             $slider = new Slider();
@@ -35,9 +36,6 @@ class AdminSlidersController extends Controller
     }
     public function destroy(string $id)
     {
-        $sliderImage = Slider::findOrFail($id);
-        $this->deleteImage($sliderImage->image);
-        $sliderImage->delete();
-        return response(['status' => 'success' , 'message' => 'Xóa ảnh thành công !']);
+        
     }
 }
