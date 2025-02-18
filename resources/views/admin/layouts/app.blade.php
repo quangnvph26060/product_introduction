@@ -19,10 +19,20 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    @stack('styles')
 </head>
+<style>
+    html {
+      font-size: 12px;
+    }
+    body {
+      font-size: 0.875rem;
+    }
+    </style>
+
 
 <body>
-    <div class="wrapper">    
+    <div class="wrapper">
         <!-- Sidebar -->
         @include('admin.partials.slibar')
         <!-- End Sidebar -->
@@ -39,6 +49,7 @@
     </div>
     <!--   Core JS Files   -->
     @include('toastr')
+    @stack('scripts')
     <script src="{{ asset('assets/js/core/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
@@ -73,9 +84,9 @@
 
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="{{ asset('assets/js/setting-demo.js') }}"></script>
-    <script src="{{ asset('assets/js/demo.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/demo.js') }}"></script> --}}
     <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-    <script>
+    {{-- <script>
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -108,9 +119,9 @@
             lineColor: "#ffa534",
             fillColor: "rgba(255, 165, 52, .14)",
         });
-    </script>
-    <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
-    <script>
+    </script> --}}
+    {{-- <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script> --}}
+    {{-- <script>
         CKEDITOR.replace('content', {
             toolbar: [{
                     name: 'document',
@@ -175,9 +186,9 @@
             extraPlugins: 'font,colorbutton,justify',
             fontSize_sizes: '11px;12px;13px;14px;15px;16px;18px;20px;22px;24px;26px;28px;30px;32px;34px;36px',
         });
-    </script>
+    </script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
+    {{-- <script>
         var loadFile = function(event) {
             var output = document.getElementById('output');
             output.src = URL.createObjectURL(event.target.files[0]);
@@ -192,8 +203,8 @@
                 URL.revokeObjectURL(output.src)
             }
         };
-    </script>
-    <script>
+    </script> --}}
+    {{-- <script>
         $(document).ready(function() {
             $('body').on('click',
                 '.delete-item',
@@ -238,7 +249,7 @@
                     })
                 })
         });
-    </script>
+    </script> --}}
 
     @stack('scripts')
 </body>

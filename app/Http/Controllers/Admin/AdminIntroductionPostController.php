@@ -9,6 +9,7 @@ use App\Models\IntroductionCategory;
 use App\Models\IntroductionPost;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AdminIntroductionPostController extends Controller
 {
@@ -30,6 +31,7 @@ class AdminIntroductionPostController extends Controller
         $introductionPost->title = $request->title;
         $introductionPost->content = $request->content;
         $introductionPost->status = $request->status;
+        $introductionPost->slug = Str::slug($request->title, '-');
         $introductionPost->introduction_category_id	 = $request->introduction_category_id	;
         $introductionPost->image = $imagePath;
         $introductionPost->save();
@@ -40,16 +42,18 @@ class AdminIntroductionPostController extends Controller
     {
         $introductionCategories = IntroductionCategory::orderBy('id', 'desc')->get();
         $introductionPost = IntroductionPost::findOrFail($id);
-        return view('admin.partials.introduction_posts.edit', compact('introductionCategories', 'introductionPost'));
+        return view('admin.partials.introduction_posts.create', compact('introductionCategories', 'introductionPost'));
     }
     public function update(IntroductionPostUpdateRequest $request, $id)
     {
+        // dd(1);
 
         $introductionPost = IntroductionPost::findOrFail($id);
         $imagePath = $this->updateImage($request, 'image', 'uploads/introduction_posts', $introductionPost->image);
         $introductionPost->image = empty(!$imagePath) ? $imagePath : $introductionPost->image;
         $introductionPost->title = $request->title;
         $introductionPost->content = $request->content;
+        $introductionPost->slug = $request->slug ?? Str::slug($request->title, '-');
         $introductionPost->status = $request->status;
         $introductionPost->introduction_category_id	 = $request->introduction_category_id	;
         $introductionPost->save();

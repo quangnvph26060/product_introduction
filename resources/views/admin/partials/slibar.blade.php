@@ -37,7 +37,7 @@
                     </a>
 
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#base">
                         <i class="fas fa-water"></i>
                         <p>Danh mục</p>
@@ -57,10 +57,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
-                        <i class="fab fa-product-hunt"></i>
+                        <i class="fas fa-box"></i>
                         <p>Sản phẩm</p>
                         <span class="caret"></span>
                     </a>
@@ -72,8 +72,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.add.product') }}">
-                                    <span class="sub-item">Thêm sản phẩm</span>
+                                <a href="{{ route('admin.categories.index') }}">
+                                    <span class="sub-item">Danh sách danh mục</span>
                                 </a>
                             </li>
                         </ul>

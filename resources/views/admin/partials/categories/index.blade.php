@@ -1,121 +1,163 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Danh mục')
+@section('title', 'Danh mục sản phẩm')
 
 @section('content')
-    <div class="page-content">
-        <div class="container-fluid">
 
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Danh mục</h4>
+<div class="page-inner">
+    <div class="row">
+        <div class="">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="card-title">Danh sách danh mục</h4>
+                    <div class="card-tools">
+                        {{-- <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Import
+                        </button> --}}
+                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary btn-sm">Thêm mới danh
+                            mục(+)</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center" id="product-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10% ;text-align:center">STT</th>
+                                    <th style="width: 30% ;text-align:center">Tên danh mục</th>
+                                    <th style="width: 30% ;text-align:center">Danh mục cha</th>
+                                    <th style="width: 20% ;text-align:center">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($listCategories->isNotEmpty())
+                                    @foreach ($listCategories as $key => $category)
+                                        <tr data-id="{{ $category->id }}">
+                                            <td class="text-center">{{ $key + 1 }}</td>
+                                            <td>
+                                                {{ $category->name }}
 
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                <li class="breadcrumb-item active">Danh mục</li>
-                            </ol>
-                        </div>
+                                            </td>
+                                            <td >
+                                                {{ $category->parent_id ? $category->parent->name : 'Không' }}
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                                <a href="{{ route('admin.categories.destroy', $category->id) }}" data-id={{ $category->id }} class="btn btn-sm btn-danger delete-item delete-product"><i class="fa-solid fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted">Không có danh mục nào.</td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
 
                     </div>
                 </div>
             </div>
-            <!-- end page title -->
-
-            <div class="row">
-
-
-                <div class="">
-                    <div>
-                        <div class="card">
-                            <div class="card-header border-0">
-                                <div class="row g-4">
-                                    <div class="col-sm-auto">
-                                        <div>
-                                            <a href="{{ route('admin.categories.create') }}" class="btn btn-success"
-                                                id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i>Thêm danh
-                                                mục</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- end card header -->
-                            <div class="card-body">
-
-                                <div class="table-responsive table-card">
-                                    <table class="table table-hover table-centered align-middle table-nowrap mb-0"
-                                        id="category-table">
-                                        <thead>
-                                            <tr>
-                                                <td>Tên</td>
-                                                <td>Cha</td>
-                                                <td>Hành động</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if ($listCategories->isNotEmpty())
-                                                @foreach ($listCategories as $category)
-                                                    <tr>
-                                                        <td>
-                                                            <div> {{ $category->name }} <code>(Danh mục cha)</code></div>
-                                                            @if ($category->children->count() > 0)
-                                                                <div class="children" style="margin-left: 100px">
-                                                                    @foreach ($category->children as $item)
-                                                                        <div style="margin: 5px 0px">-- {{ $item->name }}
-                                                                            <a href="{{ route('admin.categories.edit', $item->id) }}"
-                                                                                class="btn btn-success"><i
-                                                                                    class="fa-regular fa-pen-to-square"></i></a>
-                                                                            <a href="{{ route('admin.categories.destroy', $item->id) }}"
-                                                                                class="btn btn-danger delete-item"><i
-                                                                                    class="fa-solid fa-trash"></i></a>
-                                                                        </div>
-                                                                    @endforeach
-                                                                </div>
-                                                            @else
-                                                                <div><code>(Không có danh mục con)</code></div>
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            {{ $category->parent_id ? $category->parent->name : 'Không' }}
-                                                        </td>
-                                                        <td>
-                                                            <a href="{{ route('admin.categories.edit', $category->id) }}"
-                                                                class="btn btn-primary">Sửa</a>
-                                                            <a href="{{ route('admin.categories.destroy', $category->id) }}"
-                                                                class="btn btn-danger delete-item">Xóa</a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <!-- end tab content -->
-
-                            </div>
-                            <!-- end card body -->
-                        </div>
-                        <!-- end card -->
-                    </div>
-                </div>
-                <!-- end col -->
-            </div>
-            <!-- end row -->
-
         </div>
-        <!-- container-fluid -->
+
     </div>
+</div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @endsection
+
+@push('styles')
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+
+<style>
+    .change-status-product {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .table>tbody>tr>td,
+    .table>tbody>tr>th {
+        padding: 5px !important;
+
+
+    }
+
+    table.table-bordered.dataTable tbody td,
+    table.table-bordered.dataTable tbody th {
+        border: 1px solid #ddd !important;
+    }
+
+    #product-table_length {
+        margin-bottom: 20px;
+    }
+</style>
+
+@endpush
+
 @push('scripts')
-    <script>
-        let table = new DataTable('#category-table');
-    </script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+    let table1 = new DataTable('#product-table', {
+            responsive: true,
+            searching: true,
+            language: {
+                lengthMenu: "_MENU_"
+            }
+
+        });
+
+        $(document).on('change', '.change-status-product', function() {
+            var product_id = $(this).data('id');
+            var status = $(this).find(":selected").val();
+            $.ajax({
+                url: '{{ route('admin.product.change-status') }}',
+                type: "POST",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id,
+                    status
+                },
+                success: function(response) {
+                    alert(response.success);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            })
+
+        });
+
+        $(document).on('click', '.delete-product', function(e) {
+            e.preventDefault();
+            var product_id = $(this).data('id');
+            var deleteUrl = $(this).attr('href');
+
+            // Xác nhận xóa
+            if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+                $.ajax({
+                    url: deleteUrl,
+                    type: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        product_id
+                    },
+                    success: function(response) {
+                        window.location.reload();
+
+
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+</script>
 @endpush

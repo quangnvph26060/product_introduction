@@ -59,7 +59,7 @@ class AdminServiceController extends Controller
     public function edit(string $id)
     {
         $service = Service::findOrFail($id);
-        return view('admin.partials.service.edit', compact('service'));
+        return view('admin.partials.service.create', compact('service'));
     }
 
     /**

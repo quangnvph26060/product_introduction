@@ -19,30 +19,42 @@ class ProductUpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
+        $id = request()->route('id'); // Lấy id từ route
+
         return [
-            'main_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'main_image' => ($id ? 'nullable' : 'required') . '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required|min:10|max:200',
-            'long_description' => 'required|min:10',
             'short_description' => 'required|min:20',
+            'long_description' => 'required|min:10',
+            'tags' => 'required',
+            'slug' => ($id ? 'required' : 'nullable'),
             'category_id' => 'required'
         ];
     }
+
+
     public function messages()
     {
+        return __('request.messages');
+    }
+
+    /**
+     * Tùy chỉnh tên trường dữ liệu (thuộc tính).
+     *
+     * @return array
+     */
+    public function attributes()
+    {
         return [
-            'name.required' => 'Tên sản phẩm không được để trống.',
-            'name.min' => 'Tên sản phẩm phải có ít nhất :min ký tự.',
-            'name.max' => 'Tên sản phẩm không được vượt quá :max ký tự.',
-            'short_description.required' => 'Mô tả không được để trống.',
-            'short_description.min' => 'Mô tả phải có ít nhất :min ký tự.',
-            'long_description.required' => 'Mô tả không được để trống.',
-            'long_description.min' => 'Mô tả phải có ít nhất :min ký tự.',
-            'main_image.image' => 'Hình ảnh phải là một file hình ảnh.',
-            'main_image.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg, gif, svg.',
-            'main_image.max' => 'Kích thước hình ảnh không được vượt quá 2MB.',
-            'category_id.required' => 'Danh mục sản phẩm không được trống.'
+            'name' => 'Tên danh mục',
+            'short_description' => 'Mô tả chi tiết',
+            'long_description' => 'Mô tả chi tiết',
+            'main_image' => 'Ảnh đại diện',
+            'category_id' => 'Danh mục',
+            'tags' => 'Tags',
+            'slug' => 'Slug',
         ];
     }
 }

@@ -36,3 +36,7 @@ Route::get('/introduction_post/{title}' , [IntroductionPostController::class , '
 Route::prefix('admin')->group(function () {
     require __DIR__.'/admin.php';
 });
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

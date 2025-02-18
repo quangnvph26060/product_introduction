@@ -10,6 +10,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@yaireo/tagify": "^4.33.2",
         "toastr": "^2.1.4"
     }
 }

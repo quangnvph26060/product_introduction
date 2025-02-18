@@ -10,7 +10,9 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class AdminProductController extends Controller
 {
@@ -26,8 +28,9 @@ class AdminProductController extends Controller
 
         return view('admin.partials.product.create', compact('categories'));
     }
-    public function addProduct(ProductCreateRequest $request)
+    public function addProduct(Request $request)
     {
+        // dd($request->all());
         $imagePath = $this->uploadImage($request, 'main_image', 'uploads/product');
         $product = new Product();
         $product->name = $request->name;
@@ -35,8 +38,27 @@ class AdminProductController extends Controller
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
         $product->status = $request->status;
+        $product->slug = Str::slug($request->name, '-');
         $product->category_id = $request->category_id;
+        $product->title_seo = $request->title_seo;
+        $product->description_seo = $request->description_seo;
+        $product->keyword_seo = $request->keyword_seo;
         $product->save();
+
+
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+            foreach ($images as $image) {
+                $imagePath =  $this->uploadFileImage($image, 'uploads/product');
+
+                if ($imagePath) {
+                    ProductImage::create([
+                        'product_id' => $product->id,
+                        'image_path' => $imagePath,
+                    ]);
+                }
+            }
+        }
         toastr()->success('Thêm sản phẩm thành công !');
         return redirect()->route('admin.product');
     }
@@ -44,21 +66,60 @@ class AdminProductController extends Controller
     {
         $product = Product::where('id', $id)->first();
         $subcategories = Category::whereNotNull('parent_id')->get();
-        return view('admin.partials.product.edit', compact('product', 'subcategories'));
+        $images = ProductImage::where('product_id', $id)->get();
+        return view('admin.partials.product.create', compact('product', 'subcategories', 'images'));
     }
     public function updateProduct(ProductUpdateRequest $request, $id)
     {
+        // dd($request->all());
+
         $product = Product::findOrFail($id);
-        $imagePath = $this->updateImage($request, 'main_image', 'uploads/product', $product->main_image);
+        $imagePath = $this->updateImage($request, 'image', 'uploads/product', $product->main_image);
         $product->main_image = empty(!$imagePath) ? $imagePath : $product->main_image;
         $product->name = $request->name;
         $product->status = $request->status;
+        $product->tags = $request->tags;
         $product->category_id = $request->category_id;
+        $product->slug = $request->slug;
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
+        $product->title_seo = $request->title_seo;
+        $product->description_seo = $request->description_seo;
+        $product->keyword_seo = $request->keyword_seo;
         $product->save();
+
+        $oldImages = $request->input('old');
+        $productImages = ProductImage::where('product_id', $id)->pluck('id')->toArray();
+        $imagesToKeep = array_intersect($oldImages, $productImages);
+        $imagesToDelete = array_diff($productImages, $imagesToKeep);
+
+        // Xóa các ảnh không cần thiết
+        foreach ($imagesToDelete as $imageId) {
+            $image = ProductImage::find($imageId);
+            if ($image) {
+                // Xóa file ảnh trong thư mục lưu trữ
+                Storage::delete($image->image_path);
+                // Xóa ảnh khỏi cơ sở dữ liệu
+                $image->delete();
+            }
+        }
+        // Kiểm tra nếu có ảnh mới
+        if ($request->hasFile('images')) {
+            // Lưu ảnh mới vào cơ sở dữ liệu và thư mục lưu trữ
+            foreach ($request->file('images') as $image) {
+                $imagePath = $this->uploadFileImage($image, 'uploads/product');
+
+                if ($imagePath) {
+                    // Thêm ảnh mới vào cơ sở dữ liệu
+                    ProductImage::create([
+                        'product_id' => $product->id,
+                        'image_path' => $imagePath,
+                    ]);
+                }
+            }
+        }
         toastr()->success('Cập nhật sản phẩm thành công !');
-        return redirect()->route('admin.product');
+        return redirect()->back();
     }
     public function deleteProduct($id)
     {

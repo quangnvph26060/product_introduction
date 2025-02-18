@@ -36,8 +36,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [AdminCategoryController::class, 'index'])->name('admin.categories.index');
         Route::get('/categories/create', [AdminCategoryController::class, 'create'])->name('admin.categories.create');
         Route::post('/categories', [AdminCategoryController::class, 'store'])->name('admin.categories.store');
-        Route::get('/categories/{category}/edit', [AdminCategoryController::class, 'edit'])->name('admin.categories.edit');
-        Route::put('/categories/{category}', [AdminCategoryController::class, 'update'])->name('admin.categories.update');
+        Route::get('/categories/{id}/edit', [AdminCategoryController::class, 'edit'])->name('admin.categories.edit');
+        Route::post('/categories/{id}', [AdminCategoryController::class, 'update'])->name('admin.categories.update');
         Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy'])->name('admin.categories.destroy');
     });
 
@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('slider')->group(function () {
         Route::get('/slider', [AdminSlidersController::class, 'index'])->name('slider.index');
         Route::post('/slider/store', [AdminSlidersController::class, 'store'])->name('slider.store');
-        Route::delete('/delete/{id}', [AdminSlidersController::class, 'destroy'])->name('slider.destroy');
+        Route::get('/delete/{id}', [AdminSlidersController::class, 'destroy'])->name('slider.destroy');
         // Thêm các route khác tùy theo nhu cầu
     });
 
@@ -109,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', [AdminPostController::class, 'store'])->name('post.store');
         Route::get('/edit/{id}', [AdminPostController::class, 'edit'])->name('post.edit');
         Route::post('/update/{id}', [AdminPostController::class, 'update'])->name('post.update');
-        Route::delete('delete/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
+        Route::get('delete/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
         Route::post('change-status/', [AdminPostController::class, 'changeStatus'])->name('post.change-status');
     });
 

@@ -41,7 +41,7 @@ class AdminBusinessesController extends Controller
     public function edit($id)
     {
         $business = Business::findOrFail($id);
-        return view('admin.partials.businesses.edit', compact('business'));
+        return view('admin.partials.businesses.create', compact('business'));
     }
 
     public function update(BusinessesUpdateRequest $request, $id)
