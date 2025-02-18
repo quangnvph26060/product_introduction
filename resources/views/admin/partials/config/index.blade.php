@@ -11,14 +11,9 @@
                     <li class="nav-item">
                         <a class="nav-link active">Cấu hình chung</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link">Cấu hình thanh toán</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Cấu hình slider</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Cấu hình bộ lọc</a>
+                        <a href="{{ route('config.slider') }}" class="nav-link">Cấu hình slider</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">Thông tin hỗ trợ</a>

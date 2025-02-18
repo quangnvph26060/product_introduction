@@ -115,8 +115,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('config')->group(function () {
         Route::get('/', [ConfigController::class, 'index'])->name('config.index');
+        Route::get('/slider', [ConfigController::class, 'slider'])->name('config.slider');
         Route::post('/update', [ConfigController::class, 'update'])->name('config.update');
-
+        Route::post('/update-slider', [ConfigController::class, 'updateSlider'])->name('slider.update');
     });
 
 });
