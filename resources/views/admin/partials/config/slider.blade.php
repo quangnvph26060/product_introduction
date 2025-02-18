@@ -9,11 +9,11 @@
             <div class="card">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a href="{{ route('config.index') }}" class="nav-link active">Cấu hình chung</a>
+                        <a href="{{ route('config.index') }}" class="nav-link ">Cấu hình chung</a>
                     </li>
 
-                    <li href="{{ route('config.slider') }}" class="nav-item">
-                        <a class="nav-link">Cấu hình slider</a>
+                    <li href="{{ route('config.slider') }}" class="nav-item ">
+                        <a class="nav-link active">Cấu hình slider</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">Thông tin hỗ trợ</a>
@@ -66,10 +66,21 @@
 @endpush
 
 @push('scripts')
+@php
+$preloaded =
+    isset($images) && $images->isNotEmpty()
+        ? $images->map(function ($image) {
+            return [
+                'src' => asset($image->image), // Đường dẫn ảnh
+                'id' => $image->id, // ID của ảnh
+            ];
+        })
+        : [];
+@endphp
 <script src="{{ asset('assets/js/image-uploader.min.js') }}"></script>
 <script>
     $(document).ready(function() {
-            const preloaded = [];
+        const preloaded = @json($preloaded);
             $('.input-images').imageUploader({
                 preloaded: preloaded,
                 imagesInputName: 'images',

@@ -11,24 +11,20 @@ class Config extends Model
     protected $table = 'config';
 
     protected $fillable = [
+        'company_name',
         'title_seo',
         'meta_seo',
         'description_seo',
         'description',
+        'phone',
         'name',
         'address',
         'email',
         'constant_hotline',
-        'sale_phone_number',
-        'zalo_phonenumber',
-        'website',
-        'facebook_url',
-        'instagram_url',
-        'youtube_url',
         'banner',
-        'slider1',
-        'slider2',
-        'slider3',
+        'path',
+        'icon',
+
         'footer',
         'representative'
     ];

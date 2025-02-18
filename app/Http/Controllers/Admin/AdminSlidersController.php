@@ -36,6 +36,6 @@ class AdminSlidersController extends Controller
     }
     public function destroy(string $id)
     {
-        
+
     }
 }

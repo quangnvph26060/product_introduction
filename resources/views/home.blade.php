@@ -15,9 +15,9 @@
                 <div class="prod_dh1 pro_rc">
                     <div class="prod2">
                         <table width=100% border=0 align=center cellpadding=0 cellspacing=0>
-                        
+
                             @include('partials/box/box_product')
-                          
+
                         </table>
                     </div>
                 </div>
@@ -32,5 +32,5 @@
     @include('partials.news')
     @include('partials.about')
     @include('partials.workshop')
- 
+
 @endsection

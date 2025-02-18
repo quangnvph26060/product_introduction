@@ -41,7 +41,7 @@
                         </table>
                     </div>
                 </div>
-                <div>{{ $getProductByCategoryId->links() }}</div>
+                {{-- <div>{{ $getProductByCategoryId->links() }}</div> --}}
             </div>
         </div>
     </div>

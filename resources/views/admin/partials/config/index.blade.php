@@ -20,7 +20,7 @@
                     </li>
                 </ul>
 
-                <form action="" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('config.update') }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-lg-9">
@@ -50,17 +50,6 @@
                                         </div>
 
                                         <div class="col-md-6 mb-3">
-                                            <label for="warehouse" class="form-label">Kho hàng</label>
-                                            <input type="text" id="warehouse" name="warehouse"
-                                                class="form-control @error('warehouse') is-invalid @enderror"
-                                                placeholder="Enter warehouse"
-                                                value="{{ old('warehouse', $config->warehouse ?? '') }}">
-                                            @error('warehouse')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-md-6 mb-3">
                                             <label for="phone" class="form-label">Số điện thoại</label>
                                             <input type="text" id="phone" name="phone"
                                                 class="form-control @error('phone') is-invalid @enderror"
@@ -82,38 +71,9 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-md-6 mb-3">
-                                            <label for="tax_code" class="form-label">Mã số thuế</label>
-                                            <input type="text" id="tax_code" name="tax_code"
-                                                class="form-control @error('tax_code') is-invalid @enderror"
-                                                placeholder="Enter tax code"
-                                                value="{{ old('tax_code', $config->tax_code ?? '') }}">
-                                            @error('tax_code')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
 
-                                        <div class="col-md-6 mb-3">
-                                            <label for="link_fb" class="form-label">Facebook</label>
-                                            <input type="text" id="link_fb" name="link_fb"
-                                                class="form-control @error('link_fb') is-invalid @enderror"
-                                                placeholder="Enter Facebook link"
-                                                value="{{ old('link_fb', $config->link_fb ?? '') }}">
-                                            @error('link_fb')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
 
-                                        <div class="col-md-6 mb-3">
-                                            <label for="zalo_number" class="form-label">Zalo</label>
-                                            <input type="text" id="zalo_number" name="zalo_number"
-                                                class="form-control @error('zalo_number') is-invalid @enderror"
-                                                placeholder="Enter Zalo number"
-                                                value="{{ old('zalo_number', $config->zalo_number ?? '') }}">
-                                            @error('zalo_number')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+
 
                                         <div class="col-md-12 mb-3">
                                             <label for="copyright" class="form-label">Copyright</label>
@@ -177,7 +137,7 @@
                                 </div>
                                 <div class="card-body">
                                     <img class="img-fluid img-thumbnail w-100" id="show_logo" style="cursor: pointer; height: 190px;"
-                                        src="" alt="" onclick="document.getElementById('logo').click();">
+                                        src="{{ $config && $config->path ? asset($config->path) : '' }}" alt="" onclick="document.getElementById('logo').click();">
                                     @error('logo')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -192,7 +152,7 @@
                                 </div>
                                 <div class="card-body">
                                     <img class="img-fluid img-thumbnail w-100" id="show_icon" style="cursor: pointer; height: 190px;"
-                                        src="" alt="" onclick="document.getElementById('icon').click();">
+                                        src="{{ $config && $config->icon ? asset($config->icon) : '' }}" alt="" onclick="document.getElementById('icon').click();">
                                     @error('icon')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror

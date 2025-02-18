@@ -51,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
         $productsFooter = Product::where('status', 'published')->orderBy('id', 'desc')->take(3)->get();
         $serviceHome = Service::where('status', 'published')->orderBy('id', 'desc')->take(6)->get();
 
-        // Post 
+        // Post
         $firstPost = Post::where('status', 'published')->first();
         $listPostHome = Post::where('status', 'published')
             ->where('id', '!=', optional($firstPost)->id)
@@ -69,7 +69,7 @@ class AppServiceProvider extends ServiceProvider
         $productAdvantagesHome = ProductAdvantages::where('status', 'published')->take(5)->get();
         //Introduction category
         $introductionCategoriesHome = IntroductionCategory::take(3)->get();
-        //Introduction posts 
+        //Introduction posts
         $introductionPostHome = IntroductionPost::take(12)->get();
         //New category
         $newsCategoryHome = NewsCategory::take(3)->get();

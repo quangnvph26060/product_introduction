@@ -43,6 +43,7 @@ class AdminProductController extends Controller
         $product->title_seo = $request->title_seo;
         $product->description_seo = $request->description_seo;
         $product->keyword_seo = $request->keyword_seo;
+        $product->tags = $request->tags;
         $product->save();
 
 
@@ -71,10 +72,11 @@ class AdminProductController extends Controller
     }
     public function updateProduct(ProductUpdateRequest $request, $id)
     {
-        // dd($request->all());
+        //   dd($request->all());
 
         $product = Product::findOrFail($id);
-        $imagePath = $this->updateImage($request, 'image', 'uploads/product', $product->main_image);
+        $imagePath = $this->updateImage($request, 'main_image', 'uploads/product', $product->main_image);
+        //  dd($imagePath);
         $product->main_image = empty(!$imagePath) ? $imagePath : $product->main_image;
         $product->name = $request->name;
         $product->status = $request->status;
@@ -88,8 +90,10 @@ class AdminProductController extends Controller
         $product->keyword_seo = $request->keyword_seo;
         $product->save();
 
-        $oldImages = $request->input('old');
         $productImages = ProductImage::where('product_id', $id)->pluck('id')->toArray();
+        $oldImages = $request->input('old') ?? [];;
+
+        // Xác định ảnh cần giữ lại và ảnh cần xóa
         $imagesToKeep = array_intersect($oldImages, $productImages);
         $imagesToDelete = array_diff($productImages, $imagesToKeep);
 

@@ -37,27 +37,7 @@
                     </a>
 
                 </li>
-                {{-- <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#base">
-                        <i class="fas fa-water"></i>
-                        <p>Danh mục</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="base">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('admin.categories.index') }}">
-                                    <span class="sub-item">Danh sách danh mục</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('admin.categories.create') }}">
-                                    <span class="sub-item">Thêm danh mục</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
+               
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-box"></i>
@@ -99,12 +79,6 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('slider.index') }}">
-                        <i class="fas fa-map"></i>
-                        <p>Ảnh trang chủ</p>
-                    </a>
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayoutsBusinesses">

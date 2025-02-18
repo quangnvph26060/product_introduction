@@ -22,82 +22,27 @@ class ConfigController extends Controller
     public function slider()
     {
         $title = 'Thông tin cửa hàng';
-        $image = Slider::get();
-        return view('admin.partials.config.slider', compact('image', 'title'));
+        $images = Slider::get();
+        return view('admin.partials.config.slider', compact('images', 'title'));
     }
 
     public function update(Request $request)
     {
-        // Tìm bản ghi WebsiteSetting duy nhất
+        $data = $request->all();
+
         $config = Config::first();
-
-        // Cập nhật các trường khác
-
-        $data = [
-            'title_seo' => $request->input('title_seo'),
-            'meta_seo' =>  $request->input('meta_seo'),
-            'description_seo' => $request->input('description_seo'),
-            'description' => $request->input('description'),
-            'name' => $request->input('name'),
-            'address' => $request->input('address'),
-            'email' => $request->input('email'),
-            'constant_hotline' => $request->input('constant_hotline'),
-            'sale_phone_number' => $request->input('sale_phone_number'),
-            'zalo_phonenumber' => $request->input('zalo_phonenumber'),
-            'website' => $request->input('website'),
-            'facebook_url' => $request->input('facebook_url'),
-            'instagram_url' => $request->input('instagram_url'),
-            'youtube_url' => $request->input('youtube_url'),
-            'footer' => $request->input('footer'),
-            'representative' => $request->representative,
-        ];
-
-        // Lưu trữ logo
-
-        // Tương tự cho các trường slider và banner
-        if ($request->hasFile('banner')) {
-            $banner = $request->file('banner');
-            $bannerFileName = 'banner_' . $banner->getClientOriginalName();
-            $bannerFilePath = 'storage/new/' . $bannerFileName;
-
-            Storage::putFileAs('public/new', $banner, $bannerFileName);
-            $data['banner'] = $bannerFilePath;
-        }
-
-        if ($request->hasFile('slider1')) {
-            $slider1 = $request->file('slider1');
-            $slider1FileName = 'slider1_' . $slider1->getClientOriginalName();
-            $slider1FilePath = 'storage/new/' . $slider1FileName;
-
-            Storage::putFileAs('public/new', $slider1, $slider1FileName);
-            $data['slider1'] = $slider1FilePath;
-        }
-
-        if ($request->hasFile('slider2')) {
-            $slider2 = $request->file('slider2');
-            $slider2FileName = 'slider2_' . $slider2->getClientOriginalName();
-            $slider2FilePath = 'storage/new/' . $slider2FileName;
-
-            Storage::putFileAs('public/new', $slider2, $slider2FileName);
-            $data['slider2'] = $slider2FilePath;
-        }
-
-        if ($request->hasFile('slider3')) {
-            $slider3 = $request->file('slider3');
-            $slider3FileName = 'slider3_' . $slider3->getClientOriginalName();
-            $slider3FilePath = 'storage/new/' . $slider3FileName;
-
-            Storage::putFileAs('public/new', $slider3, $slider3FileName);
-            $data['slider3'] = $slider3FilePath;
-        }
-
-        // dd($request->all());
         if ($config) {
+            $data['path'] = $this->updateImage($request, 'path', 'uploads/path', $config->path);
+
+            $data['icon'] = $this->updateImage($request, 'icon', 'uploads/icon', $config->icon);
             $config->update($data);
         } else {
+
+            $data['path'] = $this->uploadImage($request, 'path', 'uploads/path');
+
+            $data['icon'] = $this->uploadImage($request, 'icon', 'uploads/icon');
             Config::create($data);
         }
-
 
         return redirect()->route('config.index')->with('success', 'Cập nhật thông tin thành công');
     }
@@ -120,7 +65,7 @@ class ConfigController extends Controller
             $image = Slider::find($imageId);
             if ($image) {
                 // Xóa file ảnh trong thư mục lưu trữ
-                Storage::delete($image->image_path);
+                Storage::delete($image->image);
                 // Xóa ảnh khỏi cơ sở dữ liệu
                 $image->delete();
             }
@@ -129,13 +74,14 @@ class ConfigController extends Controller
         // Kiểm tra nếu có ảnh mới
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $imagePath = $this->uploadFileImage($image, 'uploads/slider');
+                $imagePath = $this->uploadFileImage($image, 'sliders');
 
                 // dd($imagePath);
                 if ($imagePath) {
                     // Lưu ảnh mới vào cơ sở dữ liệu
                     Slider::create([
-                        'image' => str_replace('storage/', '', $imagePath),
+                        'image' =>  $imagePath,
+                        'status' => 'published'
                     ]);
                 }
             }
