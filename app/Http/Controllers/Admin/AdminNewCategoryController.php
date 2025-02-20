@@ -5,13 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\NewsCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Yajra\DataTables\DataTables;
 
 class AdminNewCategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $newsCategories = NewsCategory::all();
-        return view('admin.partials.news_categories.index', compact('newsCategories'));
+        if ($request->ajax()) {
+            $categories = NewsCategory::select(['id', 'name']);
+            return DataTables::of($categories)
+                ->addColumn('action', function ($row) {
+                    return '<button class="btn btn-danger delete-category" data-id="' . $row->id . '">Xóa</button>';
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('admin.partials.news_categories.index');
     }
     public function create()
     {
@@ -19,18 +29,14 @@ class AdminNewCategoryController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate(
-            [
-                'name' => 'required|min:3|max:20|unique:news_categories,name'
-            ],
-            __('request.messages'),
-            ['name' => 'Tên danh mục tin tức']
-        );
-        $newCategory = new NewsCategory();
-        $newCategory->name = $request->name;
-        $newCategory->save();
-        toastr()->success('Thêm danh mục tin tức thành công !');
-        return redirect()->route('news_categories.index');
+        $category = NewsCategory::create([
+            'name' => $request->name
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $category
+        ]);
     }
     public function edit($id)
     {
@@ -39,6 +45,7 @@ class AdminNewCategoryController extends Controller
     }
     public function update(Request $request, $id)
     {
+        Log::info($request->all());
         $request->validate(
             [
                 'name' => 'required|min:3|max:20'
@@ -49,16 +56,17 @@ class AdminNewCategoryController extends Controller
         $newCategory = NewsCategory::findOrFail($id);
         $newCategory->name = $request->name;
         $newCategory->save();
-        toastr()->success('Cập nhật danh mục tin tức thành công !');
-        return redirect()->route('news_categories.index');
+        return response()->json([
+            'success' => true
+        ]);
     }
     public function destroy($id)
     {
-        $newCategory = NewsCategory::findOrFail($id);
-        if ($newCategory->news->count() > 0) {
-            return response(['status' => 'error', 'message' => 'Mục này chứa các tin tức phụ thuộc, bạn phải xóa các tin tức trước']);
-        }
-        $newCategory->delete();
-        return response(['status' => 'success', 'Xóa thành công']);
+        $category = NewsCategory::findOrFail($id);
+        $category->delete();
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }

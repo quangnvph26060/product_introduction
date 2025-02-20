@@ -38,7 +38,7 @@ class AdminWebsiteController extends Controller
     public function edit($id)
     {
         $website = Website::findOrFail($id);
-        return view('admin.partials.website.edit', compact('website'));
+        return view('admin.partials.website.create', compact('website'));
     }
 
     public function update(WebsiteUpdateRequest $request, $id)
@@ -59,12 +59,13 @@ class AdminWebsiteController extends Controller
         $website->introductionCategories->each(function($category){
               $category->introductionPosts->each(function($item){
                     $this->deleteImage($item->image);
-                    $item->delete();   
+                    $item->delete();
               });
               $category->delete();
         });
         $this->deleteImage($website->image);
         $website->delete();
-        return response(['status' => 'success', 'message' => 'Xóa website thành công !']);
-    }  
+        toastr()->success('Xóa thành công !');
+        return redirect()->route('website.index');
+    }
 }

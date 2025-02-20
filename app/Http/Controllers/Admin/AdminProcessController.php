@@ -55,7 +55,7 @@ class AdminProcessController extends Controller
     public function edit($id)
     {
         $process = Process::find($id);
-        return view('admin.partials.processes.edit', compact('process'));
+        return view('admin.partials.processes.create', compact('process'));
     }
 
     /**
@@ -65,7 +65,7 @@ class AdminProcessController extends Controller
     {
         $process = Process::findOrFail($id);
         $imagePath = $this->updateImage($request, 'image', 'uploads/process', $process->image);
-        $iconPath = $this->updateImage($request, 'image', 'uploads/process', $process->image);
+        $iconPath = $this->updateImage($request, 'icon', 'uploads/process', $process->icon);
         $process->title = $request->title;
         $process->description = $request->description;
         $process->status = $request->status;

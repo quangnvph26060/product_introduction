@@ -39,13 +39,13 @@ class ProductAdvantagesController extends Controller
     public function edit($id)
     {
         $productAdvantages = productAdvantages::find($id);
-        return view('admin.partials.product_advantages.edit', compact('productAdvantages'));
+        return view('admin.partials.product_advantages.create', compact('productAdvantages'));
     }
     public function update(ProductAdvantageUpdateRequest $request, $id)
     {
         $productAdvantages = ProductAdvantages::findOrFail($id);
         $imagePath = $this->updateImage($request, 'image', 'uploads/product_advantages', $productAdvantages->image);
-        $iconPath = $this->updateImage($request, 'image', 'uploads/product_advantages', $productAdvantages->image);
+        $iconPath = $this->updateImage($request, 'icon', 'uploads/product_advantages', $productAdvantages->icon);
         $productAdvantages->name = $request->name;
         $productAdvantages->status = $request->status;
         $productAdvantages->image = empty(!$imagePath) ? $imagePath : $productAdvantages->image;
@@ -61,11 +61,13 @@ class ProductAdvantagesController extends Controller
      */
     public function destroy($id)
     {
+        // dd($id);
         $productAdvantages = ProductAdvantages::findOrFail($id);
         $this->deleteImage($productAdvantages->image);
         $this->deleteImage($productAdvantages->icon);
         $productAdvantages->delete();
-        return response(['status' => 'success', 'message' => 'Xóa lợi ích thành công !']);
+        toastr()->success('Xóa lợi ích thành công !');
+        return redirect()->route('product_advantages.index');
     }
     public function changeStatus(Request $request)
     {

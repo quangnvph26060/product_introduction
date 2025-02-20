@@ -36,7 +36,7 @@ class AdminIntroductionCategoryController extends Controller
     {
         $introductionCategory = IntroductionCategory::findOrFail($id);
         $websites = Website::orderBy('id', 'desc')->get();
-        return view('admin.partials.introduction_categories.edit', compact('introductionCategory', 'websites'));
+        return view('admin.partials.introduction_categories.create', compact('introductionCategory', 'websites'));
     }
     public function update(IntroductionCategoriesRequest $request, $id)
     {

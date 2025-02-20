@@ -76,7 +76,7 @@ class AdminNewController extends Controller
     {
         $newsCategories = NewsCategory::all();
         $new = News::findOrFail($id);
-        return view('admin.partials.news.edit', compact('newsCategories', 'new'));
+        return view('admin.partials.news.create', compact('newsCategories', 'new'));
     }
 
     /**

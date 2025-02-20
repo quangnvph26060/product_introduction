@@ -1,32 +1,32 @@
 <div class="footer_bg">
     <div class="gy footer">
-        <ul class="foo_icon">
+        <ul class="foo_icon" style="    padding: 0px 21">
             <li>
                 <span class="iconftb">&#xe676;</span>
                 <div>
-                    <b>Dịa chỉ:</b>
+                    <b>Dịa chỉ</b>
                     <p>{{ $configWebsite->address }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe857;</span>
                 <div>
-                    <b>Số điện thoại:</b>
-                    <p>{{ $configWebsite->sale_phone_number }}</p>
+                    <b>Số điện thoại</b>
+                    <p>{{ $configWebsite->phone }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe68c;</span>
                 <div>
-                    <b>Liên hệ:{{ $configWebsite->name }}</b>
-                    <p>{{ $configWebsite->zalo_phonenumber }}</p>
+                    <b>Liên hệ{{ $configWebsite->name }}</b>
+                    <p>{{ $configWebsite->phone }}</p>
                 </div>
             </li>
             <li>
                 <span class="iconftb">&#xe777;</span>
                 <div>
-                    <b>Liên hệ đường dây nóng:</b>
-                    <p>{{ $configWebsite->constant_hotline }}</p>
+                    <b>Liên hệ đường dây nóng</b>
+                    <p>{{ $configWebsite->phone }}</p>
                 </div>
             </li>
         </ul>

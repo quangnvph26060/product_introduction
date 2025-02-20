@@ -37,7 +37,7 @@
                     </a>
 
                 </li>
-               
+
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-box"></i>
@@ -59,27 +59,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarLayoutsPost">
-                        <i class="fas fa-mail-bulk"></i>
-                        <p>Bài viết</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="sidebarLayoutsPost">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('post.index') }}">
-                                    <span class="sub-item">Danh sách bài viết</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('post.create') }}">
-                                    <span class="sub-item">Thêm bài viết</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayoutsBusinesses">
                         <i class="fas fa-briefcase"></i>
@@ -122,7 +102,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayoutsWebsite">
                         <i class="fab fa-internet-explorer"></i>
                         <p>Website</p>
@@ -163,7 +143,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#introduction_posts">
                         <i class="fas fa-table"></i>
@@ -173,19 +153,25 @@
                     <div class="collapse" id="introduction_posts">
                         <ul class="nav nav-collapse">
                             <li>
+                                <a href="{{ route('website.index') }}">
+                                    <span class="sub-item">Danh sách website</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('introduction_categories.index') }}">
+                                    <span class="sub-item">Danh sách danh mục giới thiệu</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('introduction_posts.index') }}">
                                     <span class="sub-item">Danh sách bài viết giới thiệu</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('introduction_posts.create') }}">
-                                    <span class="sub-item">Thêm bài viết giới thiệu</span>
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#website_feature">
                         <i class="fas fa-receipt"></i>
                         <p>Tính năng trang web</p>
@@ -205,7 +191,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#process">
                         <i class="fas fa-chalkboard-teacher"></i>
@@ -248,43 +234,30 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#news_categories">
-                        <i class="fas fa-newspaper"></i>
-                        <p>Danh mục tin tức</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="news_categories">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('news_categories.index') }}">
-                                    <span class="sub-item">Danh sách danh mục tin tức</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('news_categories.create') }}">
-                                    <span class="sub-item">Thêm danh mục tin tức</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#news">
                         <i class="far fa-newspaper"></i>
-                        <p>Danh sách tin tức</p>
+                        <p> Bài viết và Tin tức</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="news">
                         <ul class="nav nav-collapse">
+
+                            <li>
+                                <a href="{{ route('post.index') }}">
+                                    <span class="sub-item">Danh sách bài viết</span>
+                                </a>
+                            </li>
+                            
                             <li>
                                 <a href="{{ route('news.index') }}">
                                     <span class="sub-item">Danh sách tin tức</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('news.create') }}">
-                                    <span class="sub-item">Thêm tin tức</span>
+                                <a href="{{ route('news_categories.index') }}">
+                                    <span class="sub-item">Danh sách danh mục tin tức</span>
                                 </a>
                             </li>
                         </ul>

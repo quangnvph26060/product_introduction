@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.8",
         "lavary/laravel-menu": "^1.8",
         "unisharp/laravel-filemanager": "^2.9",
+        "yajra/laravel-datatables-oracle": "^10.11",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
