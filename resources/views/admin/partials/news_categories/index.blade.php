@@ -97,11 +97,11 @@ $(document).ready(function () {
                     table.ajax.reload(null, false);
                     resetForm();
                 } else {
-                    toastr.error("Lỗi khi lưu danh mục!");
+                    // toastr.error("Lỗi khi lưu danh mục!");
                 }
             },
             error: function () {
-                toastr.error("Có lỗi xảy ra, vui lòng thử lại!");
+                // toastr.error("Có lỗi xảy ra, vui lòng thử lại!");
             },
             complete: function () {
                 btn.prop('disabled', false).text(id ? 'Cập nhật' : 'Thêm mới');
@@ -145,9 +145,9 @@ $(document).ready(function () {
                 success: function (response) {
                     if (response.success) {
                         table.ajax.reload(null, false);
-                        toastr.success('Xóa thành công!');
+                        // toastr.success('Xóa thành công!');
                     } else {
-                        toastr.error('Xóa thất bại!');
+                        // toastr.error('Xóa thất bại!');
                     }
                 },
                 error: function () {

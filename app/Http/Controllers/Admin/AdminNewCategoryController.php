@@ -48,7 +48,7 @@ class AdminNewCategoryController extends Controller
         Log::info($request->all());
         $request->validate(
             [
-                'name' => 'required|min:3|max:20'
+                'name' => 'required|min:3|max:100'
             ],
             __('request.messages'),
             ['name' => 'Tên danh mục tin tức']
