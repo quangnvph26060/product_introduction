@@ -56,6 +56,7 @@ class AdminIntroductionCategoryController extends Controller
             $item->delete();
         });
         $introductionCategory->delete();
-        return response(['status' => 'success', 'message' => 'Xóa danh mục giới thiệu thành công !']);
+        toastr()->success('Xóa danh mục giới thiệu thành công !');
+        return redirect()->route('introduction_categories.index');
     }
 }

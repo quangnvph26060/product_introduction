@@ -15,9 +15,9 @@
                     <li class="nav-item">
                         <a href="{{ route('config.slider') }}" class="nav-link">Cấu hình slider</a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link">Thông tin tài khoản</a>
-                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link active">Thông tin tài khoản</a>
+                    </li>
                 </ul>
 
                 <form action="{{ route('config.update') }}" enctype="multipart/form-data" method="POST">

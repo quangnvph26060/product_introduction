@@ -56,11 +56,13 @@
                                                     class="btn btn-primary ">
                                                     <i class="fa-regular fa-pen-to-square"></i>
                                                 </a>
-                                                <a href="{{ route('service.destroy', $service->id) }}"
-                                                    class="btn btn-danger "
-                                                    onclick="return confirm('Bạn có muốn xóa  bài viết này ?')">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </a>
+                                                <form action="{{ route('service.destroy', $service->id) }}" method="POST" onsubmit="return confirm('Bạn có muốn xóa  không ?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
 

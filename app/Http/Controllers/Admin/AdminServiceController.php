@@ -86,7 +86,8 @@ class AdminServiceController extends Controller
         $service = Service::findOrFail($id);
         $this->deleteImage($service->images);
         $service->delete();
-        return response(['status' => 'success', 'message' => 'Xóa dịch vụ thành công !']);
+        toastr()->success('Xóa dịch vụ thành công !');
+        return redirect()->route('service.index');
     }
     public function changeStatusService(Request $request)
     {

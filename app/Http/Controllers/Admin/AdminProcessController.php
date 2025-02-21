@@ -85,7 +85,8 @@ class AdminProcessController extends Controller
         $this->deleteImage($process->image);
         $this->deleteImage($process->icon);
         $process->delete();
-        return response(['status' => 'success', 'message' => 'Xóa quá trình thành công !']);
+        toastr()->success('Xóa thành công !');
+        return redirect()->route('process.index');
     }
     public function changeStatus(Request $request)
     {

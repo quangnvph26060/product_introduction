@@ -43,10 +43,14 @@
                                                     <a href="{{ route('introduction_categories.edit', $item->id) }}" class="btn btn-primary " >
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </a>
-                                                    <a href="{{ route('introduction_categories.destroy', $item->id) }}" class="btn btn-danger "
-                                                       onclick="return confirm('Bạn có muốn xóa  ?')">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </a>
+                                                    <form action="{{ route('introduction_categories.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Bạn có muốn xóa ?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </form>
+
                                                 </div>
                                             </td>
                                     </tr>

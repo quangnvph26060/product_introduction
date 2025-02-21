@@ -15,9 +15,9 @@
                     <li href="{{ route('config.slider') }}" class="nav-item ">
                         <a class="nav-link active">Cấu hình slider</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Thông tin hỗ trợ</a>
-                    </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link">Thông tin tài khoản</a>
+                    </li> --}}
                 </ul>
 
 

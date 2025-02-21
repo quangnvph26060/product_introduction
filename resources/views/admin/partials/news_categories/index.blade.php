@@ -7,7 +7,6 @@
 <div class="page-inner">
     <div class="row">
         <div class="col-lg-6">
-            <!-- Form thêm/sửa danh mục -->
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title" id="form-title">Thêm danh mục tin tức</h5>
@@ -28,25 +27,23 @@
         </div>
 
         <div class="col-lg-6">
-            <!-- Danh sách danh mục -->
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title">Danh sách danh mục tin tức</h5>
+                    <div id="delete-button-container"></div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-centered align-middle table-nowrap mb-0"
-                            id="newcategory-table">
+                        <table class="table table-hover table-centered align-middle table-nowrap mb-0" id="newcategory-table">
                             <thead>
                                 <tr>
+                                    {{-- <th class="text-center"><input type="checkbox" id="select-all"></th> --}}
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Tên</th>
                                     <th class="text-center">Hành động</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -59,11 +56,10 @@
 
 @push('styles')
 <style>
-    td{
-        text-align: center !important;
-    }
+    td { text-align: center !important; }
 </style>
 @endpush
+
 @push('scripts')
 <script>
 $(document).ready(function () {
@@ -72,34 +68,24 @@ $(document).ready(function () {
         serverSide: true,
         ajax: "{{ route('news_categories.index') }}",
         columns: [
-            {
-            data: null,
-            name: 'id',
-            render: function (data, type, row, meta) {
-                return meta.row + 1; // STT tự tăng từ 1
-            }
-        },
+            // { data: 'id', name: 'select', orderable: false, searchable: false, render: function (data) {
+            //     return `<input type="checkbox" class="category-checkbox" value="${data}">`;
+            // }},
+            { data: null, name: 'id', render: function (data, type, row, meta) { return meta.row + 1; } },
             { data: 'name', name: 'name' },
-            {
-                data: 'id',
-                name: 'action',
-                render: function (data, type, row) {
-                    return `
-                        <button class="btn btn-warning edit-category tex" data-id="${data}" data-name="${row.name}">Sửa</button>
-                        <button class="btn btn-danger delete-category" data-id="${data}">Xóa</button>
-                    `;
-                }
-            }
+            { data: 'id', name: 'action', render: function (data, type, row) {
+                return `
+                    <button class="btn btn-warning edit-category" data-id="${data}" data-name="${row.name}">Sửa</button>
+                    <button class="btn btn-danger delete-category" data-id="${data}">Xóa</button>
+                `;
+            }}
         ]
     });
 
-    // Hàm lưu (thêm hoặc cập nhật)
     $('#category-form').on('submit', function (e) {
         e.preventDefault();
         let id = $('#category_id').val();
-        let url = id
-            ? `{{ route('news_categories.update', ':id') }}`.replace(':id', id)
-            : `{{ route('news_categories.store') }}`;
+        let url = id ? `{{ route('news_categories.update', ':id') }}`.replace(':id', id) : `{{ route('news_categories.store') }}`;
         let method = id ? "PUT" : "POST";
         let btn = $('#btn-save');
         btn.prop('disabled', true).text('Đang xử lý...');
@@ -117,7 +103,7 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-                // toastr.error("Có lỗi xảy ra, vui lòng thử lại!");
+                toastr.error("Có lỗi xảy ra, vui lòng thử lại!");
             },
             complete: function () {
                 btn.prop('disabled', false).text(id ? 'Cập nhật' : 'Thêm mới');
@@ -125,53 +111,39 @@ $(document).ready(function () {
         });
     });
 
-    // Load dữ liệu vào form khi sửa
-    $('#newcategory-table').on('click', '.edit-category', function () {
-        let categoryId = $(this).data('id');
-        let categoryName = $(this).data('name');
+    // function createDeleteButton() {
+    //     let deleteButton = $('<button>', {
+    //         class: 'btn btn-danger d-none ms-5',
+    //         id: 'btn-delete-selected',
+    //         text: 'Xóa đã chọn'
+    //     });
+    //     $('.dt-length').append(deleteButton);
+    // }
 
-        $('#category_id').val(categoryId);
-        $('#category_name').val(categoryName);
-        $('#form-title').text('Cập nhật danh mục');
-        $('#btn-save').text('Cập nhật').removeClass('btn-success').addClass('btn-primary');
-        $('#btn-cancel').removeClass('d-none');
+    // createDeleteButton();
+
+    $('#select-all').on('change', function () {
+        $('.category-checkbox').prop('checked', $(this).prop('checked'));
+        toggleDeleteButton();
     });
 
-    // Hủy chỉnh sửa
-    $('#btn-cancel').on('click', function () {
-        resetForm();
+    $(document).on('change', '.category-checkbox', function () {
+        toggleDeleteButton();
     });
 
-    // Hàm reset form về trạng thái ban đầu
-    function resetForm() {
-        $('#category_id').val('');
-        $('#category_name').val('');
-        $('#form-title').text('Thêm danh mục');
-        $('#btn-save').text('Thêm mới').removeClass('btn-primary').addClass('btn-success');
-        $('#btn-cancel').addClass('d-none');
+    function toggleDeleteButton() {
+        let checkedCount = $('.category-checkbox:checked').length;
+        $('#btn-delete-selected').toggleClass('d-none', checkedCount === 0);
     }
 
-    // Xóa danh mục
-    $('#newcategory-table').on('click', '.delete-category', function () {
-        let categoryId = $(this).data('id');
+    $('#btn-delete-selected').on('click', function () {
+        let selectedIds = $('.category-checkbox:checked').map(function () {
+            return $(this).val();
+        }).get();
 
-        if (!confirm('Bạn có chắc chắn muốn xóa danh mục này?')) return;
+        if (!confirm('Bạn có chắc chắn muốn xóa các danh mục đã chọn?')) return;
 
-        $.ajax({
-            url: `{{ route('news_categories.update', ':id') }}`.replace(':id', categoryId),
-            type: "DELETE",
-            data: { _token: "{{ csrf_token() }}" },
-            success: function (response) {
-                if (response.success) {
-                    table.ajax.reload(null, false);
-                } else {
-                    // toastr.error("Lỗi khi xóa danh mục!");
-                }
-            },
-            error: function () {
-                toastr.error("Có lỗi xảy ra, vui lòng thử lại!");
-            }
-        });
+
     });
 });
 </script>

@@ -45,10 +45,14 @@
                                                     <a href="{{ route('introduction_posts.edit', $item->id) }}" class="btn btn-primary " >
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </a>
-                                                    <a href="{{ route('introduction_posts.destroy', $item->id) }}" class="btn btn-danger "
-                                                       onclick="return confirm('Bạn có muốn xóa sản phẩm này ?')">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </a>
+                                                    <form action="{{ route('introduction_posts.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Bạn có muốn xóa ?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </form>
+
                                                 </div>
                                             </td>
 

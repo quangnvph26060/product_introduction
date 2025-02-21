@@ -127,39 +127,7 @@
                                                 </span>
                                             </div>
                                         </a>
-                                        <small class="ms-3">5 ngày trước</small>
-                                        <a href="http://123.31.31.112:9797/admin/order/detail/56">
-                                            <div class="notif-icon">
 
-                                                <img width="22"
-                                                    src="http://123.31.31.112:9797/backend/assets/img/image-default.jpg"
-                                                    alt="">
-                                            </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Nguyễn Tiến Đạt đặt hàng
-                                                </span>
-                                                <span class="time">
-                                                    5 ngày trước
-                                                </span>
-                                            </div>
-                                        </a>
-                                        <a href="http://123.31.31.112:9797/admin/order/detail/55">
-                                            <div class="notif-icon">
-
-                                                <img width="22"
-                                                    src="http://123.31.31.112:9797/backend/assets/img/image-default.jpg"
-                                                    alt="">
-                                            </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Nguyễn Tiến Đạt đặt hàng
-                                                </span>
-                                                <span class="time">
-                                                    5 ngày trước
-                                                </span>
-                                            </div>
-                                        </a>
 
                                     </div>
                                 </div>
@@ -210,10 +178,9 @@
                                                 alt="image profile" class="avatar-img rounded">
                                         </div>
                                         <div class="u-text">
-                                            <h4>admin</h4>
-                                            <p class="text-muted">admin@gmail.com</p>
-                                            <a href="http://123.31.31.112:9797/admin/detail/1">View
-                                                Profile</a>
+                                            <h4>{{ Auth::user()->name }}</h4>
+                                            <p class="text-muted">{{ Auth::user()->email }}</p>
+                                            <a href="">View Profile</a>
                                         </div>
                                     </div>
                                 </li>

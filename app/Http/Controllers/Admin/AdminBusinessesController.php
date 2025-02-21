@@ -64,7 +64,8 @@ class AdminBusinessesController extends Controller
         $business = Business::findOrFail($id);
         $this->deleteImage($business->image);
         $business->delete();
-        return response(['status' => 'success', 'message' => 'Xóa bài viết thành công !']);
+        toastr()->success('Xóa thành công !');
+        return redirect()->route('businesses.index');
     }
     public function changeStatus(Request $request)
     {

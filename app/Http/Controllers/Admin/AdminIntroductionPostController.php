@@ -65,7 +65,8 @@ class AdminIntroductionPostController extends Controller
         $introductionPost = IntroductionPost::findOrFail($id);
         $this->deleteImage($introductionPost->image);
         $introductionPost->delete();
-        return response(['status' => 'success', 'message' => 'Xóa bài viết giới thiệu thành công !']);
+        toastr()->success('Xóa thành công !');
+        return redirect()->route('introduction_posts.index');
     }
 
     public function changeStatus(Request $request)
