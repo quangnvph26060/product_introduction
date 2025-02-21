@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\admin\AdminBusinessesController;
+use App\Http\Controllers\Admin\AdminBusinessesController;
 use App\Http\Controllers\Admin\AdminProductController as AdminAdminProductController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use Illuminate\Support\Facades\Route;
