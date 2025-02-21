@@ -68,9 +68,6 @@ $(document).ready(function () {
         serverSide: true,
         ajax: "{{ route('news_categories.index') }}",
         columns: [
-            // { data: 'id', name: 'select', orderable: false, searchable: false, render: function (data) {
-            //     return `<input type="checkbox" class="category-checkbox" value="${data}">`;
-            // }},
             { data: null, name: 'id', render: function (data, type, row, meta) { return meta.row + 1; } },
             { data: 'name', name: 'name' },
             { data: 'id', name: 'action', render: function (data, type, row) {
@@ -82,6 +79,7 @@ $(document).ready(function () {
         ]
     });
 
+    // Xử lý form khi submit (thêm mới hoặc cập nhật)
     $('#category-form').on('submit', function (e) {
         e.preventDefault();
         let id = $('#category_id').val();
@@ -111,40 +109,54 @@ $(document).ready(function () {
         });
     });
 
-    // function createDeleteButton() {
-    //     let deleteButton = $('<button>', {
-    //         class: 'btn btn-danger d-none ms-5',
-    //         id: 'btn-delete-selected',
-    //         text: 'Xóa đã chọn'
-    //     });
-    //     $('.dt-length').append(deleteButton);
-    // }
+    // Khi nhấn nút "Sửa", điền thông tin vào form
+    $(document).on('click', '.edit-category', function () {
+        let id = $(this).data('id');
+        let name = $(this).data('name');
 
-    // createDeleteButton();
-
-    $('#select-all').on('change', function () {
-        $('.category-checkbox').prop('checked', $(this).prop('checked'));
-        toggleDeleteButton();
+        $('#category_id').val(id);
+        $('#category_name').val(name);
+        $('#form-title').text('Chỉnh sửa danh mục tin tức');
+        $('#btn-save').text('Cập nhật');
+        $('#btn-cancel').removeClass('d-none');
     });
 
-    $(document).on('change', '.category-checkbox', function () {
-        toggleDeleteButton();
+    // Khi nhấn nút "Hủy", reset form về trạng thái thêm mới
+    $('#btn-cancel').on('click', function () {
+        resetForm();
     });
 
-    function toggleDeleteButton() {
-        let checkedCount = $('.category-checkbox:checked').length;
-        $('#btn-delete-selected').toggleClass('d-none', checkedCount === 0);
+    function resetForm() {
+        $('#category_id').val('');
+        $('#category_name').val('');
+        $('#form-title').text('Thêm danh mục tin tức');
+        $('#btn-save').text('Thêm mới');
+        $('#btn-cancel').addClass('d-none');
     }
 
-    $('#btn-delete-selected').on('click', function () {
-        let selectedIds = $('.category-checkbox:checked').map(function () {
-            return $(this).val();
-        }).get();
-
-        if (!confirm('Bạn có chắc chắn muốn xóa các danh mục đã chọn?')) return;
-
-
+    // Xử lý xóa danh mục
+    $(document).on('click', '.delete-category', function () {
+        let id = $(this).data('id');
+        if (confirm('Bạn có chắc chắn muốn xóa danh mục này?')) {
+            $.ajax({
+                url: `{{ route('news_categories.destroy', ':id') }}`.replace(':id', id),
+                type: "DELETE",
+                data: { _token: "{{ csrf_token() }}" },
+                success: function (response) {
+                    if (response.success) {
+                        table.ajax.reload(null, false);
+                        toastr.success('Xóa thành công!');
+                    } else {
+                        toastr.error('Xóa thất bại!');
+                    }
+                },
+                error: function () {
+                    toastr.error('Có lỗi xảy ra, vui lòng thử lại!');
+                }
+            });
+        }
     });
 });
+
 </script>
 @endpush
