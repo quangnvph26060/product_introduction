@@ -6,19 +6,19 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Admin\AdminCategoryController;
-use App\Http\Controllers\admin\AdminIntroductionCategoryController;
-use App\Http\Controllers\admin\AdminIntroductionPostController;
+use App\Http\Controllers\Admin\AdminIntroductionCategoryController;
+use App\Http\Controllers\Admin\AdminIntroductionPostController;
 use App\Http\Controllers\Admin\AdminNewCategoryController;
 use App\Http\Controllers\Admin\AdminNewController;
-use App\Http\Controllers\admin\AdminPostController;
-use App\Http\Controllers\admin\AdminProcessController;
-use App\Http\Controllers\admin\AdminServiceController;
-use App\Http\Controllers\admin\AdminSlidersController;
-use App\Http\Controllers\admin\AdminWebsiteController;
+use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminProcessController;
+use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\AdminSlidersController;
+use App\Http\Controllers\Admin\AdminWebsiteController;
 
-use App\Http\Controllers\admin\AdminWebsiteFeatureController;
+use App\Http\Controllers\Admin\AdminWebsiteFeatureController;
 
-use App\Http\Controllers\admin\AmdminWebsiteFeatureController;
+use App\Http\Controllers\Admin\AmdminWebsiteFeatureController;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\ProductAdvantagesController;
 use App\Http\Controllers\GeneralSettingController;
