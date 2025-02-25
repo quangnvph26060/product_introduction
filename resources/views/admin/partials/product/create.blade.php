@@ -345,7 +345,7 @@
 
 
     <script>
-        $(document).ready(function() {
+       c
             $('#category_id').select2({
                 placeholder: "--- Chọn danh mục ---",
                 allowClear: true

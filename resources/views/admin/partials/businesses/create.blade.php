@@ -9,7 +9,7 @@
         <div class="">
             <div class="card">
                 <div class="card-header  d-flex justify-content-between align-items-center">
-                    <h3 class="card-title m-0">Thêm doanh nghiệp</h3>
+                    <h3 class="card-title m-0"> {{ isset($business) ?  'Sửa doanh nghiệp' :  'Thêm doanh nghiệp'}}</h3>
                     <div class="card-tools">
                         <a href="{{ route('businesses.index') }}" class="btn btn-primary">Danh sách doanh nghiệp</a>
                     </div>
@@ -184,6 +184,8 @@
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
+
+
 <style>
     /* .tagify {
         height: auto !important;
@@ -219,8 +221,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 
-
-
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('assets/js/image-uploader.min.js') }}"></script>
 
 {{--
 <script>
@@ -234,6 +236,10 @@
             placeholder: "--- Chọn doanh nghiệp ---",
             allowClear: true
         });
+
+        CKEDITOR.replace('description', {
+                filebrowserUploadMethod: 'form', // Phương thức upload tệp qua form
+            });
 
     });
 </script>

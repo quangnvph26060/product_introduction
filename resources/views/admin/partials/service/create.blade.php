@@ -9,7 +9,7 @@
         <div class="">
             <div class="card">
                 <div class="card-header  d-flex justify-content-between align-items-center">
-                    <h3 class="card-title m-0">Thêm dịch vụ</h3>
+                    <h3 class="card-title m-0">{{ isset($service) ? 'Sửa dịch vụ ' : 'Thêm dịch vụ' }}</h3>
                     <div class="card-tools">
                         <a href="{{ route('service.index') }}" class="btn btn-primary">Danh sách dịch vụ</a>
                     </div>
@@ -167,9 +167,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
-
-
+<script src="{{ asset('assets/js/image-uploader.min.js') }}"></script>
 
 {{--
 <script>
@@ -183,6 +183,10 @@
             placeholder: "--- Chọn dịch vụ ---",
             allowClear: true
         });
+
+        CKEDITOR.replace('description', {
+                filebrowserUploadMethod: 'form', // Phương thức upload tệp qua form
+            });
 
     });
 </script>

@@ -9,7 +9,7 @@
         <div class="">
             <div class="card">
                 <div class="card-header  d-flex justify-content-between align-items-center">
-                    <h3 class="card-title m-0">Thêm tin tức</h3>
+                    <h3 class="card-title m-0">{{ isset($new) ? 'Sửa tin tức' : 'Thêm tin tức' }}</h3>
                     <div class="card-tools">
                         <a href="{{ route('news.index') }}" class="btn btn-primary">Danh sách tin tức</a>
                     </div>

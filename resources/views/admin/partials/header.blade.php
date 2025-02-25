@@ -110,8 +110,8 @@
                                     style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 0px;">
                                     <div class="notif-center">
 
-                                        <small class="ms-3">4 ngày trước</small>
-                                        <a href="http://123.31.31.112:9797/admin/order/detail/57">
+                                        {{-- <small class="ms-3">4 ngày trước</small> --}}
+                                        {{-- <a href="http://123.31.31.112:9797/admin/order/detail/57">
                                             <div class="notif-icon">
 
                                                 <img width="22"
@@ -126,7 +126,7 @@
                                                     4 ngày trước
                                                 </span>
                                             </div>
-                                        </a>
+                                        </a> --}}
 
 
                                     </div>
@@ -164,7 +164,7 @@
                         </div>
                         <span class="profile-username">
                             <span class="op-7">Hi,</span>
-                            <span class="fw-bold">admin</span>
+                            <span class="fw-bold">{{ Auth::user()->name }}</span>
                         </span>
                     </a>
                     <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -186,7 +186,15 @@
                                 </li>
                                 <li>
 
-                                    <a class="dropdown-item" href="http://123.31.31.112:9797/admin/logout">Logout</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+
                                 </li>
                             </div>
                             <div class="scroll-element scroll-x">

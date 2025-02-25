@@ -9,7 +9,7 @@
         <div class="">
             <div class="card">
                 <div class="card-header  d-flex justify-content-between align-items-center">
-                    <h3 class="card-title m-0">Thêm mới</h3>
+                    <h3 class="card-title m-0">{{ isset($process) ? 'Sửa quy trình' : 'Thêm quy trình' }}</h3>
                     <div class="card-tools">
                         <a href="{{ route('process.index') }}" class="btn btn-primary">Danh sách </a>
                     </div>

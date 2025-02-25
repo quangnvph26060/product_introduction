@@ -9,7 +9,7 @@
         <div class="">
             <div class="card">
                 <div class="card-header  d-flex justify-content-between align-items-center">
-                    <h3 class="card-title m-0">Thêm danh mục giới thiệu</h3>
+                    <h3 class="card-title m-0">{{ isset($introductionCategory) ? 'Sửa danh mục giới thiệu' : 'Thêm danh mục giới thiệu' }}</h3>
                     <div class="card-tools">
                         <a href="{{ route('introduction_categories.index') }}" class="btn btn-primary">Danh sách danh
                             mục giới thiệu</a>

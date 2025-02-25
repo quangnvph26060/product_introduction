@@ -9,7 +9,7 @@
         <div class="">
             <div class="card">
                 <div class="card-header  d-flex justify-content-between align-items-center">
-                    <h3 class="card-title m-0">Thêm bài viết</h3>
+                    <h3 class="card-title m-0">{{ isset($post) ? 'Sửa bài viết' : 'Thêm bài viết' }}</h3>
                     <div class="card-tools">
                         <a href="{{ route('post.index') }}" class="btn btn-primary">Danh sách bài viết</a>
                     </div>
@@ -224,7 +224,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 
-
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
 
 {{--
@@ -239,6 +239,10 @@
             placeholder: "--- Chọn danh mục ---",
             allowClear: true
         });
+
+        CKEDITOR.replace('description', {
+                filebrowserUploadMethod: 'form', // Phương thức upload tệp qua form
+            });
 
     });
 </script>
