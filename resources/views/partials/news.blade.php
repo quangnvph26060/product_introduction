@@ -10,7 +10,7 @@
                     <ul>
                         @foreach ($newsCategoryHome as $item)
                         <li class="{{ $loop->first ? 'on' : '' }}">
-                            <a href="wdgweb-19806.html"><span class="iconftb">&#xe682;</span><b>{{ $item->name }}</b></a>
+                            <a><span class="iconftb">&#xe682;</span><b>{{ $item->name }}</b></a>
                         </li>
                         @endforeach
                     </ul>
