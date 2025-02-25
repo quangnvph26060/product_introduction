@@ -29,8 +29,8 @@
                     <i class="iconftb">&#xe600;</i>
                     <div class="itel_box">
                         <p>Đường dây nóng dịch vụ: </p>
-                        <em>{{ $configWebsite->constant_hotline }}</em>
-                        <em>{{ $configWebsite->sale_phone_number	 }}</em>
+                        <em>{{ $configWebsite->phone }}</em>
+                        {{-- <em>{{ $configWebsite->phone	 }}</em> --}}
                     </div>
                 </div>
                 {{-- <div class="icon_search">

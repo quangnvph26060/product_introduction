@@ -40,6 +40,7 @@
                                     {{-- <th class="text-center"><input type="checkbox" id="select-all"></th> --}}
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Tên</th>
+                                    {{-- <th class="text-center">time</th> --}}
                                     <th class="text-center">Hành động</th>
                                 </tr>
                             </thead>
@@ -70,9 +71,9 @@ $(document).ready(function () {
         columns: [
             { data: null, name: 'id', render: function (data, type, row, meta) { return meta.row + 1; } },
             { data: 'name', name: 'name' },
-            { data: 'id', name: 'action', render: function (data, type, row) {
+            { data: 'name', name: 'action', orderable: false, searchable: false, render: function (data, type, row) {
                 return `
-                    <button class="btn btn-warning edit-category" data-id="${data}" data-name="${row.name}">Sửa</button>
+                    <button class="btn btn-warning edit-category" data-id="${data}" data-name="${row.name}">Sửa ${row.created_at}</button>
                     <button class="btn btn-danger delete-category" data-id="${data}">Xóa</button>
                 `;
             }}
