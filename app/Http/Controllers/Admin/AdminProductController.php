@@ -50,7 +50,7 @@ class AdminProductController extends Controller
         if ($request->hasFile('images')) {
             $images = $request->file('images');
             foreach ($images as $image) {
-                $imagePath =  $this->uploadFileImage($image, 'uploads/product');
+                $imagePath =  $this->uploadFileImage($image, 'uploads/product_imagess');
 
                 if ($imagePath) {
                     ProductImage::create([
@@ -111,7 +111,7 @@ class AdminProductController extends Controller
         if ($request->hasFile('images')) {
             // Lưu ảnh mới vào cơ sở dữ liệu và thư mục lưu trữ
             foreach ($request->file('images') as $image) {
-                $imagePath = $this->uploadFileImage($image, 'uploads/product');
+                $imagePath = $this->uploadFileImage($image, 'uploads/product_images');
 
                 if ($imagePath) {
                     // Thêm ảnh mới vào cơ sở dữ liệu
