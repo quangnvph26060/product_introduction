@@ -1,7 +1,7 @@
 <div class="gy cf_c">
     <ul>
         @foreach ($introductionCategoriesHome as $item)
-            <li class="on"><a href="wdgweb-19797.html">{{ $item->name }}</a></li>
+            <li class="{{ $loop->first ? 'on' : '' }}"><a href="wdgweb-19797.html">{{ $item->name }}</a></li>
         @endforeach
 
     </ul>

@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
         $categories = Category::whereNull('parent_id')->get();
         $products = Product::where('status', 'published')->orderBy('id', 'desc')->get();
         $productsFooter = Product::where('status', 'published')->orderBy('id', 'desc')->take(3)->get();
-        $serviceHome = Service::where('status', 'published')->orderBy('id', 'desc')->take(6)->get();
+        $serviceHome = Service::where('status', 'published')->take(6)->get();
 
         // Post
         $firstPost = Post::where('status', 'published')->first();
