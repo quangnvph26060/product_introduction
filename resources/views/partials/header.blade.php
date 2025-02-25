@@ -2,7 +2,7 @@
     <div class="head_hx"></div>
     <div class="h_adw dfsv">
         <div class="logo wow bounceInLeft">
-            <a href="index.html">
+            <a href="{{ route('home') }}">
                 <img src="{{ asset('assets/client-assets/image/20231011/20231011100408_1628586740.png') }}"
                     alt="Guangdong Lipin Flooring Technology Co., Ltd">
             </a>
