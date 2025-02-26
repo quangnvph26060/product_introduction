@@ -36,7 +36,7 @@
                     <a href="{{ route('product') }}" class="footer_t">{{ cachedTranslate ('Sản phẩm', \App::getLocale()) }}</a>
                     <div class="clear"></div>
                     @foreach ($productsFooter as $item)
-                        <a href="{{ route('product.detail', $item->id) }}">{{ $item->name }}</a>
+                        <a href="{{ route('product.detail', $item->id) }}">{{ cachedTranslate ($item->name, \App::getLocale()) }}</a>
                     @endforeach
                     <a href="{{ route('product') }}">{{ cachedTranslate ('Xem thêm+', \App::getLocale()) }}</a>
                 </li>
@@ -44,7 +44,7 @@
                     <a href="#" class="footer_t">{{ cachedTranslate ('Sản phẩm', \App::getLocale()) }}c</a>
                     <div class="clear"></div>
                     @foreach ($newsCategoryHome as $item)
-                        <a href="">{{ $item->name }}</a>
+                        <a href="">{{ cachedTranslate ($item->name, \App::getLocale()) }}</a>
                     @endforeach
 
                 </li>
