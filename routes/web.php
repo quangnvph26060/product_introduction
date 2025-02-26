@@ -9,6 +9,7 @@ use App\Http\Controllers\Client\IntroductionPostController;
 use App\Http\Controllers\Client\NewController;
 use App\Http\Controllers\Client\PostController;
 use App\Http\Controllers\Client\ProductController;
+use App\Http\Controllers\GoogleTranslateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,3 +41,5 @@ Route::prefix('admin')->group(function () {
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
+Route::get('google/translate/change',[GoogleTranslateController::class,'googleTranslateChange'])->name('google.translate.change');

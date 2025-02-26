@@ -9,7 +9,8 @@
                     </a><br>
                     <div style=padding-top:5px;>
                         <a href={{ route('product.detail' , $product->id) }} title="Wood-based anti-static floor 88 passed">
-                            {{ $product->name }}</a>
+                            {{ cachedTranslate(  $product->name , \App::getLocale()) }}
+                        </a>
                     </div>
                 </td>
             @endforeach

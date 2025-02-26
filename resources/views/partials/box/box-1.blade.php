@@ -1,26 +1,26 @@
 <ul>
     <li><a href="#"><span class="iconftb">&#xe60b;</span>
-            <p>Phòng máy tính</p>
+            <p>{{ cachedTranslate('Phòng máy tính' , \App::getLocale()) }}</p>
         </a></li>
     <li><a href="#"><span class="iconftb">&#xe6ab;</span>
-            <p>Phòng sạch</p>
+        <p>{{ cachedTranslate('Phòng sạch' , \App::getLocale()) }}</p>
         </a></li>
     <li><a href="#"><span class="iconftb">&#xea4c;</span>
-            <p>Xưởng thanh lọc</p>
+        <p>{{ cachedTranslate('XƯởng thanh lọc' , \App::getLocale()) }}</p>
         </a></li>
     <li><a href="#"><span class="iconftb">&#xe628;</span>
-            <p>Chuyển phòng</p>
+        <p>{{ cachedTranslate('Chuyển phòng' , \App::getLocale()) }}</p>
         </a></li>
     <li><a href="#"><span class="iconftb">&#xe653;</span>
-            <p>Phòng giám sát</p>
+        <p>{{ cachedTranslate('Phòng giám sát' , \App::getLocale()) }}</p>
         </a></li>
     <li><a href="#"><span class="iconftb">&#xe691;</span>
-            <p>Ngân hàng</p>
+        <p>{{ cachedTranslate('Ngân hàng' , \App::getLocale()) }}</p>
         </a></li>
     <li><a href="#"><span class="iconftb">&#xe7ba;</span>
-            <p>Phòng thí nghiệm</p>
+        <p>{{ cachedTranslate('Phòng thí nghiệm' , \App::getLocale()) }}</p>
         </a></li>
     <li><a href="#"><span class="iconftb">&#xe633;</span>
-            <p>Tòa nhà văn phòng</p>
+        <p>{{ cachedTranslate('Toàn nhà văn phòng' , \App::getLocale()) }}</p>
         </a></li>
 </ul>

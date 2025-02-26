@@ -1,7 +1,9 @@
 <div class="gy cf_c">
     <ul>
         @foreach ($introductionCategoriesHome as $item)
-            <li class="{{ $loop->first ? 'on' : '' }}"><a href="wdgweb-19797.html">{{ $item->name }}</a></li>
+            <li class="{{ $loop->first ? 'on' : '' }}"><a href="">
+                {{ cachedTranslate($item->name, \App::getLocale()) }}
+            </a></li>
         @endforeach
 
     </ul>
@@ -19,8 +21,8 @@
                                     </a><br>
                                     <div style=padding-top:5px;>
                                         <a href="{{ route('introduction_post.detail', $item->title) }}"
-                                            title={{ $item->title }}>
-                                            {{ $item->title }}</a>
+                                            title={{ cachedTranslate($item->title, \App::getLocale()) }}>
+                                            {{ cachedTranslate($item->title, \App::getLocale()) }}</a>
                                     </div>
                                 </td>
                             @endforeach

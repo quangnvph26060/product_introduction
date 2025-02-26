@@ -6,12 +6,14 @@
             </dt>
             <dd>
                 <h5 class="" style="padding:5px 0px 5px 5px">
-                    {{ $item->name }}
+
+                    {{ cachedTranslate($item->name, \App::getLocale()) }}
                 </h5>
 
 
                 <p>
-                    {{ \Str::limit(strip_tags(html_entity_decode($item->description)), 100) }}
+                    {{ cachedTranslate(\Str::limit(strip_tags(html_entity_decode($item->description)), 100), \App::getLocale()) }}
+
                 </p>
                 <em>+</em>
             </dd>
@@ -26,7 +28,7 @@
                             height="60" alt=""></i>
                 </em>
                 <span style="padding:5px 0px 5px 5px">
-                    {{ $item->name }}
+                    {{ cachedTranslate($item->name, \App::getLocale()) }}
                 </span>
 
 

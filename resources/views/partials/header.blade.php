@@ -6,9 +6,11 @@
                 <img src="{{ asset('assets/client-assets/image/20231011/20231011100408_1628586740.png') }}"
                     alt="Guangdong Lipin Flooring Technology Co., Ltd">
             </a>
+            {{-- @dd(\App::getLocale()); --}}
             <p>
-                <b>Nhiều năm tập trung vào sàn chống tĩnh điện và sàn nâng</b>
-                <span>Nhà cung cấp dịch vụ một cửa chuyên nghiệp cho các giải pháp sàn chống tĩnh điện</span>
+                <b>{{ cachedTranslate('Nhiều năm tập trung vào sàn chống tĩnh điện và sàn nâng', \App::getLocale()) }}</b>
+                <span>{{ cachedTranslate('Nhà cung cấp dịch vụ một cửa chuyên nghiệp cho các giải pháp sàn chống tĩnh điện', \App::getLocale()) }}</span>
+
             </p>
         </div>
         <div class="nav dfs">
@@ -28,7 +30,7 @@
                 <div class="icon_tel">
                     <i class="iconftb">&#xe600;</i>
                     <div class="itel_box">
-                        <p>Đường dây nóng dịch vụ: </p>
+                        <p>{{ cachedTranslate('Đường dây nóng dịch vụ :', \App::getLocale()) }} </p>
                         <em>{{ $configWebsite->phone }}</em>
                         {{-- <em>{{ $configWebsite->phone	 }}</em> --}}
                     </div>
@@ -63,6 +65,20 @@
                     </div>
                 </div> --}}
             </div>
+
+            <div class="flag-container">
+                <a data-lang="vi" class="changeLanguage">
+                    <img src="https://flagcdn.com/w40/vn.png">
+                </a>
+                <a data-lang="zh" class="changeLanguage">
+                    <img src="https://flagcdn.com/w40/cn.png" >
+                </a>
+                <a data-lang="en" class="changeLanguage">
+                    <img src="https://flagcdn.com/w40/us.png" >
+                </a>
+            </div>
+
+
         </div>
     </div>
 </div>
@@ -76,5 +92,35 @@
 .dropdown:hover .menu1 {
     display: block; /* Hiển thị menu con khi di chuột vào */
 }
+.flag-container {
+    display: flex; /* Hiển thị các cờ trên cùng một hàng */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 10px; /* Tạo khoảng cách giữa các lá cờ */
+    padding: 10px; /* Thêm khoảng trống xung quanh */
+}
+
+.flag-container a {
+    display: inline-block; /* Giữ các cờ ở cùng một dòng */
+    transition: transform 0.2s ease-in-out; /* Hiệu ứng hover */
+}
+
+.flag-container img {
+    width: 40px; /* Định kích thước cờ đồng nhất */
+    height: auto; /* Đảm bảo tỷ lệ ảnh không bị méo */
+    border-radius: 5px; /* Bo tròn nhẹ các góc */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+    height: 30px;
+}
+
+.flag-container a:hover {
+    transform: scale(1.1); /* Hiệu ứng phóng to khi di chuột vào */
+}
 
 </style>
+
+<script>
+    jQuery('.changeLanguage').click(function(event) {
+        var url = "{{ route('google.translate.change') }}";
+        window.location.href = url + "?lang=" + jQuery(this).data('lang')
+    })
+</script>

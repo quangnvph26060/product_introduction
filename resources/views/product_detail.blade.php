@@ -1,7 +1,6 @@
 @extends('client.layouts.app')
 
-@section('title', 'Chi tiết sản phẩm')
-
+@section('title', cachedTranslate('Chi tiết sản phẩm', \App::getLocale()) )
 @section('content')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -15,10 +14,10 @@
                             <div class="bg-light p-4">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ route('product') }}">Products</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ route('product.category' , $productDetail->category->id) }}">{{ $productDetail->category->name }}</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">{{ $productDetail->name }}</li>
+                                        <li class="breadcrumb-item"><a href="/">{{ cachedTranslate('Home', \App::getLocale()) }}</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('product') }}">{{ cachedTranslate('Product', \App::getLocale()) }}</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('product.category' , $productDetail->category->id) }}">{{ cachedTranslate($productDetail->category->name, \App::getLocale()) }}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ cachedTranslate($productDetail->name, \App::getLocale()) }}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -44,21 +43,22 @@
                                         <button class="carousel-control-prev" type="button"
                                             data-bs-target="#carouselExample" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
+                                            <span class="visually-hidden">{{ cachedTranslate('Previous', \App::getLocale()) }}</span>
                                         </button>
                                         <button class="carousel-control-next" type="button"
                                             data-bs-target="#carouselExample" data-bs-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
+                                            <span class="visually-hidden">{{ cachedTranslate('Next', \App::getLocale()) }}</span>
                                         </button>
                                     @endif
                                 </div>
                             </div>
                             <div class="col-7">
                                 <div class="bg-body-secondary mt-3" style="height: 414px">
-                                    <h1 class="text-center py-3">{{ $productDetail->name }}</h1>
+                                    <h1 class="text-center py-3">{!! cachedTranslate($productDetail->short_description, \App::getLocale()) !!}</h1>
                                     <div class="p-3" style="line-height: 1.8">
-                                        {!!  $productDetail->short_description !!}
+
+                                        {!! cachedTranslate($productDetail->short_description, \App::getLocale()) !!}
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                             </div>
                             <div style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
                                 <p class="p-4">
-                                    {!! $productDetail->long_description !!}
+                                    {!! cachedTranslate($productDetail->long_description, \App::getLocale()) !!}
                                 </p>
                             </div>
                         </div>

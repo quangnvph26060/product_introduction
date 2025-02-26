@@ -1,14 +1,14 @@
 @extends('client.layouts.app')
 
-@section('title', 'Danh mục sản phẩm')
+@section('title', cachedTranslate('Danh mục sản phẩm', \App::getLocale()) )
 
 @section('content')
 
     <div class="pro_bc">
         <div class="gy pro_c">
             <div class="pro_tit">
-                <b>Lipin Flooring · <span>Product Center</span></b>
-                <p>Complete variety to meet the various needs of engineering companies</p>
+                <b> {{ cachedTranslate('Lipin Flooring ·', \App::getLocale()) }} <span>{{ cachedTranslate('Product Center', \App::getLocale()) }}</span></b>
+                <p>{{ cachedTranslate('Complete variety to meet the various needs of engineering companies', \App::getLocale()) }}</p>
             </div>
             <div class="pro_ic">
                 @include('partials.left-box')
@@ -22,19 +22,20 @@
                                             <td align=center style=padding-left:5px;>
                                                 <a href="{{ route('product.detail', $product->id) }}">
                                                     <img src='{{ asset($product->main_image) }}' width="300" height="300"
-                                                        border=0 alt="{{ $product->name }}">
+                                                        border=0 alt="{{ cachedTranslate($product->name, \App::getLocale()) }}">
                                                 </a><br>
                                                 <div style=padding-top:5px;>
                                                     <a href="{{ route('product.detail', $product->id) }}"
-                                                        title="{{ $product->name }}">
-                                                        {{ $product->name }}</a>
+                                                        title="{{ cachedTranslate($product->name, \App::getLocale()) }}">
+                                                        {{ cachedTranslate($product->name, \App::getLocale()) }}
+                                                    </a>
                                                 </div>
                                             </td>
                                         @endforeach
                                     </tr>
                                 @endforeach
                             @else
-                                <div>Không có sản phẩm nào !</div>
+                                <div>{{ cachedTranslate('Không có sản phẩm nào', \App::getLocale()) }}</div>
                             @endif
 
 

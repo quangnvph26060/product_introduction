@@ -1,9 +1,9 @@
 <div class="gc_bc">
     <div class="gy gc_c">
         <div class="pro_tit">
-            <b>Sàn Lipin · <span>Các trường hợp kỹ thuật</span></b>
-            <p>Sản phẩm của chúng tôi thâm nhập vào nhiều ngành công nghiệp khác nhau và phấn đấu tạo ra những sản phẩm
-                chất lượng cao cho khách hàng</p>
+            <b> {{ cachedTranslate('Sàn Lipin · ', \App::getLocale()) }}<span> {{ cachedTranslate('Các trường hợp kỹ thuật', \App::getLocale()) }}</span></b>
+            <p>{{ cachedTranslate('Sản phẩm của chúng tôi thâm nhập vào nhiều ngành công nghiệp khác nhau và phấn đấu tạo ra những sản phẩm
+                chất lượng cao cho khách hàng · ', \App::getLocale()) }}</p>
         </div>
         @include('partials.box.box-1')
         <div class="gc_ic">
@@ -14,11 +14,13 @@
                         <div class="news_div_item_content">
                             <div class="news_div_item_title">
                                 <a class="news_div_item_a" href="{{ route('post.detail' , $firstPost->title) }}">
-                                    {{ $firstPost->title }}
+
+                                    {{ cachedTranslate($firstPost->title, \App::getLocale()) }}
                                 </a>
                             </div>
                             <div class="news_div_item_body">
-                                {{ \Str::limit(strip_tags(html_entity_decode($firstPost->description)), 100) }} </div>
+                                {{ cachedTranslate(\Str::limit(strip_tags(html_entity_decode($firstPost->description)), 100), \App::getLocale()) }}
+                            </div>
                         </div>
                         <div class="news_div_item_pic">
                             <a href="{{ route('post.detail' , $firstPost->title) }}">
@@ -39,11 +41,13 @@
                             <div class="news_div_item_content">
                                 <div class="news_div_item_title">
                                     <a class="news_div_item_a" href="{{ route('post.detail' , $item->title) }}">
-                                        {{ $item->title }}
+
+                                        {{ cachedTranslate($item->title, \App::getLocale()) }}
                                     </a>
                                 </div>
                                 <div class="news_div_item_body">
-                                    {{ \Str::limit(strip_tags(html_entity_decode($item->description)), 100) }} </div>
+
+                                    {{ cachedTranslate(\Str::limit(strip_tags(html_entity_decode($item->description)), 100), \App::getLocale()) }}</div>
                             </div>
                             <div class="news_div_item_pic">
                                 <a href="{{ route('post.detail' , $item->title) }}">

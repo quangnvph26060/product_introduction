@@ -1,7 +1,6 @@
 @extends('client.layouts.app')
 
-@section('title', 'Xem tin tức chi tiết')
-
+@section('title', cachedTranslate('Xem tin tức chi tiết', \App::getLocale()) )
 @section('content')
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"

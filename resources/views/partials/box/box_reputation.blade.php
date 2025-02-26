@@ -9,13 +9,17 @@
             <em>
                 <i><span class="iconftb"><img src="{{ asset($item->icon) }}" style="margin-top: 15px" width="50"
                             height="50" alt=""></span></i>
-                <b>{{ $item->title }}</b>
+                <b>
+
+                    {{ cachedTranslate($item->title , \App::getLocale()) }}
+                </b>
             </em>
         </div>
         <div class="bock">
-            <h3>{{ $item->title }}</h3>
+            <h3>{{ cachedTranslate($item->title , \App::getLocale()) }}</h3>
             <div class="process-text">
-                {!! $item->description !!}
+
+                {!!cachedTranslate($item->description , \App::getLocale()) !!}
             </div>
         </div>
     </li>

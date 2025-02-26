@@ -37,10 +37,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('partials.header', function ($view) {
             $menu = Menu::make('MyNav', function ($m) {
                 // Menu chính
-                $m->add('Trang chủ', ['route' => 'home'])->id('home');
-                $m->add('Sản phẩm', ['route' => 'product'])->id('product');
-                $m->add('Bài viết' , '#')->id('project-case');
-                $m->add('Tin tức', '#')->id('news');
+                $m->add(cachedTranslate('Trang chủ', \App::getLocale()), ['route' => 'home'])->id('home');
+                $m->add(cachedTranslate('Sản phẩm', \App::getLocale()), ['route' => 'product'])->id('product');
+                $m->add(cachedTranslate('Bài viết', \App::getLocale()) , '#')->id('project-case');
+                $m->add(cachedTranslate('Tin tức', \App::getLocale()), '#')->id('news');
             });
 
             $view->with('menu', $menu);

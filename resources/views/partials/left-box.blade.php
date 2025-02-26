@@ -1,7 +1,7 @@
 <div class="left_box">
     <div class="ldh">
         <div class="ldh_z">
-            <span>Danh mục sản phẩm</span>
+            <span>{{ cachedTranslate('Danh mục sản phẩm', \App::getLocale()) }}</span>
         </div>
     </div>
     <div class="left-products">
@@ -10,13 +10,13 @@
             @if (isset($categories))
                 @foreach ($categories as $parent)
                     <li class="has_two_class"><a class="one_a nLi" href="{{ route('product.category', $parent->id) }}"
-                            title="Classification by use">{{ $parent->name }}</a>
+                            title="Classification by use">{{ cachedTranslate($parent->name , \App::getLocale()) }}</a>
                         @if ($parent->children->count() > 0)
                             <ul class="two_class_box">
                                 @foreach ($parent->children as $item)
                                     <li><a class="two_a nLi"
                                             href="{{ route('product.category', $item->id) }}"
-                                            title="{{ $item->name }}">{{ $item->name }}</a>
+                                            title="{{ $item->name }}">{{ cachedTranslate($item->name, \App::getLocale()) }}</a>
                                     </li>
                                 @endforeach
 

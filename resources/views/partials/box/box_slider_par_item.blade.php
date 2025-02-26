@@ -5,8 +5,9 @@
         <img src='{{ asset($item->image) }}' border=0 alt={{ $item->name }}>
     </a><br>
     <div style=padding-top:5px;>
-        <a href=wdgweb_content-102933.html title={{ $item->name }}>
-            {{ $item->name }}</a>
+        <a  title={{ cachedTranslate($item->name , \App::getLocale()) }}>
+
+            {{ cachedTranslate($item->name , \App::getLocale()) }}
     </div>
 </td>
 @endforeach

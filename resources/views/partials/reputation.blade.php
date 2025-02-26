@@ -1,7 +1,7 @@
 <div class="ys">
         <div class="pro_tit">
-            <b>Nhà sản xuất mạnh · <span>Danh tiếng tốt</span></b>
-            <p>Cung cấp dịch vụ nhanh chóng, chu đáo, đáng tin cậy và hài lòng</p>
+            <b>{{ cachedTranslate('Nhà sản xuất mạnh ·' , \App::getLocale()) }} <span>{{ cachedTranslate('Danh tiếng tốt' , \App::getLocale()) }}</span></b>
+            <p> {{ cachedTranslate('Cung cấp dịch vụ nhanh chóng, chu đáo, đáng tin cậy và hài lòng' , \App::getLocale()) }} </p>
         </div>
         <div class="ys_con">
 

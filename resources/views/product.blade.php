@@ -1,14 +1,14 @@
 @extends('client.layouts.app')
 
-@section('title', 'Sản Phẩm')
-
+@section('title', cachedTranslate('Sản Phẩm', \App::getLocale()) )
 @section('content')
 
     <div class="pro_bc">
         <div class="gy pro_c">
             <div class="pro_tit">
-                <b>Sàn Lipin · <span>Trung tâm sản phẩm</span></b>
-                <p>Hoàn thiện đa dạng để đáp ứng nhu cầu khác nhau của các công ty kỹ thuật</p>
+                <b>{{ cachedTranslate('Sàn Lipin ·', \App::getLocale()) }} <span>{{ cachedTranslate('Trung tâm sản phẩm', \App::getLocale()) }}</span></b>
+                <p>{{ cachedTranslate('Hoàn thiện đa dạng để đáp ứng nhu cầu khác nhau của các công ty kỹ thuật·', \App::getLocale()) }}</p>
+
             </div>
             <div class="pro_ic">
                 @include('partials.left-box')

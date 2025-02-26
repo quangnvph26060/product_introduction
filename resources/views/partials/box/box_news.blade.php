@@ -12,11 +12,13 @@
                         <div class="news_div_item_content">
                             <div class="news_div_item_title">
                                 <a class="news_div_item_a" href="{{ route('new.detail' , $new->title) }}">
-                                    {{ $new->title }}
+
+                                    {{ cachedTranslate($new->title, \App::getLocale()) }}
                                 </a>
                             </div>
                             <div class="news_div_item_body">
-                                {{ \Str::limit(strip_tags(html_entity_decode($new->description)), 100) }}</div>
+                                {{ cachedTranslate(\Str::limit(strip_tags(html_entity_decode($new->description)), 100), \App::getLocale()) }}
+                            </div>
                         </div>
                         <div class="news_div_item_pic">
                             <a href="{{ route('new.detail' , $new->title) }}">

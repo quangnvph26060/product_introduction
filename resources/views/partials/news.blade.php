@@ -2,7 +2,7 @@
     <div class="gy news_c">
         <div class="new_tit">
             <div class="ser_tit">
-                <b>Tin tức</b>
+                <b>{{ cachedTranslate('Tin tức', \App::getLocale()) }}</b>
                 <p></p>
             </div>
             @if ($newsCategoryHome->count() > 0)
@@ -10,14 +10,14 @@
                     <ul>
                         @foreach ($newsCategoryHome as $item)
                         <li class="{{ $loop->first ? 'on' : '' }}">
-                            <a><span class="iconftb">&#xe682;</span><b>{{ $item->name }}</b></a>
+                            <a><span class="iconftb">&#xe682;</span><b>{{ cachedTranslate($item->name, \App::getLocale()) }}</b></a>
                         </li>
                         @endforeach
                     </ul>
                 </div>
             @else
                 <div style="font-size: 30px;">
-                    Không có tin tức nào hết !
+                    {{ cachedTranslate('Không có tin tức nào', \App::getLocale()) }}
                 </div>
             @endif
         </div>
