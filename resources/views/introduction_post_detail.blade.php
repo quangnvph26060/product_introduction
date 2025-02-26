@@ -11,16 +11,17 @@
             <div class="bg-light p-4">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item">{{ $introPost->introductionCategory->name }}</li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $introPost->title }}</li>
+                        <li class="breadcrumb-item"><a href="/">{{ cachedTranslate ('Home', \App::getLocale()) }}</a></li>
+                        <li class="breadcrumb-item">{{ cachedTranslate ($introPost->introductionCategory->name, \App::getLocale()) }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ cachedTranslate ($introPost->title, \App::getLocale()) }}</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <div class="row">
             <div class="p-4">
-                {!! $introPost->content !!}
+
+                {!! cachedTranslate ($introPost->content, \App::getLocale()) !!}
             </div>
         </div>
     </div>

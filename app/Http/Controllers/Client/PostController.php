@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function detailPost($slug){
-        $post = Post::where('slug' , 'like' , $slug)->first();
+    public function detailPost($title){
+        $post = Post::where('title' , 'like' , $title)->firstOrFail();
         return view('post_detail' , compact('post'));
     }
 }
