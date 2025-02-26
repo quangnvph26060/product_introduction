@@ -3,19 +3,35 @@
 use Illuminate\Support\Facades\Cache;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
-function cachedTranslate($text, $targetLocale = 'en')
-{
-    if (empty($text)) {
-        return $text;
-    }
-    // Tạo khóa cache dựa trên nội dung và ngôn ngữ
-    $cacheKey = "translation_" . md5($text) . "_{$targetLocale}";
+if (!function_exists('cachedTranslate')) {
+    function cachedTranslate($content, $targetLocale = 'en')
+    {
+        if (empty($content)) {
+            return $content;
+        }
 
-    // Lưu cache trong 1 giờ (3600 giây)
-    return Cache::remember($cacheKey, 86400, function () use ($text, $targetLocale) {
-        $translator = new GoogleTranslate();
-        $translator->setSource(); // Để auto-detect ngôn ngữ
-        $translator->setTarget($targetLocale);
-        return $translator->translate($text);
-    });
+        // Xác định xem nội dung có chứa HTML không
+        $isHtml = strip_tags($content) !== $content;
+
+        // Tạo khóa cache
+        $cacheKey = ($isHtml ? "translation_html_" : "translation_") . md5($content) . "_{$targetLocale}";
+
+        // Lưu cache trong 1 ngày (86400 giây)
+        return Cache::remember($cacheKey, 86400, function () use ($content, $targetLocale, $isHtml) {
+            $translator = new GoogleTranslate();
+            $translator->setSource(); // Auto-detect language
+            $translator->setTarget($targetLocale);
+
+            if ($isHtml) {
+                // Dịch nội dung HTML
+                return preg_replace_callback('/>([^<]+)</', function ($matches) use ($translator) {
+                    $text = trim($matches[1]);
+                    return $text ? '>' . $translator->translate($text) . '<' : '><';
+                }, $content);
+            } else {
+                // Dịch nội dung văn bản thuần
+                return $translator->translate($content);
+            }
+        });
+    }
 }
